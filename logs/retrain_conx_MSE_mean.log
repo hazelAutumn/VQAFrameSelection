@@ -1,0 +1,2914 @@
+Loading the config file from options/convnext_mse.yml
+TIME: 23/01/2026, 16:00:17
+{'name': 'SAMA-VQA-conx', 'num_epochs': 10, 'l_num_epochs': 0, 'warmup_epochs': 2.5, 'ema': True, 'save_model': True, 'train_batch_size': 8, 'train_num_workers': 6, 'test_batch_size': 1, 'test_num_workers': 6, 'temporal_type': 'mseuni', 'random_seed': 42, 'stype': 'fragments', 'data': {'train': {'type': 'FixedFrameDataset', 'args': {'phase': 'train', 'anno_file': './examplar_data_labels/LSVQ/labels_mytrain_diffmean8.txt', 'data_prefix': '../../../VQA-datasets/InTheWild/LSVQ', 'temporal_type': 'mseuni', 'sample_types': {'fragments': {'fragments_h': 7, 'fragments_w': 7, 'fsize_h': 32, 'fsize_w': 32, 'aligned': 8, 'clip_len': 8, 'frame_interval': 1, 'num_clips': 1}}}}, 'val-livevqc': {'type': 'FixedFrameDataset', 'args': {'phase': 'test', 'anno_file': './examplar_data_labels/LIVE_VQC/mylabels_diffmean8.txt', 'data_prefix': '../../../VQA-datasets/InTheWild/LIVE-VQC', 'temporal_type': 'mseuni', 'sample_types': {'fragments': {'fragments_h': 7, 'fragments_w': 7, 'fsize_h': 32, 'fsize_w': 32, 'aligned': 8, 'clip_len': 8, 'frame_interval': 1, 'num_clips': 1}}}}, 'val-kv1k': {'type': 'FixedFrameDataset', 'args': {'phase': 'test', 'anno_file': './examplar_data_labels/KoNViD/mylabels_diffmean8.txt', 'data_prefix': '../../../VQA-datasets/Konvid-1k', 'temporal_type': 'mseuni', 'sample_types': {'fragments': {'fragments_h': 7, 'fragments_w': 7, 'fsize_h': 32, 'fsize_w': 32, 'aligned': 8, 'clip_len': 8, 'frame_interval': 1, 'num_clips': 1}}}}, 'val-ltest': {'type': 'FixedFrameDataset', 'args': {'phase': 'test', 'anno_file': './examplar_data_labels/LSVQ/labels_mytest_diffmean8.txt', 'data_prefix': '../../../VQA-datasets/InTheWild/LSVQ', 'temporal_type': 'mseuni', 'sample_types': {'fragments': {'fragments_h': 7, 'fragments_w': 7, 'fsize_h': 32, 'fsize_w': 32, 'aligned': 8, 'clip_len': 8, 'frame_interval': 1, 'num_clips': 1}}}}, 'val-l1080p': {'type': 'FixedFrameDataset', 'args': {'phase': 'test', 'anno_file': './examplar_data_labels/LSVQ/labels_mytest_1080p_diffmean8.txt', 'data_prefix': '../../../VQA-datasets/InTheWild/LSVQ', 'temporal_type': 'mseuni', 'sample_types': {'fragments': {'fragments_h': 7, 'fragments_w': 7, 'fsize_h': 32, 'fsize_w': 32, 'aligned': 8, 'clip_len': 8, 'frame_interval': 1, 'num_clips': 1}}}}}, 'model': {'type': 'DiViDeAddEvaluator', 'args': {'backbone_size': 'convnext_3d_tiny', 'backbone_preserve_keys': 'fragments', 'divide_head': False, 'vqa_head': {'in_channels': 768, 'hidden_channels': 64}}}, 'optimizer': {'lr': 0.001, 'backbone_lr_mult': 0.1, 'wd': 0.05}}
+using device: cuda
+convnext_3d_tiny
+convnext_3d_tiny
+Using Imagenet 22K pretrain False
+Setting backbone: fragments_backbone
+================= Split 1 / 10 =================
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-livevqc], with 585 samples.
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-kv1k], with 1200 samples.
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-ltest], with 7182 samples.
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-l1080p], with 3573 samples.
+Preparing training dataset: train
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[train], with 28056 samples.
+Finetune Epoch 0:
+Epoch-00, training SRCC=0.6545, time elapsed 11m 27s.
+backbone_lr = 4.00e-05, head_lr = 4.00e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7025 best: 0.7025 
+  PLCC:  0.7327 best: 0.7327  
+  KROCC: 0.5115 best: 0.5115 
+  RMSE:  12.4727 best: 12.4727.
+time elapsed 00m 34s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7973 best: 0.7973 
+  PLCC:  0.7934 best: 0.7934  
+  KROCC: 0.6010 best: 0.6010 
+  RMSE:  0.4119 best: 0.4119.
+time elapsed 00m 29s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.7812 best: 0.7812 
+  PLCC:  0.7799 best: 0.7799  
+  KROCC: 0.5856 best: 0.5856 
+  RMSE:  6.9766 best: 6.9766.
+time elapsed 02m 56s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6547 best: 0.6547 
+  PLCC:  0.6932 best: 0.6932  
+  KROCC: 0.4717 best: 0.4717 
+  RMSE:  8.1398 best: 8.1398.
+time elapsed 04m 52s.
+Finetune Epoch 1:
+Epoch-01, training SRCC=0.6715, time elapsed 16m 52s.
+backbone_lr = 8.00e-05, head_lr = 8.00e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7133 best: 0.7133 
+  PLCC:  0.7531 best: 0.7531  
+  KROCC: 0.5239 best: 0.5239 
+  RMSE:  11.9872 best: 11.9872.
+time elapsed 00m 46s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.8010 best: 0.8010 
+  PLCC:  0.8044 best: 0.8044  
+  KROCC: 0.6083 best: 0.6083 
+  RMSE:  0.4009 best: 0.4009.
+time elapsed 00m 41s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8141 best: 0.8141 
+  PLCC:  0.8163 best: 0.8163  
+  KROCC: 0.6207 best: 0.6207 
+  RMSE:  6.3742 best: 6.3742.
+time elapsed 05m 19s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6815 best: 0.6815 
+  PLCC:  0.7244 best: 0.7244  
+  KROCC: 0.4963 best: 0.4963 
+  RMSE:  7.7155 best: 7.7155.
+time elapsed 05m 37s.
+Finetune Epoch 2:
+Epoch-02, training SRCC=0.3831, time elapsed 17m 09s.
+backbone_lr = 9.94e-05, head_lr = 9.94e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7150 best: 0.7150 
+  PLCC:  0.7601 best: 0.7601  
+  KROCC: 0.5252 best: 0.5252 
+  RMSE:  11.8142 best: 11.8142.
+time elapsed 00m 51s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.8049 best: 0.8049 
+  PLCC:  0.8126 best: 0.8126  
+  KROCC: 0.6129 best: 0.6129 
+  RMSE:  0.3924 best: 0.3924.
+time elapsed 00m 52s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8212 best: 0.8212 
+  PLCC:  0.8239 best: 0.8239  
+  KROCC: 0.6284 best: 0.6284 
+  RMSE:  6.2416 best: 6.2416.
+time elapsed 04m 58s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6937 best: 0.6937 
+  PLCC:  0.7362 best: 0.7362  
+  KROCC: 0.5070 best: 0.5070 
+  RMSE:  7.5480 best: 7.5480.
+time elapsed 05m 42s.
+Finetune Epoch 3:
+Epoch-03, training SRCC=0.6835, time elapsed 16m 56s.
+backbone_lr = 9.45e-05, head_lr = 9.45e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7117 best: 0.7150 
+  PLCC:  0.7622 best: 0.7622  
+  KROCC: 0.5215 best: 0.5252 
+  RMSE:  11.7633 best: 11.7633.
+time elapsed 00m 56s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.8074 best: 0.8074 
+  PLCC:  0.8161 best: 0.8161  
+  KROCC: 0.6162 best: 0.6162 
+  RMSE:  0.3886 best: 0.3886.
+time elapsed 00m 53s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8266 best: 0.8266 
+  PLCC:  0.8282 best: 0.8282  
+  KROCC: 0.6348 best: 0.6348 
+  RMSE:  6.1640 best: 6.1640.
+time elapsed 04m 53s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7084 best: 0.7084 
+  PLCC:  0.7504 best: 0.7504  
+  KROCC: 0.5209 best: 0.5209 
+  RMSE:  7.3424 best: 7.3424.
+time elapsed 05m 27s.
+Finetune Epoch 4:
+Epoch-04, training SRCC=0.5666, time elapsed 17m 29s.
+backbone_lr = 8.54e-05, head_lr = 8.54e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7218 best: 0.7218 
+  PLCC:  0.7661 best: 0.7661  
+  KROCC: 0.5310 best: 0.5310 
+  RMSE:  11.6655 best: 11.6655.
+time elapsed 00m 57s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.8024 best: 0.8074 
+  PLCC:  0.8111 best: 0.8161  
+  KROCC: 0.6114 best: 0.6162 
+  RMSE:  0.3939 best: 0.3886.
+time elapsed 00m 49s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8305 best: 0.8305 
+  PLCC:  0.8333 best: 0.8333  
+  KROCC: 0.6392 best: 0.6392 
+  RMSE:  6.0713 best: 6.0713.
+time elapsed 04m 21s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7167 best: 0.7167 
+  PLCC:  0.7608 best: 0.7608  
+  KROCC: 0.5289 best: 0.5289 
+  RMSE:  7.1871 best: 7.1871.
+time elapsed 05m 40s.
+Finetune Epoch 5:
+Epoch-05, training SRCC=0.5282, time elapsed 17m 36s.
+backbone_lr = 7.27e-05, head_lr = 7.27e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7344 best: 0.7344 
+  PLCC:  0.7783 best: 0.7783  
+  KROCC: 0.5429 best: 0.5429 
+  RMSE:  11.3592 best: 11.3592.
+time elapsed 00m 48s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.8039 best: 0.8074 
+  PLCC:  0.8121 best: 0.8161  
+  KROCC: 0.6126 best: 0.6162 
+  RMSE:  0.3929 best: 0.3886.
+time elapsed 00m 43s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8343 best: 0.8343 
+  PLCC:  0.8383 best: 0.8383  
+  KROCC: 0.6443 best: 0.6443 
+  RMSE:  5.9805 best: 5.9805.
+time elapsed 04m 34s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7215 best: 0.7215 
+  PLCC:  0.7668 best: 0.7668  
+  KROCC: 0.5337 best: 0.5337 
+  RMSE:  7.0974 best: 7.0974.
+time elapsed 05m 34s.
+Finetune Epoch 6:
+Epoch-06, training SRCC=0.4704, time elapsed 17m 35s.
+backbone_lr = 5.78e-05, head_lr = 5.78e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7267 best: 0.7344 
+  PLCC:  0.7724 best: 0.7783  
+  KROCC: 0.5360 best: 0.5429 
+  RMSE:  11.5080 best: 11.3592.
+time elapsed 00m 55s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.8037 best: 0.8074 
+  PLCC:  0.8108 best: 0.8161  
+  KROCC: 0.6112 best: 0.6162 
+  RMSE:  0.3942 best: 0.3886.
+time elapsed 00m 46s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8391 best: 0.8391 
+  PLCC:  0.8434 best: 0.8434  
+  KROCC: 0.6501 best: 0.6501 
+  RMSE:  5.8857 best: 5.8857.
+time elapsed 04m 25s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7266 best: 0.7266 
+  PLCC:  0.7705 best: 0.7705  
+  KROCC: 0.5382 best: 0.5382 
+  RMSE:  7.0400 best: 7.0400.
+time elapsed 05m 30s.
+Finetune Epoch 7:
+Epoch-07, training SRCC=0.4947, time elapsed 13m 09s.
+backbone_lr = 4.22e-05, head_lr = 4.22e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7227 best: 0.7344 
+  PLCC:  0.7726 best: 0.7783  
+  KROCC: 0.5323 best: 0.5429 
+  RMSE:  11.5034 best: 11.3592.
+time elapsed 00m 34s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7991 best: 0.8074 
+  PLCC:  0.8088 best: 0.8161  
+  KROCC: 0.6066 best: 0.6162 
+  RMSE:  0.3963 best: 0.3886.
+time elapsed 00m 30s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8411 best: 0.8411 
+  PLCC:  0.8449 best: 0.8449  
+  KROCC: 0.6526 best: 0.6526 
+  RMSE:  5.8580 best: 5.8580.
+time elapsed 03m 06s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7296 best: 0.7296 
+  PLCC:  0.7733 best: 0.7733  
+  KROCC: 0.5412 best: 0.5412 
+  RMSE:  6.9964 best: 6.9964.
+time elapsed 04m 06s.
+Finetune Epoch 8:
+Epoch-08, training SRCC=0.6821, time elapsed 12m 32s.
+backbone_lr = 2.73e-05, head_lr = 2.73e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7262 best: 0.7344 
+  PLCC:  0.7800 best: 0.7800  
+  KROCC: 0.5351 best: 0.5429 
+  RMSE:  11.3159 best: 11.3159.
+time elapsed 00m 33s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.8001 best: 0.8074 
+  PLCC:  0.8079 best: 0.8161  
+  KROCC: 0.6079 best: 0.6162 
+  RMSE:  0.3972 best: 0.3886.
+time elapsed 00m 31s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8425 best: 0.8425 
+  PLCC:  0.8448 best: 0.8449  
+  KROCC: 0.6536 best: 0.6536 
+  RMSE:  5.8585 best: 5.8580.
+time elapsed 03m 05s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7302 best: 0.7302 
+  PLCC:  0.7747 best: 0.7747  
+  KROCC: 0.5416 best: 0.5416 
+  RMSE:  6.9748 best: 6.9748.
+time elapsed 04m 08s.
+Finetune Epoch 9:
+Epoch-09, training SRCC=0.6129, time elapsed 12m 28s.
+backbone_lr = 1.46e-05, head_lr = 1.46e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7241 best: 0.7344 
+  PLCC:  0.7764 best: 0.7800  
+  KROCC: 0.5339 best: 0.5429 
+  RMSE:  11.4068 best: 11.3159.
+time elapsed 00m 34s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7981 best: 0.8074 
+  PLCC:  0.8054 best: 0.8161  
+  KROCC: 0.6065 best: 0.6162 
+  RMSE:  0.3998 best: 0.3886.
+time elapsed 00m 31s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8413 best: 0.8425 
+  PLCC:  0.8434 best: 0.8449  
+  KROCC: 0.6522 best: 0.6536 
+  RMSE:  5.8858 best: 5.8580.
+time elapsed 03m 05s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7289 best: 0.7302 
+  PLCC:  0.7743 best: 0.7747  
+  KROCC: 0.5408 best: 0.5416 
+  RMSE:  6.9811 best: 6.9748.
+time elapsed 04m 11s.
+For the finetuning process on val-livevqc with 585 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.7344
+                    PLCC:  0.7800
+                    KROCC: 0.5429
+                    RMSE:  11.3159.
+For the finetuning process on val-kv1k with 1200 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.8074
+                    PLCC:  0.8161
+                    KROCC: 0.6162
+                    RMSE:  0.3886.
+For the finetuning process on val-ltest with 7182 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.8425
+                    PLCC:  0.8449
+                    KROCC: 0.6536
+                    RMSE:  5.8580.
+For the finetuning process on val-l1080p with 3573 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.7302
+                    PLCC:  0.7747
+                    KROCC: 0.5416
+                    RMSE:  6.9748.
+================= Split 2 / 10 =================
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-livevqc], with 585 samples.
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-kv1k], with 1200 samples.
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-ltest], with 7182 samples.
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-l1080p], with 3573 samples.
+Preparing training dataset: train
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[train], with 28056 samples.
+Finetune Epoch 0:
+Epoch-00, training SRCC=0.5576, time elapsed 12m 30s.
+backbone_lr = 4.00e-05, head_lr = 4.00e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7197 best: 0.7197 
+  PLCC:  0.7714 best: 0.7714  
+  KROCC: 0.5286 best: 0.5286 
+  RMSE:  11.5331 best: 11.5331.
+time elapsed 00m 34s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7975 best: 0.7975 
+  PLCC:  0.8034 best: 0.8034  
+  KROCC: 0.6054 best: 0.6054 
+  RMSE:  0.4019 best: 0.4019.
+time elapsed 00m 31s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8403 best: 0.8403 
+  PLCC:  0.8423 best: 0.8423  
+  KROCC: 0.6511 best: 0.6511 
+  RMSE:  5.9058 best: 5.9058.
+time elapsed 03m 06s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7315 best: 0.7315 
+  PLCC:  0.7730 best: 0.7730  
+  KROCC: 0.5429 best: 0.5429 
+  RMSE:  7.0010 best: 7.0010.
+time elapsed 04m 07s.
+Finetune Epoch 1:
+Epoch-01, training SRCC=0.6749, time elapsed 12m 28s.
+backbone_lr = 8.00e-05, head_lr = 8.00e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7095 best: 0.7197 
+  PLCC:  0.7672 best: 0.7714  
+  KROCC: 0.5208 best: 0.5286 
+  RMSE:  11.6404 best: 11.5331.
+time elapsed 00m 34s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7983 best: 0.7983 
+  PLCC:  0.8048 best: 0.8048  
+  KROCC: 0.6075 best: 0.6075 
+  RMSE:  0.4004 best: 0.4004.
+time elapsed 00m 31s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8408 best: 0.8408 
+  PLCC:  0.8431 best: 0.8431  
+  KROCC: 0.6516 best: 0.6516 
+  RMSE:  5.8917 best: 5.8917.
+time elapsed 03m 10s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7292 best: 0.7315 
+  PLCC:  0.7739 best: 0.7739  
+  KROCC: 0.5409 best: 0.5429 
+  RMSE:  6.9874 best: 6.9874.
+time elapsed 04m 14s.
+Finetune Epoch 2:
+Epoch-02, training SRCC=0.6654, time elapsed 12m 15s.
+backbone_lr = 9.94e-05, head_lr = 9.94e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7224 best: 0.7224 
+  PLCC:  0.7751 best: 0.7751  
+  KROCC: 0.5335 best: 0.5335 
+  RMSE:  11.4411 best: 11.4411.
+time elapsed 00m 35s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7954 best: 0.7983 
+  PLCC:  0.7995 best: 0.8048  
+  KROCC: 0.6036 best: 0.6075 
+  RMSE:  0.4058 best: 0.4004.
+time elapsed 00m 31s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8380 best: 0.8408 
+  PLCC:  0.8404 best: 0.8431  
+  KROCC: 0.6482 best: 0.6516 
+  RMSE:  5.9422 best: 5.8917.
+time elapsed 03m 14s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7255 best: 0.7315 
+  PLCC:  0.7671 best: 0.7739  
+  KROCC: 0.5374 best: 0.5429 
+  RMSE:  7.0919 best: 6.9874.
+time elapsed 04m 33s.
+Finetune Epoch 3:
+Epoch-03, training SRCC=0.6311, time elapsed 12m 00s.
+backbone_lr = 9.45e-05, head_lr = 9.45e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7198 best: 0.7224 
+  PLCC:  0.7711 best: 0.7751  
+  KROCC: 0.5309 best: 0.5335 
+  RMSE:  11.5414 best: 11.4411.
+time elapsed 00m 50s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7941 best: 0.7983 
+  PLCC:  0.7978 best: 0.8048  
+  KROCC: 0.6025 best: 0.6075 
+  RMSE:  0.4075 best: 0.4004.
+time elapsed 00m 46s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8352 best: 0.8408 
+  PLCC:  0.8385 best: 0.8431  
+  KROCC: 0.6449 best: 0.6516 
+  RMSE:  5.9770 best: 5.8917.
+time elapsed 04m 38s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7202 best: 0.7315 
+  PLCC:  0.7647 best: 0.7739  
+  KROCC: 0.5333 best: 0.5429 
+  RMSE:  7.1288 best: 6.9874.
+time elapsed 06m 28s.
+Finetune Epoch 4:
+Epoch-04, training SRCC=0.4374, time elapsed 18m 03s.
+backbone_lr = 8.54e-05, head_lr = 8.54e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7127 best: 0.7224 
+  PLCC:  0.7652 best: 0.7751  
+  KROCC: 0.5236 best: 0.5335 
+  RMSE:  11.6886 best: 11.4411.
+time elapsed 00m 49s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7913 best: 0.7983 
+  PLCC:  0.7969 best: 0.8048  
+  KROCC: 0.5993 best: 0.6075 
+  RMSE:  0.4084 best: 0.4004.
+time elapsed 00m 47s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8373 best: 0.8408 
+  PLCC:  0.8395 best: 0.8431  
+  KROCC: 0.6476 best: 0.6516 
+  RMSE:  5.9574 best: 5.8917.
+time elapsed 04m 44s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7228 best: 0.7315 
+  PLCC:  0.7681 best: 0.7739  
+  KROCC: 0.5354 best: 0.5429 
+  RMSE:  7.0767 best: 6.9874.
+time elapsed 06m 13s.
+Finetune Epoch 5:
+Epoch-05, training SRCC=0.7440, time elapsed 18m 13s.
+backbone_lr = 7.27e-05, head_lr = 7.27e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7111 best: 0.7224 
+  PLCC:  0.7645 best: 0.7751  
+  KROCC: 0.5225 best: 0.5335 
+  RMSE:  11.7078 best: 11.4411.
+time elapsed 00m 51s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7831 best: 0.7983 
+  PLCC:  0.7897 best: 0.8048  
+  KROCC: 0.5912 best: 0.6075 
+  RMSE:  0.4156 best: 0.4004.
+time elapsed 00m 42s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8353 best: 0.8408 
+  PLCC:  0.8382 best: 0.8431  
+  KROCC: 0.6451 best: 0.6516 
+  RMSE:  5.9822 best: 5.8917.
+time elapsed 05m 05s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7199 best: 0.7315 
+  PLCC:  0.7645 best: 0.7739  
+  KROCC: 0.5317 best: 0.5429 
+  RMSE:  7.1319 best: 6.9874.
+time elapsed 05m 51s.
+Finetune Epoch 6:
+Epoch-06, training SRCC=0.4524, time elapsed 17m 09s.
+backbone_lr = 5.78e-05, head_lr = 5.78e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7122 best: 0.7224 
+  PLCC:  0.7610 best: 0.7751  
+  KROCC: 0.5220 best: 0.5335 
+  RMSE:  11.7932 best: 11.4411.
+time elapsed 00m 47s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7891 best: 0.7983 
+  PLCC:  0.7935 best: 0.8048  
+  KROCC: 0.5955 best: 0.6075 
+  RMSE:  0.4119 best: 0.4004.
+time elapsed 00m 53s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8375 best: 0.8408 
+  PLCC:  0.8395 best: 0.8431  
+  KROCC: 0.6473 best: 0.6516 
+  RMSE:  5.9583 best: 5.8917.
+time elapsed 05m 19s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7172 best: 0.7315 
+  PLCC:  0.7623 best: 0.7739  
+  KROCC: 0.5295 best: 0.5429 
+  RMSE:  7.1647 best: 6.9874.
+time elapsed 05m 51s.
+Finetune Epoch 7:
+Epoch-07, training SRCC=0.7649, time elapsed 18m 07s.
+backbone_lr = 4.22e-05, head_lr = 4.22e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7218 best: 0.7224 
+  PLCC:  0.7700 best: 0.7751  
+  KROCC: 0.5302 best: 0.5335 
+  RMSE:  11.5684 best: 11.4411.
+time elapsed 00m 57s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7927 best: 0.7983 
+  PLCC:  0.7994 best: 0.8048  
+  KROCC: 0.5987 best: 0.6075 
+  RMSE:  0.4060 best: 0.4004.
+time elapsed 00m 54s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8348 best: 0.8408 
+  PLCC:  0.8366 best: 0.8431  
+  KROCC: 0.6447 best: 0.6516 
+  RMSE:  6.0118 best: 5.8917.
+time elapsed 04m 56s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7175 best: 0.7315 
+  PLCC:  0.7632 best: 0.7739  
+  KROCC: 0.5303 best: 0.5429 
+  RMSE:  7.1516 best: 6.9874.
+time elapsed 05m 49s.
+Finetune Epoch 8:
+Epoch-08, training SRCC=0.6212, time elapsed 18m 24s.
+backbone_lr = 2.73e-05, head_lr = 2.73e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7217 best: 0.7224 
+  PLCC:  0.7643 best: 0.7751  
+  KROCC: 0.5313 best: 0.5335 
+  RMSE:  11.7127 best: 11.4411.
+time elapsed 00m 56s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7835 best: 0.7983 
+  PLCC:  0.7874 best: 0.8048  
+  KROCC: 0.5886 best: 0.6075 
+  RMSE:  0.4178 best: 0.4004.
+time elapsed 00m 52s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8337 best: 0.8408 
+  PLCC:  0.8359 best: 0.8431  
+  KROCC: 0.6429 best: 0.6516 
+  RMSE:  6.0244 best: 5.8917.
+time elapsed 04m 40s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7168 best: 0.7315 
+  PLCC:  0.7593 best: 0.7739  
+  KROCC: 0.5289 best: 0.5429 
+  RMSE:  7.2096 best: 6.9874.
+time elapsed 05m 49s.
+Finetune Epoch 9:
+Epoch-09, training SRCC=0.8917, time elapsed 18m 44s.
+backbone_lr = 1.46e-05, head_lr = 1.46e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7145 best: 0.7224 
+  PLCC:  0.7602 best: 0.7751  
+  KROCC: 0.5243 best: 0.5335 
+  RMSE:  11.8120 best: 11.4411.
+time elapsed 00m 48s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7850 best: 0.7983 
+  PLCC:  0.7887 best: 0.8048  
+  KROCC: 0.5895 best: 0.6075 
+  RMSE:  0.4166 best: 0.4004.
+time elapsed 00m 46s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8328 best: 0.8408 
+  PLCC:  0.8350 best: 0.8431  
+  KROCC: 0.6422 best: 0.6516 
+  RMSE:  6.0415 best: 5.8917.
+time elapsed 04m 39s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7149 best: 0.7315 
+  PLCC:  0.7576 best: 0.7739  
+  KROCC: 0.5271 best: 0.5429 
+  RMSE:  7.2357 best: 6.9874.
+time elapsed 05m 51s.
+For the finetuning process on val-livevqc with 585 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.7224
+                    PLCC:  0.7751
+                    KROCC: 0.5335
+                    RMSE:  11.4411.
+For the finetuning process on val-kv1k with 1200 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.7983
+                    PLCC:  0.8048
+                    KROCC: 0.6075
+                    RMSE:  0.4004.
+For the finetuning process on val-ltest with 7182 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.8408
+                    PLCC:  0.8431
+                    KROCC: 0.6516
+                    RMSE:  5.8917.
+For the finetuning process on val-l1080p with 3573 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.7315
+                    PLCC:  0.7739
+                    KROCC: 0.5429
+                    RMSE:  6.9874.
+================= Split 3 / 10 =================
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-livevqc], with 585 samples.
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-kv1k], with 1200 samples.
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-ltest], with 7182 samples.
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-l1080p], with 3573 samples.
+Preparing training dataset: train
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[train], with 28056 samples.
+Finetune Epoch 0:
+Epoch-00, training SRCC=0.8122, time elapsed 18m 39s.
+backbone_lr = 4.00e-05, head_lr = 4.00e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7123 best: 0.7123 
+  PLCC:  0.7617 best: 0.7617  
+  KROCC: 0.5224 best: 0.5224 
+  RMSE:  11.7767 best: 11.7767.
+time elapsed 00m 49s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7869 best: 0.7869 
+  PLCC:  0.7902 best: 0.7902  
+  KROCC: 0.5917 best: 0.5917 
+  RMSE:  0.4151 best: 0.4151.
+time elapsed 00m 46s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8328 best: 0.8328 
+  PLCC:  0.8346 best: 0.8346  
+  KROCC: 0.6418 best: 0.6418 
+  RMSE:  6.0480 best: 6.0480.
+time elapsed 04m 39s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7141 best: 0.7141 
+  PLCC:  0.7588 best: 0.7588  
+  KROCC: 0.5266 best: 0.5266 
+  RMSE:  7.2175 best: 7.2175.
+time elapsed 05m 57s.
+Finetune Epoch 1:
+Epoch-01, training SRCC=0.7112, time elapsed 18m 41s.
+backbone_lr = 8.00e-05, head_lr = 8.00e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7055 best: 0.7123 
+  PLCC:  0.7574 best: 0.7617  
+  KROCC: 0.5160 best: 0.5224 
+  RMSE:  11.8826 best: 11.7767.
+time elapsed 00m 48s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7845 best: 0.7869 
+  PLCC:  0.7895 best: 0.7902  
+  KROCC: 0.5901 best: 0.5917 
+  RMSE:  0.4158 best: 0.4151.
+time elapsed 00m 45s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8332 best: 0.8332 
+  PLCC:  0.8350 best: 0.8350  
+  KROCC: 0.6423 best: 0.6423 
+  RMSE:  6.0413 best: 6.0413.
+time elapsed 04m 43s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7109 best: 0.7141 
+  PLCC:  0.7570 best: 0.7588  
+  KROCC: 0.5242 best: 0.5266 
+  RMSE:  7.2440 best: 7.2175.
+time elapsed 05m 56s.
+Finetune Epoch 2:
+Epoch-02, training SRCC=0.4121, time elapsed 18m 37s.
+backbone_lr = 9.94e-05, head_lr = 9.94e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7198 best: 0.7198 
+  PLCC:  0.7656 best: 0.7656  
+  KROCC: 0.5298 best: 0.5298 
+  RMSE:  11.6784 best: 11.6784.
+time elapsed 00m 50s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7805 best: 0.7869 
+  PLCC:  0.7830 best: 0.7902  
+  KROCC: 0.5863 best: 0.5917 
+  RMSE:  0.4222 best: 0.4151.
+time elapsed 00m 46s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8320 best: 0.8332 
+  PLCC:  0.8335 best: 0.8350  
+  KROCC: 0.6410 best: 0.6423 
+  RMSE:  6.0692 best: 6.0413.
+time elapsed 04m 45s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7109 best: 0.7141 
+  PLCC:  0.7553 best: 0.7588  
+  KROCC: 0.5246 best: 0.5266 
+  RMSE:  7.2701 best: 7.2175.
+time elapsed 05m 54s.
+Finetune Epoch 3:
+Epoch-03, training SRCC=0.3792, time elapsed 18m 30s.
+backbone_lr = 9.45e-05, head_lr = 9.45e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7136 best: 0.7198 
+  PLCC:  0.7556 best: 0.7656  
+  KROCC: 0.5247 best: 0.5298 
+  RMSE:  11.9252 best: 11.6784.
+time elapsed 00m 49s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7896 best: 0.7896 
+  PLCC:  0.7955 best: 0.7955  
+  KROCC: 0.5966 best: 0.5966 
+  RMSE:  0.4098 best: 0.4098.
+time elapsed 00m 46s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8299 best: 0.8332 
+  PLCC:  0.8326 best: 0.8350  
+  KROCC: 0.6387 best: 0.6423 
+  RMSE:  6.0846 best: 6.0413.
+time elapsed 04m 44s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7125 best: 0.7141 
+  PLCC:  0.7536 best: 0.7588  
+  KROCC: 0.5249 best: 0.5266 
+  RMSE:  7.2949 best: 7.2175.
+time elapsed 05m 54s.
+Finetune Epoch 4:
+Epoch-04, training SRCC=0.4492, time elapsed 18m 37s.
+backbone_lr = 8.54e-05, head_lr = 8.54e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7082 best: 0.7198 
+  PLCC:  0.7600 best: 0.7656  
+  KROCC: 0.5197 best: 0.5298 
+  RMSE:  11.8184 best: 11.6784.
+time elapsed 00m 49s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7839 best: 0.7896 
+  PLCC:  0.7890 best: 0.7955  
+  KROCC: 0.5896 best: 0.5966 
+  RMSE:  0.4163 best: 0.4098.
+time elapsed 00m 46s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8326 best: 0.8332 
+  PLCC:  0.8350 best: 0.8350  
+  KROCC: 0.6421 best: 0.6423 
+  RMSE:  6.0408 best: 6.0408.
+time elapsed 04m 45s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7166 best: 0.7166 
+  PLCC:  0.7567 best: 0.7588  
+  KROCC: 0.5286 best: 0.5286 
+  RMSE:  7.2491 best: 7.2175.
+time elapsed 05m 50s.
+Finetune Epoch 5:
+Epoch-05, training SRCC=0.5472, time elapsed 18m 39s.
+backbone_lr = 7.27e-05, head_lr = 7.27e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6962 best: 0.7198 
+  PLCC:  0.7511 best: 0.7656  
+  KROCC: 0.5098 best: 0.5298 
+  RMSE:  12.0340 best: 11.6784.
+time elapsed 00m 49s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7832 best: 0.7896 
+  PLCC:  0.7869 best: 0.7955  
+  KROCC: 0.5893 best: 0.5966 
+  RMSE:  0.4184 best: 0.4098.
+time elapsed 00m 46s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8285 best: 0.8332 
+  PLCC:  0.8306 best: 0.8350  
+  KROCC: 0.6375 best: 0.6423 
+  RMSE:  6.1211 best: 6.0408.
+time elapsed 04m 45s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7126 best: 0.7166 
+  PLCC:  0.7571 best: 0.7588  
+  KROCC: 0.5256 best: 0.5286 
+  RMSE:  7.2428 best: 7.2175.
+time elapsed 05m 59s.
+Finetune Epoch 6:
+Epoch-06, training SRCC=0.5734, time elapsed 18m 34s.
+backbone_lr = 5.78e-05, head_lr = 5.78e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7087 best: 0.7198 
+  PLCC:  0.7634 best: 0.7656  
+  KROCC: 0.5214 best: 0.5298 
+  RMSE:  11.7339 best: 11.6784.
+time elapsed 00m 49s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7933 best: 0.7933 
+  PLCC:  0.7942 best: 0.7955  
+  KROCC: 0.5992 best: 0.5992 
+  RMSE:  0.4112 best: 0.4098.
+time elapsed 00m 47s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8275 best: 0.8332 
+  PLCC:  0.8291 best: 0.8350  
+  KROCC: 0.6362 best: 0.6423 
+  RMSE:  6.1478 best: 6.0408.
+time elapsed 04m 52s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7053 best: 0.7166 
+  PLCC:  0.7486 best: 0.7588  
+  KROCC: 0.5185 best: 0.5286 
+  RMSE:  7.3681 best: 7.2175.
+time elapsed 06m 16s.
+Finetune Epoch 7:
+Epoch-07, training SRCC=0.6473, time elapsed 18m 14s.
+backbone_lr = 4.22e-05, head_lr = 4.22e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6982 best: 0.7198 
+  PLCC:  0.7510 best: 0.7656  
+  KROCC: 0.5109 best: 0.5298 
+  RMSE:  12.0371 best: 11.6784.
+time elapsed 00m 53s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7941 best: 0.7941 
+  PLCC:  0.7948 best: 0.7955  
+  KROCC: 0.5991 best: 0.5992 
+  RMSE:  0.4105 best: 0.4098.
+time elapsed 00m 45s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8300 best: 0.8332 
+  PLCC:  0.8316 best: 0.8350  
+  KROCC: 0.6387 best: 0.6423 
+  RMSE:  6.1025 best: 6.0408.
+time elapsed 04m 44s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7035 best: 0.7166 
+  PLCC:  0.7448 best: 0.7588  
+  KROCC: 0.5172 best: 0.5286 
+  RMSE:  7.4242 best: 7.2175.
+time elapsed 06m 31s.
+Finetune Epoch 8:
+Epoch-08, training SRCC=0.4639, time elapsed 17m 53s.
+backbone_lr = 2.73e-05, head_lr = 2.73e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7065 best: 0.7198 
+  PLCC:  0.7603 best: 0.7656  
+  KROCC: 0.5175 best: 0.5298 
+  RMSE:  11.8095 best: 11.6784.
+time elapsed 00m 50s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7923 best: 0.7941 
+  PLCC:  0.7939 best: 0.7955  
+  KROCC: 0.5972 best: 0.5992 
+  RMSE:  0.4115 best: 0.4098.
+time elapsed 00m 50s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8306 best: 0.8332 
+  PLCC:  0.8325 best: 0.8350  
+  KROCC: 0.6388 best: 0.6423 
+  RMSE:  6.0861 best: 6.0408.
+time elapsed 04m 56s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7058 best: 0.7166 
+  PLCC:  0.7488 best: 0.7588  
+  KROCC: 0.5195 best: 0.5286 
+  RMSE:  7.3650 best: 7.2175.
+time elapsed 06m 09s.
+Finetune Epoch 9:
+Epoch-09, training SRCC=0.7590, time elapsed 18m 08s.
+backbone_lr = 1.46e-05, head_lr = 1.46e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7028 best: 0.7198 
+  PLCC:  0.7587 best: 0.7656  
+  KROCC: 0.5149 best: 0.5298 
+  RMSE:  11.8505 best: 11.6784.
+time elapsed 00m 48s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7915 best: 0.7941 
+  PLCC:  0.7937 best: 0.7955  
+  KROCC: 0.5973 best: 0.5992 
+  RMSE:  0.4116 best: 0.4098.
+time elapsed 00m 42s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8283 best: 0.8332 
+  PLCC:  0.8304 best: 0.8350  
+  KROCC: 0.6358 best: 0.6423 
+  RMSE:  6.1254 best: 6.0408.
+time elapsed 05m 12s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7058 best: 0.7166 
+  PLCC:  0.7473 best: 0.7588  
+  KROCC: 0.5189 best: 0.5286 
+  RMSE:  7.3870 best: 7.2175.
+time elapsed 05m 49s.
+For the finetuning process on val-livevqc with 585 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.7198
+                    PLCC:  0.7656
+                    KROCC: 0.5298
+                    RMSE:  11.6784.
+For the finetuning process on val-kv1k with 1200 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.7941
+                    PLCC:  0.7955
+                    KROCC: 0.5992
+                    RMSE:  0.4098.
+For the finetuning process on val-ltest with 7182 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.8332
+                    PLCC:  0.8350
+                    KROCC: 0.6423
+                    RMSE:  6.0408.
+For the finetuning process on val-l1080p with 3573 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.7166
+                    PLCC:  0.7588
+                    KROCC: 0.5286
+                    RMSE:  7.2175.
+================= Split 4 / 10 =================
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-livevqc], with 585 samples.
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-kv1k], with 1200 samples.
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-ltest], with 7182 samples.
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-l1080p], with 3573 samples.
+Preparing training dataset: train
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[train], with 28056 samples.
+Finetune Epoch 0:
+Epoch-00, training SRCC=0.7617, time elapsed 18m 06s.
+backbone_lr = 4.00e-05, head_lr = 4.00e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7069 best: 0.7069 
+  PLCC:  0.7622 best: 0.7622  
+  KROCC: 0.5176 best: 0.5176 
+  RMSE:  11.7637 best: 11.7637.
+time elapsed 00m 50s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7938 best: 0.7938 
+  PLCC:  0.7925 best: 0.7925  
+  KROCC: 0.5991 best: 0.5991 
+  RMSE:  0.4128 best: 0.4128.
+time elapsed 00m 53s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8305 best: 0.8305 
+  PLCC:  0.8314 best: 0.8314  
+  KROCC: 0.6380 best: 0.6380 
+  RMSE:  6.1076 best: 6.1076.
+time elapsed 05m 16s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7080 best: 0.7080 
+  PLCC:  0.7482 best: 0.7482  
+  KROCC: 0.5207 best: 0.5207 
+  RMSE:  7.3740 best: 7.3740.
+time elapsed 05m 42s.
+Finetune Epoch 1:
+Epoch-01, training SRCC=0.8029, time elapsed 18m 18s.
+backbone_lr = 8.00e-05, head_lr = 8.00e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7002 best: 0.7069 
+  PLCC:  0.7569 best: 0.7622  
+  KROCC: 0.5120 best: 0.5176 
+  RMSE:  11.8935 best: 11.7637.
+time elapsed 00m 56s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7819 best: 0.7938 
+  PLCC:  0.7843 best: 0.7925  
+  KROCC: 0.5866 best: 0.5991 
+  RMSE:  0.4209 best: 0.4128.
+time elapsed 00m 54s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8284 best: 0.8305 
+  PLCC:  0.8302 best: 0.8314  
+  KROCC: 0.6363 best: 0.6380 
+  RMSE:  6.1285 best: 6.1076.
+time elapsed 04m 55s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7014 best: 0.7080 
+  PLCC:  0.7467 best: 0.7482  
+  KROCC: 0.5160 best: 0.5207 
+  RMSE:  7.3964 best: 7.3740.
+time elapsed 05m 43s.
+Finetune Epoch 2:
+Epoch-02, training SRCC=0.4499, time elapsed 18m 32s.
+backbone_lr = 9.94e-05, head_lr = 9.94e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7040 best: 0.7069 
+  PLCC:  0.7563 best: 0.7622  
+  KROCC: 0.5151 best: 0.5176 
+  RMSE:  11.9075 best: 11.7637.
+time elapsed 00m 56s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7784 best: 0.7938 
+  PLCC:  0.7782 best: 0.7925  
+  KROCC: 0.5842 best: 0.5991 
+  RMSE:  0.4268 best: 0.4128.
+time elapsed 00m 50s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8275 best: 0.8305 
+  PLCC:  0.8290 best: 0.8314  
+  KROCC: 0.6360 best: 0.6380 
+  RMSE:  6.1495 best: 6.1076.
+time elapsed 04m 37s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7080 best: 0.7080 
+  PLCC:  0.7516 best: 0.7516  
+  KROCC: 0.5214 best: 0.5214 
+  RMSE:  7.3247 best: 7.3247.
+time elapsed 05m 47s.
+Finetune Epoch 3:
+Epoch-03, training SRCC=0.5824, time elapsed 18m 48s.
+backbone_lr = 9.45e-05, head_lr = 9.45e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6923 best: 0.7069 
+  PLCC:  0.7481 best: 0.7622  
+  KROCC: 0.5065 best: 0.5176 
+  RMSE:  12.1085 best: 11.7637.
+time elapsed 00m 48s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7809 best: 0.7938 
+  PLCC:  0.7815 best: 0.7925  
+  KROCC: 0.5882 best: 0.5991 
+  RMSE:  0.4236 best: 0.4128.
+time elapsed 00m 43s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8260 best: 0.8305 
+  PLCC:  0.8280 best: 0.8314  
+  KROCC: 0.6348 best: 0.6380 
+  RMSE:  6.1675 best: 6.1076.
+time elapsed 04m 38s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7001 best: 0.7080 
+  PLCC:  0.7442 best: 0.7516  
+  KROCC: 0.5147 best: 0.5214 
+  RMSE:  7.4329 best: 7.3247.
+time elapsed 05m 44s.
+Finetune Epoch 4:
+Epoch-04, training SRCC=0.6017, time elapsed 18m 46s.
+backbone_lr = 8.54e-05, head_lr = 8.54e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6949 best: 0.7069 
+  PLCC:  0.7516 best: 0.7622  
+  KROCC: 0.5080 best: 0.5176 
+  RMSE:  12.0218 best: 11.7637.
+time elapsed 00m 47s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7813 best: 0.7938 
+  PLCC:  0.7800 best: 0.7925  
+  KROCC: 0.5870 best: 0.5991 
+  RMSE:  0.4251 best: 0.4128.
+time elapsed 00m 44s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8278 best: 0.8305 
+  PLCC:  0.8286 best: 0.8314  
+  KROCC: 0.6362 best: 0.6380 
+  RMSE:  6.1568 best: 6.1076.
+time elapsed 04m 40s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7060 best: 0.7080 
+  PLCC:  0.7502 best: 0.7516  
+  KROCC: 0.5197 best: 0.5214 
+  RMSE:  7.3446 best: 7.3247.
+time elapsed 05m 44s.
+Finetune Epoch 5:
+Epoch-05, training SRCC=0.4436, time elapsed 18m 37s.
+backbone_lr = 7.27e-05, head_lr = 7.27e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7014 best: 0.7069 
+  PLCC:  0.7522 best: 0.7622  
+  KROCC: 0.5121 best: 0.5176 
+  RMSE:  12.0076 best: 11.7637.
+time elapsed 00m 49s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7816 best: 0.7938 
+  PLCC:  0.7805 best: 0.7925  
+  KROCC: 0.5873 best: 0.5991 
+  RMSE:  0.4246 best: 0.4128.
+time elapsed 00m 45s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8274 best: 0.8305 
+  PLCC:  0.8278 best: 0.8314  
+  KROCC: 0.6363 best: 0.6380 
+  RMSE:  6.1721 best: 6.1076.
+time elapsed 04m 43s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7028 best: 0.7080 
+  PLCC:  0.7435 best: 0.7516  
+  KROCC: 0.5167 best: 0.5214 
+  RMSE:  7.4434 best: 7.3247.
+time elapsed 05m 42s.
+Finetune Epoch 6:
+Epoch-06, training SRCC=0.7415, time elapsed 18m 35s.
+backbone_lr = 5.78e-05, head_lr = 5.78e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6985 best: 0.7069 
+  PLCC:  0.7508 best: 0.7622  
+  KROCC: 0.5104 best: 0.5176 
+  RMSE:  12.0413 best: 11.7637.
+time elapsed 00m 50s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7781 best: 0.7938 
+  PLCC:  0.7774 best: 0.7925  
+  KROCC: 0.5844 best: 0.5991 
+  RMSE:  0.4276 best: 0.4128.
+time elapsed 00m 46s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8272 best: 0.8305 
+  PLCC:  0.8277 best: 0.8314  
+  KROCC: 0.6353 best: 0.6380 
+  RMSE:  6.1729 best: 6.1076.
+time elapsed 04m 43s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7008 best: 0.7080 
+  PLCC:  0.7427 best: 0.7516  
+  KROCC: 0.5152 best: 0.5214 
+  RMSE:  7.4547 best: 7.3247.
+time elapsed 05m 49s.
+Finetune Epoch 7:
+Epoch-07, training SRCC=0.6139, time elapsed 18m 34s.
+backbone_lr = 4.22e-05, head_lr = 4.22e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6973 best: 0.7069 
+  PLCC:  0.7518 best: 0.7622  
+  KROCC: 0.5092 best: 0.5176 
+  RMSE:  12.0188 best: 11.7637.
+time elapsed 00m 48s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7793 best: 0.7938 
+  PLCC:  0.7819 best: 0.7925  
+  KROCC: 0.5850 best: 0.5991 
+  RMSE:  0.4232 best: 0.4128.
+time elapsed 00m 46s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8262 best: 0.8305 
+  PLCC:  0.8271 best: 0.8314  
+  KROCC: 0.6342 best: 0.6380 
+  RMSE:  6.1838 best: 6.1076.
+time elapsed 04m 46s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6988 best: 0.7080 
+  PLCC:  0.7381 best: 0.7516  
+  KROCC: 0.5139 best: 0.5214 
+  RMSE:  7.5200 best: 7.3247.
+time elapsed 05m 43s.
+Finetune Epoch 8:
+Epoch-08, training SRCC=0.8234, time elapsed 18m 33s.
+backbone_lr = 2.73e-05, head_lr = 2.73e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7018 best: 0.7069 
+  PLCC:  0.7561 best: 0.7622  
+  KROCC: 0.5129 best: 0.5176 
+  RMSE:  11.9129 best: 11.7637.
+time elapsed 00m 47s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7839 best: 0.7938 
+  PLCC:  0.7849 best: 0.7925  
+  KROCC: 0.5905 best: 0.5991 
+  RMSE:  0.4203 best: 0.4128.
+time elapsed 00m 47s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8266 best: 0.8305 
+  PLCC:  0.8270 best: 0.8314  
+  KROCC: 0.6345 best: 0.6380 
+  RMSE:  6.1860 best: 6.1076.
+time elapsed 04m 47s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6985 best: 0.7080 
+  PLCC:  0.7396 best: 0.7516  
+  KROCC: 0.5130 best: 0.5214 
+  RMSE:  7.4984 best: 7.3247.
+time elapsed 05m 39s.
+Finetune Epoch 9:
+Epoch-09, training SRCC=0.9137, time elapsed 18m 39s.
+backbone_lr = 1.46e-05, head_lr = 1.46e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6978 best: 0.7069 
+  PLCC:  0.7547 best: 0.7622  
+  KROCC: 0.5092 best: 0.5176 
+  RMSE:  11.9471 best: 11.7637.
+time elapsed 00m 49s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7852 best: 0.7938 
+  PLCC:  0.7868 best: 0.7925  
+  KROCC: 0.5914 best: 0.5991 
+  RMSE:  0.4184 best: 0.4128.
+time elapsed 00m 46s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8273 best: 0.8305 
+  PLCC:  0.8277 best: 0.8314  
+  KROCC: 0.6352 best: 0.6380 
+  RMSE:  6.1738 best: 6.1076.
+time elapsed 04m 47s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7005 best: 0.7080 
+  PLCC:  0.7418 best: 0.7516  
+  KROCC: 0.5148 best: 0.5214 
+  RMSE:  7.4676 best: 7.3247.
+time elapsed 05m 56s.
+For the finetuning process on val-livevqc with 585 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.7069
+                    PLCC:  0.7622
+                    KROCC: 0.5176
+                    RMSE:  11.7637.
+For the finetuning process on val-kv1k with 1200 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.7938
+                    PLCC:  0.7925
+                    KROCC: 0.5991
+                    RMSE:  0.4128.
+For the finetuning process on val-ltest with 7182 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.8305
+                    PLCC:  0.8314
+                    KROCC: 0.6380
+                    RMSE:  6.1076.
+For the finetuning process on val-l1080p with 3573 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.7080
+                    PLCC:  0.7516
+                    KROCC: 0.5214
+                    RMSE:  7.3247.
+================= Split 5 / 10 =================
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-livevqc], with 585 samples.
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-kv1k], with 1200 samples.
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-ltest], with 7182 samples.
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-l1080p], with 3573 samples.
+Preparing training dataset: train
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[train], with 28056 samples.
+Finetune Epoch 0:
+Epoch-00, training SRCC=0.9341, time elapsed 18m 30s.
+backbone_lr = 4.00e-05, head_lr = 4.00e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.7018 best: 0.7018 
+  PLCC:  0.7542 best: 0.7542  
+  KROCC: 0.5117 best: 0.5117 
+  RMSE:  11.9603 best: 11.9603.
+time elapsed 00m 47s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7832 best: 0.7832 
+  PLCC:  0.7831 best: 0.7831  
+  KROCC: 0.5897 best: 0.5897 
+  RMSE:  0.4221 best: 0.4221.
+time elapsed 00m 46s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8261 best: 0.8261 
+  PLCC:  0.8263 best: 0.8263  
+  KROCC: 0.6340 best: 0.6340 
+  RMSE:  6.1992 best: 6.1992.
+time elapsed 04m 52s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6995 best: 0.6995 
+  PLCC:  0.7425 best: 0.7425  
+  KROCC: 0.5139 best: 0.5139 
+  RMSE:  7.4570 best: 7.4570.
+time elapsed 06m 14s.
+Finetune Epoch 1:
+Epoch-01, training SRCC=0.5301, time elapsed 18m 16s.
+backbone_lr = 8.00e-05, head_lr = 8.00e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6985 best: 0.7018 
+  PLCC:  0.7506 best: 0.7542  
+  KROCC: 0.5110 best: 0.5117 
+  RMSE:  12.0460 best: 11.9603.
+time elapsed 00m 50s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7844 best: 0.7844 
+  PLCC:  0.7851 best: 0.7851  
+  KROCC: 0.5895 best: 0.5897 
+  RMSE:  0.4201 best: 0.4201.
+time elapsed 00m 45s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8228 best: 0.8261 
+  PLCC:  0.8230 best: 0.8263  
+  KROCC: 0.6302 best: 0.6340 
+  RMSE:  6.2571 best: 6.1992.
+time elapsed 04m 48s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6960 best: 0.6995 
+  PLCC:  0.7374 best: 0.7425  
+  KROCC: 0.5106 best: 0.5139 
+  RMSE:  7.5312 best: 7.4570.
+time elapsed 06m 22s.
+Finetune Epoch 2:
+Epoch-02, training SRCC=0.5050, time elapsed 18m 02s.
+backbone_lr = 9.94e-05, head_lr = 9.94e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6916 best: 0.7018 
+  PLCC:  0.7410 best: 0.7542  
+  KROCC: 0.5034 best: 0.5117 
+  RMSE:  12.2756 best: 11.9603.
+time elapsed 00m 51s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7725 best: 0.7844 
+  PLCC:  0.7708 best: 0.7851  
+  KROCC: 0.5777 best: 0.5897 
+  RMSE:  0.4339 best: 0.4201.
+time elapsed 00m 48s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8242 best: 0.8261 
+  PLCC:  0.8245 best: 0.8263  
+  KROCC: 0.6327 best: 0.6340 
+  RMSE:  6.2305 best: 6.1992.
+time elapsed 05m 03s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7025 best: 0.7025 
+  PLCC:  0.7439 best: 0.7439  
+  KROCC: 0.5158 best: 0.5158 
+  RMSE:  7.4375 best: 7.4375.
+time elapsed 06m 02s.
+Finetune Epoch 3:
+Epoch-03, training SRCC=0.3227, time elapsed 18m 16s.
+backbone_lr = 9.45e-05, head_lr = 9.45e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6924 best: 0.7018 
+  PLCC:  0.7452 best: 0.7542  
+  KROCC: 0.5046 best: 0.5117 
+  RMSE:  12.1772 best: 11.9603.
+time elapsed 00m 45s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7774 best: 0.7844 
+  PLCC:  0.7798 best: 0.7851  
+  KROCC: 0.5825 best: 0.5897 
+  RMSE:  0.4253 best: 0.4201.
+time elapsed 00m 43s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8225 best: 0.8261 
+  PLCC:  0.8228 best: 0.8263  
+  KROCC: 0.6309 best: 0.6340 
+  RMSE:  6.2609 best: 6.1992.
+time elapsed 05m 25s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6974 best: 0.7025 
+  PLCC:  0.7387 best: 0.7439  
+  KROCC: 0.5115 best: 0.5158 
+  RMSE:  7.5122 best: 7.4375.
+time elapsed 05m 47s.
+Finetune Epoch 4:
+Epoch-04, training SRCC=0.8465, time elapsed 18m 10s.
+backbone_lr = 8.54e-05, head_lr = 8.54e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6945 best: 0.7018 
+  PLCC:  0.7453 best: 0.7542  
+  KROCC: 0.5052 best: 0.5117 
+  RMSE:  12.1751 best: 11.9603.
+time elapsed 00m 56s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7800 best: 0.7844 
+  PLCC:  0.7775 best: 0.7851  
+  KROCC: 0.5844 best: 0.5897 
+  RMSE:  0.4274 best: 0.4201.
+time elapsed 00m 53s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8231 best: 0.8261 
+  PLCC:  0.8227 best: 0.8263  
+  KROCC: 0.6313 best: 0.6340 
+  RMSE:  6.2625 best: 6.1992.
+time elapsed 05m 11s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6995 best: 0.7025 
+  PLCC:  0.7402 best: 0.7439  
+  KROCC: 0.5133 best: 0.5158 
+  RMSE:  7.4904 best: 7.4375.
+time elapsed 05m 44s.
+Finetune Epoch 5:
+Epoch-05, training SRCC=0.7924, time elapsed 18m 31s.
+backbone_lr = 7.27e-05, head_lr = 7.27e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6882 best: 0.7018 
+  PLCC:  0.7443 best: 0.7542  
+  KROCC: 0.5028 best: 0.5117 
+  RMSE:  12.1984 best: 11.9603.
+time elapsed 00m 56s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7689 best: 0.7844 
+  PLCC:  0.7727 best: 0.7851  
+  KROCC: 0.5742 best: 0.5897 
+  RMSE:  0.4321 best: 0.4201.
+time elapsed 00m 53s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8223 best: 0.8261 
+  PLCC:  0.8240 best: 0.8263  
+  KROCC: 0.6303 best: 0.6340 
+  RMSE:  6.2401 best: 6.1992.
+time elapsed 04m 50s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6948 best: 0.7025 
+  PLCC:  0.7377 best: 0.7439  
+  KROCC: 0.5091 best: 0.5158 
+  RMSE:  7.5271 best: 7.4375.
+time elapsed 05m 47s.
+Finetune Epoch 6:
+Epoch-06, training SRCC=0.5944, time elapsed 18m 43s.
+backbone_lr = 5.78e-05, head_lr = 5.78e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6877 best: 0.7018 
+  PLCC:  0.7390 best: 0.7542  
+  KROCC: 0.4990 best: 0.5117 
+  RMSE:  12.3238 best: 11.9603.
+time elapsed 00m 54s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7762 best: 0.7844 
+  PLCC:  0.7764 best: 0.7851  
+  KROCC: 0.5827 best: 0.5897 
+  RMSE:  0.4286 best: 0.4201.
+time elapsed 00m 48s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8237 best: 0.8261 
+  PLCC:  0.8252 best: 0.8263  
+  KROCC: 0.6316 best: 0.6340 
+  RMSE:  6.2182 best: 6.1992.
+time elapsed 04m 38s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6941 best: 0.7025 
+  PLCC:  0.7373 best: 0.7439  
+  KROCC: 0.5094 best: 0.5158 
+  RMSE:  7.5322 best: 7.4375.
+time elapsed 05m 50s.
+Finetune Epoch 7:
+Epoch-07, training SRCC=0.8099, time elapsed 18m 47s.
+backbone_lr = 4.22e-05, head_lr = 4.22e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6902 best: 0.7018 
+  PLCC:  0.7437 best: 0.7542  
+  KROCC: 0.5014 best: 0.5117 
+  RMSE:  12.2118 best: 11.9603.
+time elapsed 00m 50s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7771 best: 0.7844 
+  PLCC:  0.7764 best: 0.7851  
+  KROCC: 0.5828 best: 0.5897 
+  RMSE:  0.4286 best: 0.4201.
+time elapsed 00m 44s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8224 best: 0.8261 
+  PLCC:  0.8229 best: 0.8263  
+  KROCC: 0.6301 best: 0.6340 
+  RMSE:  6.2581 best: 6.1992.
+time elapsed 04m 40s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6954 best: 0.7025 
+  PLCC:  0.7394 best: 0.7439  
+  KROCC: 0.5102 best: 0.5158 
+  RMSE:  7.5016 best: 7.4375.
+time elapsed 05m 50s.
+Finetune Epoch 8:
+Epoch-08, training SRCC=0.8124, time elapsed 18m 41s.
+backbone_lr = 2.73e-05, head_lr = 2.73e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6896 best: 0.7018 
+  PLCC:  0.7435 best: 0.7542  
+  KROCC: 0.5020 best: 0.5117 
+  RMSE:  12.2169 best: 11.9603.
+time elapsed 00m 48s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7864 best: 0.7864 
+  PLCC:  0.7848 best: 0.7851  
+  KROCC: 0.5916 best: 0.5916 
+  RMSE:  0.4205 best: 0.4201.
+time elapsed 00m 45s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8224 best: 0.8261 
+  PLCC:  0.8242 best: 0.8263  
+  KROCC: 0.6305 best: 0.6340 
+  RMSE:  6.2357 best: 6.1992.
+time elapsed 04m 43s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6987 best: 0.7025 
+  PLCC:  0.7419 best: 0.7439  
+  KROCC: 0.5126 best: 0.5158 
+  RMSE:  7.4658 best: 7.4375.
+time elapsed 05m 53s.
+Finetune Epoch 9:
+Epoch-09, training SRCC=0.9378, time elapsed 18m 39s.
+backbone_lr = 1.46e-05, head_lr = 1.46e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6998 best: 0.7018 
+  PLCC:  0.7503 best: 0.7542  
+  KROCC: 0.5109 best: 0.5117 
+  RMSE:  12.0548 best: 11.9603.
+time elapsed 00m 48s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7863 best: 0.7864 
+  PLCC:  0.7818 best: 0.7851  
+  KROCC: 0.5903 best: 0.5916 
+  RMSE:  0.4233 best: 0.4201.
+time elapsed 00m 45s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8249 best: 0.8261 
+  PLCC:  0.8253 best: 0.8263  
+  KROCC: 0.6328 best: 0.6340 
+  RMSE:  6.2164 best: 6.1992.
+time elapsed 04m 46s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6995 best: 0.7025 
+  PLCC:  0.7430 best: 0.7439  
+  KROCC: 0.5135 best: 0.5158 
+  RMSE:  7.4496 best: 7.4375.
+time elapsed 05m 54s.
+For the finetuning process on val-livevqc with 585 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.7018
+                    PLCC:  0.7542
+                    KROCC: 0.5117
+                    RMSE:  11.9603.
+For the finetuning process on val-kv1k with 1200 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.7864
+                    PLCC:  0.7851
+                    KROCC: 0.5916
+                    RMSE:  0.4201.
+For the finetuning process on val-ltest with 7182 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.8261
+                    PLCC:  0.8263
+                    KROCC: 0.6340
+                    RMSE:  6.1992.
+For the finetuning process on val-l1080p with 3573 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.7025
+                    PLCC:  0.7439
+                    KROCC: 0.5158
+                    RMSE:  7.4375.
+================= Split 6 / 10 =================
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-livevqc], with 585 samples.
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-kv1k], with 1200 samples.
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-ltest], with 7182 samples.
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-l1080p], with 3573 samples.
+Preparing training dataset: train
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[train], with 28056 samples.
+Finetune Epoch 0:
+Epoch-00, training SRCC=0.9451, time elapsed 18m 37s.
+backbone_lr = 4.00e-05, head_lr = 4.00e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6987 best: 0.6987 
+  PLCC:  0.7506 best: 0.7506  
+  KROCC: 0.5101 best: 0.5101 
+  RMSE:  12.0474 best: 12.0474.
+time elapsed 00m 49s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7870 best: 0.7870 
+  PLCC:  0.7819 best: 0.7819  
+  KROCC: 0.5907 best: 0.5907 
+  RMSE:  0.4232 best: 0.4232.
+time elapsed 00m 45s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8250 best: 0.8250 
+  PLCC:  0.8254 best: 0.8254  
+  KROCC: 0.6327 best: 0.6327 
+  RMSE:  6.2150 best: 6.2150.
+time elapsed 04m 48s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7001 best: 0.7001 
+  PLCC:  0.7422 best: 0.7422  
+  KROCC: 0.5142 best: 0.5142 
+  RMSE:  7.4614 best: 7.4614.
+time elapsed 05m 50s.
+Finetune Epoch 1:
+Epoch-01, training SRCC=0.3991, time elapsed 18m 34s.
+backbone_lr = 8.00e-05, head_lr = 8.00e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6969 best: 0.6987 
+  PLCC:  0.7465 best: 0.7506  
+  KROCC: 0.5096 best: 0.5101 
+  RMSE:  12.1450 best: 12.0474.
+time elapsed 00m 47s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7751 best: 0.7870 
+  PLCC:  0.7745 best: 0.7819  
+  KROCC: 0.5797 best: 0.5907 
+  RMSE:  0.4303 best: 0.4232.
+time elapsed 00m 47s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8227 best: 0.8250 
+  PLCC:  0.8229 best: 0.8254  
+  KROCC: 0.6299 best: 0.6327 
+  RMSE:  6.2582 best: 6.2150.
+time elapsed 04m 47s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6971 best: 0.7001 
+  PLCC:  0.7401 best: 0.7422  
+  KROCC: 0.5120 best: 0.5142 
+  RMSE:  7.4919 best: 7.4614.
+time elapsed 05m 52s.
+Finetune Epoch 2:
+Epoch-02, training SRCC=0.3006, time elapsed 18m 39s.
+backbone_lr = 9.94e-05, head_lr = 9.94e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6911 best: 0.6987 
+  PLCC:  0.7379 best: 0.7506  
+  KROCC: 0.5046 best: 0.5101 
+  RMSE:  12.3510 best: 12.0474.
+time elapsed 00m 49s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7646 best: 0.7870 
+  PLCC:  0.7718 best: 0.7819  
+  KROCC: 0.5707 best: 0.5907 
+  RMSE:  0.4329 best: 0.4232.
+time elapsed 00m 46s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8189 best: 0.8250 
+  PLCC:  0.8200 best: 0.8254  
+  KROCC: 0.6266 best: 0.6327 
+  RMSE:  6.3093 best: 6.2150.
+time elapsed 04m 49s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6955 best: 0.7001 
+  PLCC:  0.7380 best: 0.7422  
+  KROCC: 0.5109 best: 0.5142 
+  RMSE:  7.5228 best: 7.4614.
+time elapsed 05m 44s.
+Finetune Epoch 3:
+Epoch-03, training SRCC=0.3001, time elapsed 18m 47s.
+backbone_lr = 9.45e-05, head_lr = 9.45e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6839 best: 0.6987 
+  PLCC:  0.7402 best: 0.7506  
+  KROCC: 0.4995 best: 0.5101 
+  RMSE:  12.2957 best: 12.0474.
+time elapsed 00m 48s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7760 best: 0.7870 
+  PLCC:  0.7746 best: 0.7819  
+  KROCC: 0.5805 best: 0.5907 
+  RMSE:  0.4302 best: 0.4232.
+time elapsed 00m 47s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8183 best: 0.8250 
+  PLCC:  0.8186 best: 0.8254  
+  KROCC: 0.6261 best: 0.6327 
+  RMSE:  6.3336 best: 6.2150.
+time elapsed 04m 50s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6864 best: 0.7001 
+  PLCC:  0.7338 best: 0.7422  
+  KROCC: 0.5034 best: 0.5142 
+  RMSE:  7.5817 best: 7.4614.
+time elapsed 06m 02s.
+Finetune Epoch 4:
+Epoch-04, training SRCC=0.8289, time elapsed 18m 29s.
+backbone_lr = 8.54e-05, head_lr = 8.54e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6900 best: 0.6987 
+  PLCC:  0.7404 best: 0.7506  
+  KROCC: 0.5032 best: 0.5101 
+  RMSE:  12.2921 best: 12.0474.
+time elapsed 00m 49s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7743 best: 0.7870 
+  PLCC:  0.7686 best: 0.7819  
+  KROCC: 0.5795 best: 0.5907 
+  RMSE:  0.4359 best: 0.4232.
+time elapsed 00m 47s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8165 best: 0.8250 
+  PLCC:  0.8169 best: 0.8254  
+  KROCC: 0.6240 best: 0.6327 
+  RMSE:  6.3636 best: 6.2150.
+time elapsed 04m 52s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6919 best: 0.7001 
+  PLCC:  0.7344 best: 0.7422  
+  KROCC: 0.5072 best: 0.5142 
+  RMSE:  7.5737 best: 7.4614.
+time elapsed 06m 19s.
+Finetune Epoch 5:
+Epoch-05, training SRCC=0.7882, time elapsed 18m 19s.
+backbone_lr = 7.27e-05, head_lr = 7.27e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6827 best: 0.6987 
+  PLCC:  0.7391 best: 0.7506  
+  KROCC: 0.4966 best: 0.5101 
+  RMSE:  12.3213 best: 12.0474.
+time elapsed 00m 48s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7783 best: 0.7870 
+  PLCC:  0.7788 best: 0.7819  
+  KROCC: 0.5829 best: 0.5907 
+  RMSE:  0.4263 best: 0.4232.
+time elapsed 00m 48s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8197 best: 0.8250 
+  PLCC:  0.8198 best: 0.8254  
+  KROCC: 0.6268 best: 0.6327 
+  RMSE:  6.3127 best: 6.2150.
+time elapsed 04m 51s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6979 best: 0.7001 
+  PLCC:  0.7390 best: 0.7422  
+  KROCC: 0.5128 best: 0.5142 
+  RMSE:  7.5079 best: 7.4614.
+time elapsed 06m 13s.
+Finetune Epoch 6:
+Epoch-06, training SRCC=0.6028, time elapsed 18m 12s.
+backbone_lr = 5.78e-05, head_lr = 5.78e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6739 best: 0.6987 
+  PLCC:  0.7348 best: 0.7506  
+  KROCC: 0.4906 best: 0.5101 
+  RMSE:  12.4240 best: 12.0474.
+time elapsed 00m 49s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7776 best: 0.7870 
+  PLCC:  0.7775 best: 0.7819  
+  KROCC: 0.5824 best: 0.5907 
+  RMSE:  0.4275 best: 0.4232.
+time elapsed 00m 49s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8171 best: 0.8250 
+  PLCC:  0.8188 best: 0.8254  
+  KROCC: 0.6242 best: 0.6327 
+  RMSE:  6.3311 best: 6.2150.
+time elapsed 05m 05s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6948 best: 0.7001 
+  PLCC:  0.7320 best: 0.7422  
+  KROCC: 0.5092 best: 0.5142 
+  RMSE:  7.6076 best: 7.4614.
+time elapsed 05m 55s.
+Finetune Epoch 7:
+Epoch-07, training SRCC=0.5571, time elapsed 18m 24s.
+backbone_lr = 4.22e-05, head_lr = 4.22e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6816 best: 0.6987 
+  PLCC:  0.7391 best: 0.7506  
+  KROCC: 0.4980 best: 0.5101 
+  RMSE:  12.3225 best: 12.0474.
+time elapsed 00m 44s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7844 best: 0.7870 
+  PLCC:  0.7819 best: 0.7819  
+  KROCC: 0.5897 best: 0.5907 
+  RMSE:  0.4232 best: 0.4232.
+time elapsed 00m 46s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8159 best: 0.8250 
+  PLCC:  0.8169 best: 0.8254  
+  KROCC: 0.6231 best: 0.6327 
+  RMSE:  6.3645 best: 6.2150.
+time elapsed 05m 26s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6913 best: 0.7001 
+  PLCC:  0.7344 best: 0.7422  
+  KROCC: 0.5067 best: 0.5142 
+  RMSE:  7.5730 best: 7.4614.
+time elapsed 05m 42s.
+Finetune Epoch 8:
+Epoch-08, training SRCC=0.7989, time elapsed 18m 36s.
+backbone_lr = 2.73e-05, head_lr = 2.73e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6800 best: 0.6987 
+  PLCC:  0.7372 best: 0.7506  
+  KROCC: 0.4943 best: 0.5101 
+  RMSE:  12.3673 best: 12.0474.
+time elapsed 01m 13s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7820 best: 0.7870 
+  PLCC:  0.7769 best: 0.7819  
+  KROCC: 0.5857 best: 0.5907 
+  RMSE:  0.4281 best: 0.4232.
+time elapsed 01m 10s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8192 best: 0.8250 
+  PLCC:  0.8193 best: 0.8254  
+  KROCC: 0.6263 best: 0.6327 
+  RMSE:  6.3219 best: 6.2150.
+time elapsed 06m 42s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6921 best: 0.7001 
+  PLCC:  0.7325 best: 0.7422  
+  KROCC: 0.5063 best: 0.5142 
+  RMSE:  7.6009 best: 7.4614.
+time elapsed 07m 25s.
+Finetune Epoch 9:
+Epoch-09, training SRCC=0.9538, time elapsed 24m 38s.
+backbone_lr = 1.46e-05, head_lr = 1.46e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6829 best: 0.6987 
+  PLCC:  0.7394 best: 0.7506  
+  KROCC: 0.4980 best: 0.5101 
+  RMSE:  12.3137 best: 12.0474.
+time elapsed 01m 14s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7871 best: 0.7871 
+  PLCC:  0.7811 best: 0.7819  
+  KROCC: 0.5905 best: 0.5907 
+  RMSE:  0.4240 best: 0.4232.
+time elapsed 01m 11s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8219 best: 0.8250 
+  PLCC:  0.8215 best: 0.8254  
+  KROCC: 0.6286 best: 0.6327 
+  RMSE:  6.2829 best: 6.2150.
+time elapsed 06m 14s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6979 best: 0.7001 
+  PLCC:  0.7386 best: 0.7422  
+  KROCC: 0.5121 best: 0.5142 
+  RMSE:  7.5134 best: 7.4614.
+time elapsed 07m 25s.
+For the finetuning process on val-livevqc with 585 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.6987
+                    PLCC:  0.7506
+                    KROCC: 0.5101
+                    RMSE:  12.0474.
+For the finetuning process on val-kv1k with 1200 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.7871
+                    PLCC:  0.7819
+                    KROCC: 0.5907
+                    RMSE:  0.4232.
+For the finetuning process on val-ltest with 7182 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.8250
+                    PLCC:  0.8254
+                    KROCC: 0.6327
+                    RMSE:  6.2150.
+For the finetuning process on val-l1080p with 3573 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.7001
+                    PLCC:  0.7422
+                    KROCC: 0.5142
+                    RMSE:  7.4614.
+================= Split 7 / 10 =================
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-livevqc], with 585 samples.
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-kv1k], with 1200 samples.
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-ltest], with 7182 samples.
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-l1080p], with 3573 samples.
+Preparing training dataset: train
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[train], with 28056 samples.
+Finetune Epoch 0:
+Epoch-00, training SRCC=0.8603, time elapsed 25m 08s.
+backbone_lr = 4.00e-05, head_lr = 4.00e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6902 best: 0.6902 
+  PLCC:  0.7463 best: 0.7463  
+  KROCC: 0.5037 best: 0.5037 
+  RMSE:  12.1493 best: 12.1493.
+time elapsed 01m 09s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7834 best: 0.7834 
+  PLCC:  0.7797 best: 0.7797  
+  KROCC: 0.5866 best: 0.5866 
+  RMSE:  0.4253 best: 0.4253.
+time elapsed 01m 01s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8202 best: 0.8202 
+  PLCC:  0.8204 best: 0.8204  
+  KROCC: 0.6270 best: 0.6270 
+  RMSE:  6.3019 best: 6.3019.
+time elapsed 06m 00s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6979 best: 0.6979 
+  PLCC:  0.7398 best: 0.7398  
+  KROCC: 0.5121 best: 0.5121 
+  RMSE:  7.4959 best: 7.4959.
+time elapsed 07m 33s.
+Finetune Epoch 1:
+Epoch-01, training SRCC=0.8055, time elapsed 28m 12s.
+backbone_lr = 8.00e-05, head_lr = 8.00e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6888 best: 0.6902 
+  PLCC:  0.7467 best: 0.7467  
+  KROCC: 0.5024 best: 0.5037 
+  RMSE:  12.1421 best: 12.1421.
+time elapsed 01m 19s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7708 best: 0.7834 
+  PLCC:  0.7688 best: 0.7797  
+  KROCC: 0.5752 best: 0.5866 
+  RMSE:  0.4358 best: 0.4253.
+time elapsed 01m 16s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8161 best: 0.8202 
+  PLCC:  0.8170 best: 0.8204  
+  KROCC: 0.6233 best: 0.6270 
+  RMSE:  6.3626 best: 6.3019.
+time elapsed 07m 33s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6908 best: 0.6979 
+  PLCC:  0.7329 best: 0.7398  
+  KROCC: 0.5060 best: 0.5121 
+  RMSE:  7.5945 best: 7.4959.
+time elapsed 09m 41s.
+Finetune Epoch 2:
+Epoch-02, training SRCC=0.3704, time elapsed 30m 36s.
+backbone_lr = 9.94e-05, head_lr = 9.94e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6911 best: 0.6911 
+  PLCC:  0.7470 best: 0.7470  
+  KROCC: 0.5047 best: 0.5047 
+  RMSE:  12.1334 best: 12.1334.
+time elapsed 01m 21s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7692 best: 0.7834 
+  PLCC:  0.7635 best: 0.7797  
+  KROCC: 0.5755 best: 0.5866 
+  RMSE:  0.4408 best: 0.4253.
+time elapsed 01m 16s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8145 best: 0.8202 
+  PLCC:  0.8145 best: 0.8204  
+  KROCC: 0.6218 best: 0.6270 
+  RMSE:  6.4058 best: 6.3019.
+time elapsed 07m 39s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6867 best: 0.6979 
+  PLCC:  0.7245 best: 0.7398  
+  KROCC: 0.5016 best: 0.5121 
+  RMSE:  7.7141 best: 7.4959.
+time elapsed 09m 50s.
+Finetune Epoch 3:
+Epoch-03, training SRCC=0.5422, time elapsed 30m 23s.
+backbone_lr = 9.45e-05, head_lr = 9.45e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6911 best: 0.6911 
+  PLCC:  0.7437 best: 0.7470  
+  KROCC: 0.5049 best: 0.5049 
+  RMSE:  12.2123 best: 12.1334.
+time elapsed 01m 19s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7628 best: 0.7834 
+  PLCC:  0.7639 best: 0.7797  
+  KROCC: 0.5669 best: 0.5866 
+  RMSE:  0.4404 best: 0.4253.
+time elapsed 01m 18s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8151 best: 0.8202 
+  PLCC:  0.8159 best: 0.8204  
+  KROCC: 0.6221 best: 0.6270 
+  RMSE:  6.3805 best: 6.3019.
+time elapsed 07m 46s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6877 best: 0.6979 
+  PLCC:  0.7307 best: 0.7398  
+  KROCC: 0.5025 best: 0.5121 
+  RMSE:  7.6259 best: 7.4959.
+time elapsed 10m 31s.
+Finetune Epoch 4:
+Epoch-04, training SRCC=0.5243, time elapsed 29m 39s.
+backbone_lr = 8.54e-05, head_lr = 8.54e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6755 best: 0.6911 
+  PLCC:  0.7357 best: 0.7470  
+  KROCC: 0.4914 best: 0.5049 
+  RMSE:  12.4015 best: 12.1334.
+time elapsed 01m 20s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7584 best: 0.7834 
+  PLCC:  0.7593 best: 0.7797  
+  KROCC: 0.5635 best: 0.5866 
+  RMSE:  0.4446 best: 0.4253.
+time elapsed 01m 21s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8136 best: 0.8202 
+  PLCC:  0.8150 best: 0.8204  
+  KROCC: 0.6211 best: 0.6270 
+  RMSE:  6.3972 best: 6.3019.
+time elapsed 07m 50s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6865 best: 0.6979 
+  PLCC:  0.7312 best: 0.7398  
+  KROCC: 0.5023 best: 0.5121 
+  RMSE:  7.6188 best: 7.4959.
+time elapsed 10m 48s.
+Finetune Epoch 5:
+Epoch-05, training SRCC=0.6970, time elapsed 29m 15s.
+backbone_lr = 7.27e-05, head_lr = 7.27e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6875 best: 0.6911 
+  PLCC:  0.7432 best: 0.7470  
+  KROCC: 0.5026 best: 0.5049 
+  RMSE:  12.2236 best: 12.1334.
+time elapsed 01m 26s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7740 best: 0.7834 
+  PLCC:  0.7747 best: 0.7797  
+  KROCC: 0.5791 best: 0.5866 
+  RMSE:  0.4302 best: 0.4253.
+time elapsed 01m 21s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8161 best: 0.8202 
+  PLCC:  0.8166 best: 0.8204  
+  KROCC: 0.6240 best: 0.6270 
+  RMSE:  6.3698 best: 6.3019.
+time elapsed 08m 13s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6862 best: 0.6979 
+  PLCC:  0.7289 best: 0.7398  
+  KROCC: 0.5018 best: 0.5121 
+  RMSE:  7.6509 best: 7.4959.
+time elapsed 10m 04s.
+Finetune Epoch 6:
+Epoch-06, training SRCC=0.7824, time elapsed 29m 34s.
+backbone_lr = 5.78e-05, head_lr = 5.78e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6958 best: 0.6958 
+  PLCC:  0.7443 best: 0.7470  
+  KROCC: 0.5091 best: 0.5091 
+  RMSE:  12.1975 best: 12.1334.
+time elapsed 01m 16s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7726 best: 0.7834 
+  PLCC:  0.7726 best: 0.7797  
+  KROCC: 0.5784 best: 0.5866 
+  RMSE:  0.4322 best: 0.4253.
+time elapsed 01m 19s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8142 best: 0.8202 
+  PLCC:  0.8147 best: 0.8204  
+  KROCC: 0.6219 best: 0.6270 
+  RMSE:  6.4018 best: 6.3019.
+time elapsed 08m 56s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6856 best: 0.6979 
+  PLCC:  0.7308 best: 0.7398  
+  KROCC: 0.5010 best: 0.5121 
+  RMSE:  7.6244 best: 7.4959.
+time elapsed 09m 32s.
+Finetune Epoch 7:
+Epoch-07, training SRCC=0.6441, time elapsed 29m 36s.
+backbone_lr = 4.22e-05, head_lr = 4.22e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6879 best: 0.6958 
+  PLCC:  0.7362 best: 0.7470  
+  KROCC: 0.5008 best: 0.5091 
+  RMSE:  12.3895 best: 12.1334.
+time elapsed 01m 39s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7691 best: 0.7834 
+  PLCC:  0.7703 best: 0.7797  
+  KROCC: 0.5751 best: 0.5866 
+  RMSE:  0.4344 best: 0.4253.
+time elapsed 01m 35s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8170 best: 0.8202 
+  PLCC:  0.8180 best: 0.8204  
+  KROCC: 0.6246 best: 0.6270 
+  RMSE:  6.3453 best: 6.3019.
+time elapsed 08m 23s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6849 best: 0.6979 
+  PLCC:  0.7278 best: 0.7398  
+  KROCC: 0.5006 best: 0.5121 
+  RMSE:  7.6670 best: 7.4959.
+time elapsed 09m 50s.
+Finetune Epoch 8:
+Epoch-08, training SRCC=0.9211, time elapsed 28m 56s.
+backbone_lr = 2.73e-05, head_lr = 2.73e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6965 best: 0.6965 
+  PLCC:  0.7460 best: 0.7470  
+  KROCC: 0.5081 best: 0.5091 
+  RMSE:  12.1566 best: 12.1334.
+time elapsed 01m 34s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7700 best: 0.7834 
+  PLCC:  0.7710 best: 0.7797  
+  KROCC: 0.5750 best: 0.5866 
+  RMSE:  0.4337 best: 0.4253.
+time elapsed 01m 28s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8197 best: 0.8202 
+  PLCC:  0.8207 best: 0.8207  
+  KROCC: 0.6275 best: 0.6275 
+  RMSE:  6.2984 best: 6.2984.
+time elapsed 07m 11s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6878 best: 0.6979 
+  PLCC:  0.7304 best: 0.7398  
+  KROCC: 0.5021 best: 0.5121 
+  RMSE:  7.6298 best: 7.4959.
+time elapsed 09m 39s.
+Finetune Epoch 9:
+Epoch-09, training SRCC=0.9552, time elapsed 28m 55s.
+backbone_lr = 1.46e-05, head_lr = 1.46e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6992 best: 0.6992 
+  PLCC:  0.7459 best: 0.7470  
+  KROCC: 0.5104 best: 0.5104 
+  RMSE:  12.1605 best: 12.1334.
+time elapsed 01m 14s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7678 best: 0.7834 
+  PLCC:  0.7709 best: 0.7797  
+  KROCC: 0.5732 best: 0.5866 
+  RMSE:  0.4338 best: 0.4253.
+time elapsed 01m 14s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8187 best: 0.8202 
+  PLCC:  0.8187 best: 0.8207  
+  KROCC: 0.6260 best: 0.6275 
+  RMSE:  6.3326 best: 6.2984.
+time elapsed 07m 09s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6877 best: 0.6979 
+  PLCC:  0.7301 best: 0.7398  
+  KROCC: 0.5021 best: 0.5121 
+  RMSE:  7.6347 best: 7.4959.
+time elapsed 09m 32s.
+For the finetuning process on val-livevqc with 585 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.6992
+                    PLCC:  0.7470
+                    KROCC: 0.5104
+                    RMSE:  12.1334.
+For the finetuning process on val-kv1k with 1200 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.7834
+                    PLCC:  0.7797
+                    KROCC: 0.5866
+                    RMSE:  0.4253.
+For the finetuning process on val-ltest with 7182 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.8202
+                    PLCC:  0.8207
+                    KROCC: 0.6275
+                    RMSE:  6.2984.
+For the finetuning process on val-l1080p with 3573 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.6979
+                    PLCC:  0.7398
+                    KROCC: 0.5121
+                    RMSE:  7.4959.
+================= Split 8 / 10 =================
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-livevqc], with 585 samples.
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-kv1k], with 1200 samples.
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-ltest], with 7182 samples.
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-l1080p], with 3573 samples.
+Preparing training dataset: train
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[train], with 28056 samples.
+Finetune Epoch 0:
+Epoch-00, training SRCC=0.9185, time elapsed 28m 55s.
+backbone_lr = 4.00e-05, head_lr = 4.00e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6980 best: 0.6980 
+  PLCC:  0.7465 best: 0.7465  
+  KROCC: 0.5090 best: 0.5090 
+  RMSE:  12.1466 best: 12.1466.
+time elapsed 01m 16s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7680 best: 0.7680 
+  PLCC:  0.7700 best: 0.7700  
+  KROCC: 0.5730 best: 0.5730 
+  RMSE:  0.4347 best: 0.4347.
+time elapsed 01m 12s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8195 best: 0.8195 
+  PLCC:  0.8190 best: 0.8190  
+  KROCC: 0.6271 best: 0.6271 
+  RMSE:  6.3271 best: 6.3271.
+time elapsed 07m 38s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6871 best: 0.6871 
+  PLCC:  0.7283 best: 0.7283  
+  KROCC: 0.5017 best: 0.5017 
+  RMSE:  7.6594 best: 7.6594.
+time elapsed 09m 05s.
+Finetune Epoch 1:
+Epoch-01, training SRCC=0.4782, time elapsed 28m 56s.
+backbone_lr = 8.00e-05, head_lr = 8.00e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6938 best: 0.6980 
+  PLCC:  0.7404 best: 0.7465  
+  KROCC: 0.5063 best: 0.5090 
+  RMSE:  12.2899 best: 12.1466.
+time elapsed 01m 12s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7713 best: 0.7713 
+  PLCC:  0.7684 best: 0.7700  
+  KROCC: 0.5754 best: 0.5754 
+  RMSE:  0.4361 best: 0.4347.
+time elapsed 01m 21s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8142 best: 0.8195 
+  PLCC:  0.8148 best: 0.8190  
+  KROCC: 0.6215 best: 0.6271 
+  RMSE:  6.4007 best: 6.3271.
+time elapsed 07m 55s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6812 best: 0.6871 
+  PLCC:  0.7252 best: 0.7283  
+  KROCC: 0.4971 best: 0.5017 
+  RMSE:  7.7042 best: 7.6594.
+time elapsed 08m 42s.
+Finetune Epoch 2:
+Epoch-02, training SRCC=0.5675, time elapsed 29m 06s.
+backbone_lr = 9.94e-05, head_lr = 9.94e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6998 best: 0.6998 
+  PLCC:  0.7440 best: 0.7465  
+  KROCC: 0.5108 best: 0.5108 
+  RMSE:  12.2063 best: 12.1466.
+time elapsed 01m 24s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7724 best: 0.7724 
+  PLCC:  0.7677 best: 0.7700  
+  KROCC: 0.5762 best: 0.5762 
+  RMSE:  0.4368 best: 0.4347.
+time elapsed 01m 22s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8125 best: 0.8195 
+  PLCC:  0.8119 best: 0.8190  
+  KROCC: 0.6192 best: 0.6271 
+  RMSE:  6.4498 best: 6.3271.
+time elapsed 07m 34s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6887 best: 0.6887 
+  PLCC:  0.7334 best: 0.7334  
+  KROCC: 0.5040 best: 0.5040 
+  RMSE:  7.5871 best: 7.5871.
+time elapsed 09m 00s.
+Finetune Epoch 3:
+Epoch-03, training SRCC=0.4846, time elapsed 29m 06s.
+backbone_lr = 9.45e-05, head_lr = 9.45e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6925 best: 0.6998 
+  PLCC:  0.7418 best: 0.7465  
+  KROCC: 0.5053 best: 0.5108 
+  RMSE:  12.2585 best: 12.1466.
+time elapsed 01m 25s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7699 best: 0.7724 
+  PLCC:  0.7660 best: 0.7700  
+  KROCC: 0.5756 best: 0.5762 
+  RMSE:  0.4384 best: 0.4347.
+time elapsed 01m 23s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8088 best: 0.8195 
+  PLCC:  0.8098 best: 0.8190  
+  KROCC: 0.6168 best: 0.6271 
+  RMSE:  6.4858 best: 6.3271.
+time elapsed 07m 13s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6843 best: 0.6887 
+  PLCC:  0.7213 best: 0.7334  
+  KROCC: 0.5004 best: 0.5040 
+  RMSE:  7.7580 best: 7.5871.
+time elapsed 09m 10s.
+Finetune Epoch 4:
+Epoch-04, training SRCC=0.3914, time elapsed 29m 28s.
+backbone_lr = 8.54e-05, head_lr = 8.54e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6810 best: 0.6998 
+  PLCC:  0.7362 best: 0.7465  
+  KROCC: 0.4939 best: 0.5108 
+  RMSE:  12.3890 best: 12.1466.
+time elapsed 01m 16s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7689 best: 0.7724 
+  PLCC:  0.7694 best: 0.7700  
+  KROCC: 0.5729 best: 0.5762 
+  RMSE:  0.4352 best: 0.4347.
+time elapsed 01m 11s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8088 best: 0.8195 
+  PLCC:  0.8098 best: 0.8190  
+  KROCC: 0.6159 best: 0.6271 
+  RMSE:  6.4863 best: 6.3271.
+time elapsed 07m 11s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6883 best: 0.6887 
+  PLCC:  0.7258 best: 0.7334  
+  KROCC: 0.5038 best: 0.5040 
+  RMSE:  7.6947 best: 7.5871.
+time elapsed 09m 36s.
+Finetune Epoch 5:
+Epoch-05, training SRCC=0.4202, time elapsed 28m 52s.
+backbone_lr = 7.27e-05, head_lr = 7.27e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6814 best: 0.6998 
+  PLCC:  0.7377 best: 0.7465  
+  KROCC: 0.4950 best: 0.5108 
+  RMSE:  12.3544 best: 12.1466.
+time elapsed 01m 14s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7781 best: 0.7781 
+  PLCC:  0.7784 best: 0.7784  
+  KROCC: 0.5818 best: 0.5818 
+  RMSE:  0.4267 best: 0.4267.
+time elapsed 01m 12s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8104 best: 0.8195 
+  PLCC:  0.8117 best: 0.8190  
+  KROCC: 0.6172 best: 0.6271 
+  RMSE:  6.4533 best: 6.3271.
+time elapsed 07m 27s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6907 best: 0.6907 
+  PLCC:  0.7315 best: 0.7334  
+  KROCC: 0.5055 best: 0.5055 
+  RMSE:  7.6154 best: 7.5871.
+time elapsed 10m 15s.
+Finetune Epoch 6:
+Epoch-06, training SRCC=0.7886, time elapsed 28m 00s.
+backbone_lr = 5.78e-05, head_lr = 5.78e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6790 best: 0.6998 
+  PLCC:  0.7390 best: 0.7465  
+  KROCC: 0.4934 best: 0.5108 
+  RMSE:  12.3247 best: 12.1466.
+time elapsed 01m 18s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7691 best: 0.7781 
+  PLCC:  0.7684 best: 0.7784  
+  KROCC: 0.5737 best: 0.5818 
+  RMSE:  0.4361 best: 0.4267.
+time elapsed 01m 14s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8091 best: 0.8195 
+  PLCC:  0.8095 best: 0.8190  
+  KROCC: 0.6163 best: 0.6271 
+  RMSE:  6.4918 best: 6.3271.
+time elapsed 07m 39s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6893 best: 0.6907 
+  PLCC:  0.7285 best: 0.7334  
+  KROCC: 0.5039 best: 0.5055 
+  RMSE:  7.6575 best: 7.5871.
+time elapsed 09m 22s.
+Finetune Epoch 7:
+Epoch-07, training SRCC=0.7067, time elapsed 22m 21s.
+backbone_lr = 4.22e-05, head_lr = 4.22e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6890 best: 0.6998 
+  PLCC:  0.7391 best: 0.7465  
+  KROCC: 0.5007 best: 0.5108 
+  RMSE:  12.3212 best: 12.1466.
+time elapsed 01m 00s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7745 best: 0.7781 
+  PLCC:  0.7740 best: 0.7784  
+  KROCC: 0.5792 best: 0.5818 
+  RMSE:  0.4308 best: 0.4267.
+time elapsed 01m 00s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8102 best: 0.8195 
+  PLCC:  0.8109 best: 0.8190  
+  KROCC: 0.6169 best: 0.6271 
+  RMSE:  6.4667 best: 6.3271.
+time elapsed 06m 22s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6855 best: 0.6907 
+  PLCC:  0.7250 best: 0.7334  
+  KROCC: 0.5010 best: 0.5055 
+  RMSE:  7.7059 best: 7.5871.
+time elapsed 05m 26s.
+Finetune Epoch 8:
+Epoch-08, training SRCC=0.8594, time elapsed 17m 24s.
+backbone_lr = 2.73e-05, head_lr = 2.73e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6921 best: 0.6998 
+  PLCC:  0.7405 best: 0.7465  
+  KROCC: 0.5050 best: 0.5108 
+  RMSE:  12.2892 best: 12.1466.
+time elapsed 00m 54s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7786 best: 0.7786 
+  PLCC:  0.7791 best: 0.7791  
+  KROCC: 0.5823 best: 0.5823 
+  RMSE:  0.4259 best: 0.4259.
+time elapsed 00m 55s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8101 best: 0.8195 
+  PLCC:  0.8097 best: 0.8190  
+  KROCC: 0.6167 best: 0.6271 
+  RMSE:  6.4872 best: 6.3271.
+time elapsed 05m 34s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6867 best: 0.6907 
+  PLCC:  0.7256 best: 0.7334  
+  KROCC: 0.5022 best: 0.5055 
+  RMSE:  7.6985 best: 7.5871.
+time elapsed 07m 02s.
+Finetune Epoch 9:
+Epoch-09, training SRCC=0.8178, time elapsed 20m 41s.
+backbone_lr = 1.46e-05, head_lr = 1.46e-04
+evaluation ..
+For 585 videos, 
+the accuracy of the model: [val-livevqc_s] is as follows:
+  SROCC: 0.6894 best: 0.6998 
+  PLCC:  0.7385 best: 0.7465  
+  KROCC: 0.5018 best: 0.5108 
+  RMSE:  12.3359 best: 12.1466.
+time elapsed 00m 52s.
+For 1200 videos, 
+the accuracy of the model: [val-kv1k_s] is as follows:
+  SROCC: 0.7848 best: 0.7848 
+  PLCC:  0.7825 best: 0.7825  
+  KROCC: 0.5882 best: 0.5882 
+  RMSE:  0.4227 best: 0.4227.
+time elapsed 00m 50s.
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8130 best: 0.8195 
+  PLCC:  0.8124 best: 0.8190  
+  KROCC: 0.6200 best: 0.6271 
+  RMSE:  6.4418 best: 6.3271.
+time elapsed 04m 38s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6901 best: 0.6907 
+  PLCC:  0.7298 best: 0.7334  
+  KROCC: 0.5048 best: 0.5055 
+  RMSE:  7.6385 best: 7.5871.
+time elapsed 05m 35s.
+For the finetuning process on val-livevqc with 585 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.6998
+                    PLCC:  0.7465
+                    KROCC: 0.5108
+                    RMSE:  12.1466.
+For the finetuning process on val-kv1k with 1200 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.7848
+                    PLCC:  0.7825
+                    KROCC: 0.5882
+                    RMSE:  0.4227.
+For the finetuning process on val-ltest with 7182 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.8195
+                    PLCC:  0.8190
+                    KROCC: 0.6271
+                    RMSE:  6.3271.
+For the finetuning process on val-l1080p with 3573 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.6907
+                    PLCC:  0.7334
+                    KROCC: 0.5055
+                    RMSE:  7.5871.
+================= Split 9 / 10 =================
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-livevqc], with 585 samples.
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-kv1k], with 1200 samples.
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-ltest], with 7182 samples.
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[val-l1080p], with 3573 samples.
+Preparing training dataset: train
+<class 'fastvqa.datasets.fusion_datasets.FixedFrameDataset'>
+Data fromm fragments
+dataset=[train], with 28056 samples.
+Finetune Epoch 0:
