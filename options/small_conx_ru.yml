@@ -1,0 +1,191 @@
+
+# swin_tiny_train, with swin tiny backbone and fragments input
+name: VQA_swin_small
+
+split_seed: 10
+num_epochs: 10
+l_num_epochs: 0
+warmup_epochs: 2.5
+ema: true
+save_model: true
+train_batch_size: 8
+train_num_workers: 6
+test_batch_size: 1
+test_num_workers: 6
+temporal_type: random_uniform
+random_seed: 42
+stype: fragments
+
+data:
+    # database: livevqc
+    # type: FineTuneDataset
+    # anno_file: ./examplar_data_labels/LIVE_VQC/mylabels.txt
+    # data_prefix: ../../../VQA-datasets/InTheWild/LIVE-VQC
+    # train:
+    #     temporal_type: random_uniform
+    #     sample_types:
+    #         fragments:
+    #             fragments_h: 7
+    #             fragments_w: 7
+    #             fsize_h: 32
+    #             fsize_w: 32
+    #             aligned: 8
+    #             clip_len: 8
+    #             frame_interval: 1
+    #             num_clips: 1
+    # test:
+    #     temporal_type: random_uniform
+    #     sample_types:
+    #         fragments:
+    #             fragments_h: 7
+    #             fragments_w: 7
+    #             fsize_h: 32
+    #             fsize_w: 32
+    #             aligned: 8
+    #             clip_len: 8
+    #             frame_interval: 1
+    #             num_clips: 1
+
+    # database: konvid
+    # type: FineTuneDataset
+    # anno_file: ./examplar_data_labels/KoNViD/mylabels.txt
+    # data_prefix: ../../../VQA-datasets/Konvid-1k
+    # train:
+    #     temporal_type: random_uniform
+    #     sample_types:
+    #         fragments:
+    #             fragments_h: 7
+    #             fragments_w: 7
+    #             fsize_h: 32
+    #             fsize_w: 32
+    #             aligned: 8
+    #             clip_len: 8
+    #             frame_interval: 1
+    #             num_clips: 1
+    # test:
+    #     temporal_type: random_uniform
+    #     sample_types:
+    #         fragments:
+    #             fragments_h: 7
+    #             fragments_w: 7
+    #             fsize_h: 32
+    #             fsize_w: 32
+    #             aligned: 8
+    #             clip_len: 8
+    #             frame_interval: 1
+    #             num_clips: 1
+
+    database: youtube
+    type: FineTuneDataset
+    anno_file: ./examplar_data_labels/YouTubeUGC/mylabels.txt
+    data_prefix: ../../../VQA-datasets/InTheWild/Youtube-UGC
+    train:
+        temporal_type: default
+        sample_types:
+            fragments:
+                fragments_h: 7
+                fragments_w: 7
+                fsize_h: 32
+                fsize_w: 32
+                aligned: 8
+                clip_len: 8
+                frame_interval: 1
+                num_clips: 1
+    test:
+        temporal_type: default
+        sample_types:
+            fragments:
+                fragments_h: 7
+                fragments_w: 7
+                fsize_h: 32
+                fsize_w: 32
+                aligned: 8
+                clip_len: 8
+                frame_interval: 1
+                num_clips: 1
+    
+    # val-kv1k:
+    #     type: FusionDataset
+    #     args:
+    #         phase: test
+    #         anno_file: ./examplar_data_labels/KoNViD/mylabels.txt
+    #         data_prefix: ../../datasets/Konvid-1k
+    #         temporal_type: default
+    #         sample_types:
+    #             fragments:
+    #                 fragments_h: 7
+    #                 fragments_w: 7
+    #                 fsize_h: 32
+    #                 fsize_w: 32
+    #                 aligned: 8
+    #                 clip_len: 16
+    #                 frame_interval: 1
+    #                 num_clips: 1    
+    # val-ltest:
+    #     type: FusionDataset
+    #     args:
+    #         phase: test
+    #         anno_file: ./examplar_data_labels/LSVQ/labels_mytest.txt
+    #         data_prefix: ../../datasets/LSVQ
+    #         temporal_type: default
+    #         sample_types:
+    #             fragments:
+    #                 fragments_h: 7
+    #                 fragments_w: 7
+    #                 fsize_h: 32
+    #                 fsize_w: 32
+    #                 aligned: 8
+    #                 clip_len: 16 #16
+    #                 frame_interval: 1
+    #                 num_clips: 1 
+    # val-l1080p:
+    #     type: FusionDataset
+    #     args:
+    #         phase: test
+    #         anno_file: ./examplar_data_labels/LSVQ/labels_mytest_1080p.txt
+    #         data_prefix: ../../datasets/LSVQ
+    #         temporal_type: default
+    #         sample_types:
+    #             fragments:
+    #                 fragments_h: 7
+    #                 fragments_w: 7
+    #                 fsize_h: 32
+    #                 fsize_w: 32
+    #                 aligned: 8
+    #                 clip_len: 16 #16
+    #                 frame_interval: 1
+    #                 num_clips: 1 
+    # val-livevqc:
+    #     type: FusionDataset
+    #     args:
+    #         phase: test
+    #         anno_file: ./examplar_data_labels/LIVE_VQC/mylabels.txt
+    #         data_prefix: ../../datasets/LIVE-VQC
+    #         temporal_type: default
+    #         sample_types:
+    #             fragments:
+    #                 fragments_h: 7
+    #                 fragments_w: 7
+    #                 fsize_h: 32
+    #                 fsize_w: 32
+    #                 aligned: 8
+    #                 clip_len: 16
+    #                 frame_interval: 1
+    #                 num_clips: 1
+model:
+    type: DiViDeAddEvaluator
+    args:
+        backbone_size: convnext_3d_tiny
+        backbone_preserve_keys: fragments
+        divide_head: false
+        vqa_head:
+            in_channels: 768
+            hidden_channels: 64
+            
+optimizer:
+    lr: !!float 1e-3
+    backbone_lr_mult: !!float 1e-1
+    wd: 0.05
+        
+#load_path: pretrained_weights/swin_tiny_patch244_window877_kinetics400_1k.pth
+load_path: pretrained_weights/SAMA-VQA-conx8888_random_uniform_val-ltest_s_dev_v0.0.pth

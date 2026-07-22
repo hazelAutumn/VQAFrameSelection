@@ -1,0 +1,120 @@
+
+# swin_tiny_train, with swin tiny backbone and fragments input
+name: SAMA-VQA-conx
+num_epochs: 10
+l_num_epochs: 0
+warmup_epochs: 2.5
+ema: true
+save_model: true
+train_batch_size: 8
+train_num_workers: 6
+test_batch_size: 1
+test_num_workers: 6
+temporal_type: mseuni
+random_seed: 42
+stype: fragments
+
+data:
+    train:
+        type: FixedFrameDataset
+        args:
+            phase: train
+            #anno_file: ./examplar_data_labels/LSVQ/labels_mytrain.txt
+            anno_file: ./examplar_data_labels/LSVQ/labels_mytrain_diffmean8.txt
+            data_prefix: ../../../VQA-datasets/InTheWild/LSVQ
+            temporal_type: mseuni
+            sample_types:
+                fragments:
+                    fragments_h: 7
+                    fragments_w: 7
+                    fsize_h: 32
+                    fsize_w: 32
+                    aligned: 8
+                    clip_len: 8 #16
+                    frame_interval: 1
+                    num_clips: 1
+    val-livevqc:
+        type: FixedFrameDataset
+        args:
+            phase: test
+            anno_file: ./examplar_data_labels/LIVE_VQC/mylabels_diffmean8.txt
+            data_prefix: ../../../VQA-datasets/InTheWild/LIVE-VQC
+            temporal_type: mseuni
+            sample_types:
+                fragments:
+                    fragments_h: 7
+                    fragments_w: 7
+                    fsize_h: 32
+                    fsize_w: 32
+                    aligned: 8
+                    clip_len: 8
+                    frame_interval: 1
+                    num_clips: 1
+    val-kv1k:
+        type: FixedFrameDataset
+        args:
+            phase: test
+            anno_file: ./examplar_data_labels/KoNViD/mylabels_diffmean8.txt
+            data_prefix: ../../../VQA-datasets/Konvid-1k
+            temporal_type: mseuni
+            sample_types:
+                fragments:
+                    fragments_h: 7
+                    fragments_w: 7
+                    fsize_h: 32
+                    fsize_w: 32
+                    aligned: 8
+                    clip_len: 8
+                    frame_interval: 1
+                    num_clips: 1
+    
+    val-ltest:
+        type: FixedFrameDataset
+        args:
+            phase: test
+            anno_file: ./examplar_data_labels/LSVQ/labels_mytest_diffmean8.txt
+            data_prefix: ../../../VQA-datasets/InTheWild/LSVQ
+            temporal_type: mseuni
+            sample_types:
+                fragments:
+                    fragments_h: 7
+                    fragments_w: 7
+                    fsize_h: 32
+                    fsize_w: 32
+                    aligned: 8
+                    clip_len: 8 #16
+                    frame_interval: 1
+                    num_clips: 1 
+    val-l1080p:
+        type: FixedFrameDataset
+        args:
+            phase: test
+            anno_file: ./examplar_data_labels/LSVQ/labels_mytest_1080p_diffmean8.txt
+            data_prefix: ../../../VQA-datasets/InTheWild/LSVQ
+            temporal_type: mseuni
+            sample_types:
+                fragments:
+                    fragments_h: 7
+                    fragments_w: 7
+                    fsize_h: 32
+                    fsize_w: 32
+                    aligned: 8
+                    clip_len: 8 #16
+                    frame_interval: 1
+                    num_clips: 1 
+model:
+    type: DiViDeAddEvaluator
+    args:
+        backbone_size: convnext_3d_tiny
+        backbone_preserve_keys: fragments
+        divide_head: false
+        vqa_head:
+            in_channels: 768
+            hidden_channels: 64
+            
+optimizer:
+    lr: !!float 1e-3
+    backbone_lr_mult: !!float 1e-1
+    wd: 0.05
+        
+#load_path: pretrained_weights/swin_tiny_patch244_window877_kinetics400_1k.pth
