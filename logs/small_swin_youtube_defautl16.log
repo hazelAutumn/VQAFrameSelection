@@ -1,0 +1,180 @@
+{'name': 'VQA_swin_small', 'split_seed': 10, 'num_epochs': 10, 'l_num_epochs': 0, 'warmup_epochs': 2.5, 'ema': True, 'save_model': True, 'train_batch_size': 8, 'train_num_workers': 6, 'test_batch_size': 1, 'test_num_workers': 6, 'temporal_type': 'default', 'random_seed': 42, 'stype': 'fragments', 'data': {'database': 'youtube', 'type': 'FineTuneDataset', 'anno_file': './examplar_data_labels/YouTubeUGC/mylabels.txt', 'data_prefix': '../../../VQA-datasets/InTheWild/Youtube-UGC', 'train': {'temporal_type': 'default', 'sample_types': {'fragments': {'fragments_h': 7, 'fragments_w': 7, 'fsize_h': 32, 'fsize_w': 32, 'aligned': 8, 'clip_len': 8, 'frame_interval': 1, 'num_clips': 1}}}, 'test': {'temporal_type': 'default', 'sample_types': {'fragments': {'fragments_h': 7, 'fragments_w': 7, 'fsize_h': 32, 'fsize_w': 32, 'aligned': 8, 'clip_len': 8, 'frame_interval': 1, 'num_clips': 1}}}}, 'model': {'type': 'DiViDeAddEvaluator', 'args': {'backbone': {'fragments': {'use_checkpoint': False, 'pretrained': None}}, 'backbone_size': 'swin_tiny', 'backbone_preserve_keys': 'fragments', 'divide_head': False, 'vqa_head': {'in_channels': 768, 'hidden_channels': 64}}}, 'optimizer': {'lr': 0.001, 'backbone_lr_mult': 0.1, 'wd': 0.05}, 'load_path': 'pretrained_weights/swin_tiny_patch244_window877_kinetics400_1k.pth'}
+
+==================== SPLIT-00 ====================
+Data from fragments
+Data from fragments
+dataset=[youtube], with 807 samples.
+dataset=[youtube], with 202 samples.
+using device: cuda
+swin_tiny
+Setting backbone: fragments_backbone
+{'name': 'VQA_swin_small', 'split_seed': 10, 'num_epochs': 10, 'l_num_epochs': 0, 'warmup_epochs': 2.5, 'ema': True, 'save_model': True, 'train_batch_size': 8, 'train_num_workers': 6, 'test_batch_size': 1, 'test_num_workers': 6, 'temporal_type': 'default', 'random_seed': 42, 'stype': 'fragments', 'data': {'database': 'youtube', 'type': 'FineTuneDataset', 'anno_file': './examplar_data_labels/YouTubeUGC/mylabels.txt', 'data_prefix': '../../../VQA-datasets/InTheWild/Youtube-UGC', 'train': {'temporal_type': 'default', 'sample_types': {'fragments': {'fragments_h': 7, 'fragments_w': 7, 'fsize_h': 32, 'fsize_w': 32, 'aligned': 8, 'clip_len': 8, 'frame_interval': 1, 'num_clips': 1}}}, 'test': {'temporal_type': 'default', 'sample_types': {'fragments': {'fragments_h': 7, 'fragments_w': 7, 'fsize_h': 32, 'fsize_w': 32, 'aligned': 8, 'clip_len': 8, 'frame_interval': 1, 'num_clips': 1}}}}, 'model': {'type': 'DiViDeAddEvaluator', 'args': {'backbone': {'fragments': {'use_checkpoint': False, 'pretrained': None}}, 'backbone_size': 'swin_tiny', 'backbone_preserve_keys': 'fragments', 'divide_head': False, 'vqa_head': {'in_channels': 768, 'hidden_channels': 64}}}, 'optimizer': {'lr': 0.001, 'backbone_lr_mult': 0.1, 'wd': 0.05}, 'load_path': 'pretrained_weights/swin_tiny_patch244_window877_kinetics400_1k.pth'}
+
+==================== SPLIT-00 ====================
+Data from fragments
+Data from fragments
+dataset=[youtube], with 807 samples.
+dataset=[youtube], with 202 samples.
+using device: cuda
+swin_tiny
+Setting backbone: fragments_backbone
+{'name': 'VQA_swin_small', 'split_seed': 10, 'num_epochs': 10, 'l_num_epochs': 0, 'warmup_epochs': 2.5, 'ema': True, 'save_model': True, 'train_batch_size': 8, 'train_num_workers': 6, 'test_batch_size': 1, 'test_num_workers': 6, 'temporal_type': 'default', 'random_seed': 42, 'stype': 'fragments', 'data': {'database': 'youtube', 'type': 'FineTuneDataset', 'anno_file': './examplar_data_labels/YouTubeUGC/mylabels.txt', 'data_prefix': '../../../VQA-datasets/InTheWild/Youtube-UGC', 'train': {'temporal_type': 'default', 'sample_types': {'fragments': {'fragments_h': 7, 'fragments_w': 7, 'fsize_h': 32, 'fsize_w': 32, 'aligned': 8, 'clip_len': 8, 'frame_interval': 1, 'num_clips': 1}}}, 'test': {'temporal_type': 'default', 'sample_types': {'fragments': {'fragments_h': 7, 'fragments_w': 7, 'fsize_h': 32, 'fsize_w': 32, 'aligned': 8, 'clip_len': 8, 'frame_interval': 1, 'num_clips': 1}}}}, 'model': {'type': 'DiViDeAddEvaluator', 'args': {'backbone': {'fragments': {'use_checkpoint': False, 'pretrained': None}}, 'backbone_size': 'swin_tiny', 'backbone_preserve_keys': 'fragments', 'divide_head': False, 'vqa_head': {'in_channels': 768, 'hidden_channels': 64}}}, 'optimizer': {'lr': 0.001, 'backbone_lr_mult': 0.1, 'wd': 0.05}}
+
+==================== SPLIT-00 ====================
+Data from fragments
+Data from fragments
+dataset=[youtube], with 807 samples.
+dataset=[youtube], with 202 samples.
+using device: cuda
+swin_tiny
+Setting backbone: fragments_backbone
+Model created.
+Finetune Epoch 0:
+Epoch-00, training SRCC=0.1128, time elapsed 00m 54s.
+backbone_lr = 4.01e-05, head_lr = 4.01e-04
+evaluation ..
+VQA_swin_small_default
+For 202 videos, 
+the accuracy of the model: [youtube_s] is as follows:
+  SROCC: -0.0094 best: -0.0094 
+  PLCC:  -0.0184 best: -0.0184  
+  KROCC: -0.0066 best: -0.0066 
+  RMSE:  2.1712 best: 2.1712.
+time elapsed 00m 16s.
+Finetune Epoch 1:
+Epoch-01, training SRCC=0.0234, time elapsed 00m 46s.
+backbone_lr = 8.02e-05, head_lr = 8.02e-04
+evaluation ..
+VQA_swin_small_default
+For 202 videos, 
+the accuracy of the model: [youtube_s] is as follows:
+  SROCC: -0.0122 best: -0.0094 
+  PLCC:  -0.0224 best: -0.0184  
+  KROCC: -0.0077 best: -0.0066 
+  RMSE:  2.1755 best: 2.1712.
+time elapsed 00m 16s.
+Finetune Epoch 2:
+Epoch-02, training SRCC=0.0301, time elapsed 00m 42s.
+backbone_lr = 9.94e-05, head_lr = 9.94e-04
+evaluation ..
+VQA_swin_small_default
+For 202 videos, 
+the accuracy of the model: [youtube_s] is as follows:
+  SROCC: -0.0197 best: -0.0094 
+  PLCC:  -0.0273 best: -0.0184  
+  KROCC: -0.0105 best: -0.0066 
+  RMSE:  2.1807 best: 2.1712.
+time elapsed 00m 14s.
+Finetune Epoch 3:
+Epoch-03, training SRCC=0.0836, time elapsed 00m 46s.
+backbone_lr = 9.45e-05, head_lr = 9.45e-04
+evaluation ..
+VQA_swin_small_default
+For 202 videos, 
+the accuracy of the model: [youtube_s] is as follows:
+  SROCC: -0.0273 best: -0.0094 
+  PLCC:  -0.0317 best: -0.0184  
+  KROCC: -0.0169 best: -0.0066 
+  RMSE:  2.1853 best: 2.1712.
+time elapsed 00m 14s.
+Finetune Epoch 4:
+Epoch-04, training SRCC=0.0400, time elapsed 00m 44s.
+backbone_lr = 8.53e-05, head_lr = 8.53e-04
+evaluation ..
+VQA_swin_small_default
+For 202 videos, 
+the accuracy of the model: [youtube_s] is as follows:
+  SROCC: -0.0186 best: -0.0094 
+  PLCC:  -0.0309 best: -0.0184  
+  KROCC: -0.0100 best: -0.0066 
+  RMSE:  2.1845 best: 2.1712.
+time elapsed 00m 13s.
+Finetune Epoch 5:
+Epoch-05, training SRCC=0.0512, time elapsed 00m 45s.
+backbone_lr = 7.26e-05, head_lr = 7.26e-04
+evaluation ..
+VQA_swin_small_default
+For 202 videos, 
+the accuracy of the model: [youtube_s] is as follows:
+  SROCC: -0.0058 best: -0.0058 
+  PLCC:  -0.0290 best: -0.0184  
+  KROCC: -0.0016 best: -0.0016 
+  RMSE:  2.1824 best: 2.1712.
+time elapsed 00m 13s.
+Finetune Epoch 6:
+Epoch-06, training SRCC=0.0918, time elapsed 00m 50s.
+backbone_lr = 5.77e-05, head_lr = 5.77e-04
+evaluation ..
+VQA_swin_small_default
+For 202 videos, 
+the accuracy of the model: [youtube_s] is as follows:
+  SROCC: 0.0040 best: 0.0040 
+  PLCC:  -0.0244 best: -0.0184  
+  KROCC: 0.0028 best: 0.0028 
+  RMSE:  2.1776 best: 2.1712.
+time elapsed 00m 18s.
+Finetune Epoch 7:
+Epoch-07, training SRCC=0.0456, time elapsed 00m 58s.
+backbone_lr = 4.21e-05, head_lr = 4.21e-04
+evaluation ..
+VQA_swin_small_default
+For 202 videos, 
+the accuracy of the model: [youtube_s] is as follows:
+  SROCC: 0.0149 best: 0.0149 
+  PLCC:  -0.0118 best: -0.0118  
+  KROCC: 0.0103 best: 0.0103 
+  RMSE:  2.1642 best: 2.1642.
+time elapsed 00m 21s.
+Finetune Epoch 8:
+Epoch-08, training SRCC=0.1173, time elapsed 01m 05s.
+backbone_lr = 2.72e-05, head_lr = 2.72e-04
+evaluation ..
+VQA_swin_small_default
+For 202 videos, 
+the accuracy of the model: [youtube_s] is as follows:
+  SROCC: 0.0415 best: 0.0415 
+  PLCC:  0.0179 best: 0.0179  
+  KROCC: 0.0312 best: 0.0312 
+  RMSE:  2.1321 best: 2.1321.
+time elapsed 00m 22s.
+Finetune Epoch 9:
+Epoch-09, training SRCC=0.0924, time elapsed 01m 06s.
+backbone_lr = 1.46e-05, head_lr = 1.46e-04
+evaluation ..
+VQA_swin_small_default
+For 202 videos, 
+the accuracy of the model: [youtube_s] is as follows:
+  SROCC: 0.0777 best: 0.0777 
+  PLCC:  0.0614 best: 0.0614  
+  KROCC: 0.0531 best: 0.0531 
+  RMSE:  2.0844 best: 2.0844.
+time elapsed 00m 20s.
+For the finetuning process on youtube with 202 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.0777
+                    PLCC:  0.0614
+                    KROCC: 0.0531
+                    RMSE:  2.0844.
+
+==================== SPLIT-01 ====================
+Data from fragments
+Data from fragments
+dataset=[youtube], with 807 samples.
+dataset=[youtube], with 202 samples.
+using device: cuda
+swin_tiny
+Setting backbone: fragments_backbone
+Model created.
+Finetune Epoch 0:
+Epoch-00, training SRCC=0.0220, time elapsed 01m 20s.
+backbone_lr = 4.01e-05, head_lr = 4.01e-04
+evaluation ..
+VQA_swin_small_default
+For 202 videos, 
+the accuracy of the model: [youtube_s] is as follows:
+  SROCC: 0.0613 best: 0.0613 
+  PLCC:  0.0608 best: 0.0608  
+  KROCC: 0.0446 best: 0.0446 
+  RMSE:  2.2270 best: 2.2270.
+time elapsed 00m 25s.
+Finetune Epoch 1:

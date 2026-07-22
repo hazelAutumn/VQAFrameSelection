@@ -1,0 +1,12 @@
+{'name': 'VQA_swin_small', 'split_seed': 10, 'num_epochs': 10, 'l_num_epochs': 0, 'warmup_epochs': 2.5, 'ema': True, 'save_model': True, 'train_batch_size': 8, 'train_num_workers': 6, 'test_batch_size': 1, 'test_num_workers': 6, 'temporal_type': 'default', 'random_seed': 42, 'stype': 'fragments', 'data': {'database': 'youtube', 'type': 'FineTuneDataset', 'anno_file': './examplar_data_labels/YouTubeUGC/mylabels.txt', 'data_prefix': '../../../VQA-datasets/InTheWild/Youtube-UGC', 'train': {'temporal_type': 'default', 'sample_types': {'fragments': {'fragments_h': 7, 'fragments_w': 7, 'fsize_h': 32, 'fsize_w': 32, 'aligned': 8, 'clip_len': 8, 'frame_interval': 1, 'num_clips': 1}}}, 'test': {'temporal_type': 'default', 'sample_types': {'fragments': {'fragments_h': 7, 'fragments_w': 7, 'fsize_h': 32, 'fsize_w': 32, 'aligned': 8, 'clip_len': 8, 'frame_interval': 1, 'num_clips': 1}}}}, 'model': {'type': 'DiViDeAddEvaluator', 'args': {'backbone': {'fragments': {'use_checkpoint': False, 'pretrained': None}}, 'backbone_size': 'swin_tiny', 'backbone_preserve_keys': 'fragments', 'divide_head': False, 'vqa_head': {'in_channels': 768, 'hidden_channels': 64}}}, 'optimizer': {'lr': 0.001, 'backbone_lr_mult': 0.1, 'wd': 0.05}}
+
+==================== SPLIT-00 ====================
+Data from fragments
+Data from fragments
+dataset=[youtube], with 807 samples.
+dataset=[youtube], with 202 samples.
+using device: cuda
+swin_tiny
+Setting backbone: fragments_backbone
+Model created.
+Finetune Epoch 0:

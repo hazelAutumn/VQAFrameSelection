@@ -1,0 +1,1150 @@
+Loading the config file from options/swin_tiny_random_uniform16.yml
+TIME: 21/01/2026, 22:47:21
+{'name': 'SAMA-VQA-swin16', 'num_epochs': 10, 'l_num_epochs': 0, 'warmup_epochs': 2.5, 'ema': True, 'save_model': True, 'train_batch_size': 8, 'train_num_workers': 6, 'test_batch_size': 1, 'test_num_workers': 6, 'temporal_type': 'random_uniform', 'random_seed': 42, 'stype': 'fragments', 'data': {'train': {'type': 'FusionDataset', 'args': {'phase': 'train', 'anno_file': './examplar_data_labels/LSVQ/labels_mytrain.txt', 'data_prefix': '../../../VQA-datasets/InTheWild/LSVQ', 'temporal_type': 'random_uniform', 'sample_types': {'fragments': {'fragments_h': 7, 'fragments_w': 7, 'fsize_h': 32, 'fsize_w': 32, 'aligned': 8, 'clip_len': 16, 'frame_interval': 1, 'num_clips': 1}}}}, 'val-ltest': {'type': 'FusionDataset', 'args': {'phase': 'test', 'anno_file': './examplar_data_labels/LSVQ/labels_mytest.txt', 'data_prefix': '../../../VQA-datasets/InTheWild/LSVQ', 'temporal_type': 'random_uniform', 'sample_types': {'fragments': {'fragments_h': 7, 'fragments_w': 7, 'fsize_h': 32, 'fsize_w': 32, 'aligned': 8, 'clip_len': 16, 'frame_interval': 1, 'num_clips': 1}}}}, 'val-l1080p': {'type': 'FusionDataset', 'args': {'phase': 'test', 'anno_file': './examplar_data_labels/LSVQ/labels_mytest_1080p.txt', 'data_prefix': '../../../VQA-datasets/InTheWild/LSVQ', 'temporal_type': 'random_uniform', 'sample_types': {'fragments': {'fragments_h': 7, 'fragments_w': 7, 'fsize_h': 32, 'fsize_w': 32, 'aligned': 8, 'clip_len': 16, 'frame_interval': 1, 'num_clips': 1}}}}}, 'model': {'type': 'DiViDeAddEvaluator', 'args': {'backbone': {'fragments': {'use_checkpoint': False, 'pretrained': None}}, 'backbone_size': 'swin_tiny', 'backbone_preserve_keys': 'fragments', 'divide_head': False, 'vqa_head': {'in_channels': 768, 'hidden_channels': 64}}}, 'optimizer': {'lr': 0.001, 'backbone_lr_mult': 0.1, 'wd': 0.05}, 'load_path': 'pretrained_weights/swin_tiny_patch244_window877_kinetics400_1k.pth'}
+using device: cuda
+swin_tiny
+Setting backbone: fragments_backbone
+================= Split 1 / 10 =================
+<class 'fastvqa.datasets.fusion_datasets.FusionDataset'>
+Data fromm fragments
+Using Random Uniform Sampling for Fusion Dataset
+dataset=[val-ltest], with 7182 samples.
+<class 'fastvqa.datasets.fusion_datasets.FusionDataset'>
+Data fromm fragments
+Using Random Uniform Sampling for Fusion Dataset
+dataset=[val-l1080p], with 3573 samples.
+Preparing training dataset: train
+<class 'fastvqa.datasets.fusion_datasets.FusionDataset'>
+Data fromm fragments
+Using Random Uniform Sampling for Fusion Dataset
+dataset=[train], with 28056 samples.
+_IncompatibleKeys(missing_keys=['vqa_head.fc_hid.weight', 'vqa_head.fc_hid.bias', 'vqa_head.fc_last.weight', 'vqa_head.fc_last.bias'], unexpected_keys=['backbone.patch_embed.proj.weight', 'resize_backbone.patch_embed.proj.weight', 'backbone.patch_embed.proj.bias', 'resize_backbone.patch_embed.proj.bias', 'backbone.patch_embed.norm.weight', 'resize_backbone.patch_embed.norm.weight', 'backbone.patch_embed.norm.bias', 'resize_backbone.patch_embed.norm.bias', 'backbone.layers.0.blocks.0.norm1.weight', 'resize_backbone.layers.0.blocks.0.norm1.weight', 'backbone.layers.0.blocks.0.norm1.bias', 'resize_backbone.layers.0.blocks.0.norm1.bias', 'backbone.layers.0.blocks.0.attn.relative_position_bias_table', 'resize_backbone.layers.0.blocks.0.attn.relative_position_bias_table', 'backbone.layers.0.blocks.0.attn.relative_position_index', 'resize_backbone.layers.0.blocks.0.attn.relative_position_index', 'backbone.layers.0.blocks.0.attn.qkv.weight', 'resize_backbone.layers.0.blocks.0.attn.qkv.weight', 'backbone.layers.0.blocks.0.attn.qkv.bias', 'resize_backbone.layers.0.blocks.0.attn.qkv.bias', 'backbone.layers.0.blocks.0.attn.proj.weight', 'resize_backbone.layers.0.blocks.0.attn.proj.weight', 'backbone.layers.0.blocks.0.attn.proj.bias', 'resize_backbone.layers.0.blocks.0.attn.proj.bias', 'backbone.layers.0.blocks.0.norm2.weight', 'resize_backbone.layers.0.blocks.0.norm2.weight', 'backbone.layers.0.blocks.0.norm2.bias', 'resize_backbone.layers.0.blocks.0.norm2.bias', 'backbone.layers.0.blocks.0.mlp.fc1.weight', 'resize_backbone.layers.0.blocks.0.mlp.fc1.weight', 'backbone.layers.0.blocks.0.mlp.fc1.bias', 'resize_backbone.layers.0.blocks.0.mlp.fc1.bias', 'backbone.layers.0.blocks.0.mlp.fc2.weight', 'resize_backbone.layers.0.blocks.0.mlp.fc2.weight', 'backbone.layers.0.blocks.0.mlp.fc2.bias', 'resize_backbone.layers.0.blocks.0.mlp.fc2.bias', 'backbone.layers.0.blocks.1.norm1.weight', 'resize_backbone.layers.0.blocks.1.norm1.weight', 'backbone.layers.0.blocks.1.norm1.bias', 'resize_backbone.layers.0.blocks.1.norm1.bias', 'backbone.layers.0.blocks.1.attn.relative_position_bias_table', 'resize_backbone.layers.0.blocks.1.attn.relative_position_bias_table', 'backbone.layers.0.blocks.1.attn.relative_position_index', 'resize_backbone.layers.0.blocks.1.attn.relative_position_index', 'backbone.layers.0.blocks.1.attn.qkv.weight', 'resize_backbone.layers.0.blocks.1.attn.qkv.weight', 'backbone.layers.0.blocks.1.attn.qkv.bias', 'resize_backbone.layers.0.blocks.1.attn.qkv.bias', 'backbone.layers.0.blocks.1.attn.proj.weight', 'resize_backbone.layers.0.blocks.1.attn.proj.weight', 'backbone.layers.0.blocks.1.attn.proj.bias', 'resize_backbone.layers.0.blocks.1.attn.proj.bias', 'backbone.layers.0.blocks.1.norm2.weight', 'resize_backbone.layers.0.blocks.1.norm2.weight', 'backbone.layers.0.blocks.1.norm2.bias', 'resize_backbone.layers.0.blocks.1.norm2.bias', 'backbone.layers.0.blocks.1.mlp.fc1.weight', 'resize_backbone.layers.0.blocks.1.mlp.fc1.weight', 'backbone.layers.0.blocks.1.mlp.fc1.bias', 'resize_backbone.layers.0.blocks.1.mlp.fc1.bias', 'backbone.layers.0.blocks.1.mlp.fc2.weight', 'resize_backbone.layers.0.blocks.1.mlp.fc2.weight', 'backbone.layers.0.blocks.1.mlp.fc2.bias', 'resize_backbone.layers.0.blocks.1.mlp.fc2.bias', 'backbone.layers.0.downsample.reduction.weight', 'resize_backbone.layers.0.downsample.reduction.weight', 'backbone.layers.0.downsample.norm.weight', 'resize_backbone.layers.0.downsample.norm.weight', 'backbone.layers.0.downsample.norm.bias', 'resize_backbone.layers.0.downsample.norm.bias', 'backbone.layers.1.blocks.0.norm1.weight', 'resize_backbone.layers.1.blocks.0.norm1.weight', 'backbone.layers.1.blocks.0.norm1.bias', 'resize_backbone.layers.1.blocks.0.norm1.bias', 'backbone.layers.1.blocks.0.attn.relative_position_bias_table', 'resize_backbone.layers.1.blocks.0.attn.relative_position_bias_table', 'backbone.layers.1.blocks.0.attn.relative_position_index', 'resize_backbone.layers.1.blocks.0.attn.relative_position_index', 'backbone.layers.1.blocks.0.attn.qkv.weight', 'resize_backbone.layers.1.blocks.0.attn.qkv.weight', 'backbone.layers.1.blocks.0.attn.qkv.bias', 'resize_backbone.layers.1.blocks.0.attn.qkv.bias', 'backbone.layers.1.blocks.0.attn.proj.weight', 'resize_backbone.layers.1.blocks.0.attn.proj.weight', 'backbone.layers.1.blocks.0.attn.proj.bias', 'resize_backbone.layers.1.blocks.0.attn.proj.bias', 'backbone.layers.1.blocks.0.norm2.weight', 'resize_backbone.layers.1.blocks.0.norm2.weight', 'backbone.layers.1.blocks.0.norm2.bias', 'resize_backbone.layers.1.blocks.0.norm2.bias', 'backbone.layers.1.blocks.0.mlp.fc1.weight', 'resize_backbone.layers.1.blocks.0.mlp.fc1.weight', 'backbone.layers.1.blocks.0.mlp.fc1.bias', 'resize_backbone.layers.1.blocks.0.mlp.fc1.bias', 'backbone.layers.1.blocks.0.mlp.fc2.weight', 'resize_backbone.layers.1.blocks.0.mlp.fc2.weight', 'backbone.layers.1.blocks.0.mlp.fc2.bias', 'resize_backbone.layers.1.blocks.0.mlp.fc2.bias', 'backbone.layers.1.blocks.1.norm1.weight', 'resize_backbone.layers.1.blocks.1.norm1.weight', 'backbone.layers.1.blocks.1.norm1.bias', 'resize_backbone.layers.1.blocks.1.norm1.bias', 'backbone.layers.1.blocks.1.attn.relative_position_bias_table', 'resize_backbone.layers.1.blocks.1.attn.relative_position_bias_table', 'backbone.layers.1.blocks.1.attn.relative_position_index', 'resize_backbone.layers.1.blocks.1.attn.relative_position_index', 'backbone.layers.1.blocks.1.attn.qkv.weight', 'resize_backbone.layers.1.blocks.1.attn.qkv.weight', 'backbone.layers.1.blocks.1.attn.qkv.bias', 'resize_backbone.layers.1.blocks.1.attn.qkv.bias', 'backbone.layers.1.blocks.1.attn.proj.weight', 'resize_backbone.layers.1.blocks.1.attn.proj.weight', 'backbone.layers.1.blocks.1.attn.proj.bias', 'resize_backbone.layers.1.blocks.1.attn.proj.bias', 'backbone.layers.1.blocks.1.norm2.weight', 'resize_backbone.layers.1.blocks.1.norm2.weight', 'backbone.layers.1.blocks.1.norm2.bias', 'resize_backbone.layers.1.blocks.1.norm2.bias', 'backbone.layers.1.blocks.1.mlp.fc1.weight', 'resize_backbone.layers.1.blocks.1.mlp.fc1.weight', 'backbone.layers.1.blocks.1.mlp.fc1.bias', 'resize_backbone.layers.1.blocks.1.mlp.fc1.bias', 'backbone.layers.1.blocks.1.mlp.fc2.weight', 'resize_backbone.layers.1.blocks.1.mlp.fc2.weight', 'backbone.layers.1.blocks.1.mlp.fc2.bias', 'resize_backbone.layers.1.blocks.1.mlp.fc2.bias', 'backbone.layers.1.downsample.reduction.weight', 'resize_backbone.layers.1.downsample.reduction.weight', 'backbone.layers.1.downsample.norm.weight', 'resize_backbone.layers.1.downsample.norm.weight', 'backbone.layers.1.downsample.norm.bias', 'resize_backbone.layers.1.downsample.norm.bias', 'backbone.layers.2.blocks.0.norm1.weight', 'resize_backbone.layers.2.blocks.0.norm1.weight', 'backbone.layers.2.blocks.0.norm1.bias', 'resize_backbone.layers.2.blocks.0.norm1.bias', 'backbone.layers.2.blocks.0.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.0.attn.relative_position_bias_table', 'backbone.layers.2.blocks.0.attn.relative_position_index', 'resize_backbone.layers.2.blocks.0.attn.relative_position_index', 'backbone.layers.2.blocks.0.attn.qkv.weight', 'resize_backbone.layers.2.blocks.0.attn.qkv.weight', 'backbone.layers.2.blocks.0.attn.qkv.bias', 'resize_backbone.layers.2.blocks.0.attn.qkv.bias', 'backbone.layers.2.blocks.0.attn.proj.weight', 'resize_backbone.layers.2.blocks.0.attn.proj.weight', 'backbone.layers.2.blocks.0.attn.proj.bias', 'resize_backbone.layers.2.blocks.0.attn.proj.bias', 'backbone.layers.2.blocks.0.norm2.weight', 'resize_backbone.layers.2.blocks.0.norm2.weight', 'backbone.layers.2.blocks.0.norm2.bias', 'resize_backbone.layers.2.blocks.0.norm2.bias', 'backbone.layers.2.blocks.0.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.0.mlp.fc1.weight', 'backbone.layers.2.blocks.0.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.0.mlp.fc1.bias', 'backbone.layers.2.blocks.0.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.0.mlp.fc2.weight', 'backbone.layers.2.blocks.0.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.0.mlp.fc2.bias', 'backbone.layers.2.blocks.1.norm1.weight', 'resize_backbone.layers.2.blocks.1.norm1.weight', 'backbone.layers.2.blocks.1.norm1.bias', 'resize_backbone.layers.2.blocks.1.norm1.bias', 'backbone.layers.2.blocks.1.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.1.attn.relative_position_bias_table', 'backbone.layers.2.blocks.1.attn.relative_position_index', 'resize_backbone.layers.2.blocks.1.attn.relative_position_index', 'backbone.layers.2.blocks.1.attn.qkv.weight', 'resize_backbone.layers.2.blocks.1.attn.qkv.weight', 'backbone.layers.2.blocks.1.attn.qkv.bias', 'resize_backbone.layers.2.blocks.1.attn.qkv.bias', 'backbone.layers.2.blocks.1.attn.proj.weight', 'resize_backbone.layers.2.blocks.1.attn.proj.weight', 'backbone.layers.2.blocks.1.attn.proj.bias', 'resize_backbone.layers.2.blocks.1.attn.proj.bias', 'backbone.layers.2.blocks.1.norm2.weight', 'resize_backbone.layers.2.blocks.1.norm2.weight', 'backbone.layers.2.blocks.1.norm2.bias', 'resize_backbone.layers.2.blocks.1.norm2.bias', 'backbone.layers.2.blocks.1.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.1.mlp.fc1.weight', 'backbone.layers.2.blocks.1.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.1.mlp.fc1.bias', 'backbone.layers.2.blocks.1.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.1.mlp.fc2.weight', 'backbone.layers.2.blocks.1.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.1.mlp.fc2.bias', 'backbone.layers.2.blocks.2.norm1.weight', 'resize_backbone.layers.2.blocks.2.norm1.weight', 'backbone.layers.2.blocks.2.norm1.bias', 'resize_backbone.layers.2.blocks.2.norm1.bias', 'backbone.layers.2.blocks.2.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.2.attn.relative_position_bias_table', 'backbone.layers.2.blocks.2.attn.relative_position_index', 'resize_backbone.layers.2.blocks.2.attn.relative_position_index', 'backbone.layers.2.blocks.2.attn.qkv.weight', 'resize_backbone.layers.2.blocks.2.attn.qkv.weight', 'backbone.layers.2.blocks.2.attn.qkv.bias', 'resize_backbone.layers.2.blocks.2.attn.qkv.bias', 'backbone.layers.2.blocks.2.attn.proj.weight', 'resize_backbone.layers.2.blocks.2.attn.proj.weight', 'backbone.layers.2.blocks.2.attn.proj.bias', 'resize_backbone.layers.2.blocks.2.attn.proj.bias', 'backbone.layers.2.blocks.2.norm2.weight', 'resize_backbone.layers.2.blocks.2.norm2.weight', 'backbone.layers.2.blocks.2.norm2.bias', 'resize_backbone.layers.2.blocks.2.norm2.bias', 'backbone.layers.2.blocks.2.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.2.mlp.fc1.weight', 'backbone.layers.2.blocks.2.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.2.mlp.fc1.bias', 'backbone.layers.2.blocks.2.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.2.mlp.fc2.weight', 'backbone.layers.2.blocks.2.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.2.mlp.fc2.bias', 'backbone.layers.2.blocks.3.norm1.weight', 'resize_backbone.layers.2.blocks.3.norm1.weight', 'backbone.layers.2.blocks.3.norm1.bias', 'resize_backbone.layers.2.blocks.3.norm1.bias', 'backbone.layers.2.blocks.3.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.3.attn.relative_position_bias_table', 'backbone.layers.2.blocks.3.attn.relative_position_index', 'resize_backbone.layers.2.blocks.3.attn.relative_position_index', 'backbone.layers.2.blocks.3.attn.qkv.weight', 'resize_backbone.layers.2.blocks.3.attn.qkv.weight', 'backbone.layers.2.blocks.3.attn.qkv.bias', 'resize_backbone.layers.2.blocks.3.attn.qkv.bias', 'backbone.layers.2.blocks.3.attn.proj.weight', 'resize_backbone.layers.2.blocks.3.attn.proj.weight', 'backbone.layers.2.blocks.3.attn.proj.bias', 'resize_backbone.layers.2.blocks.3.attn.proj.bias', 'backbone.layers.2.blocks.3.norm2.weight', 'resize_backbone.layers.2.blocks.3.norm2.weight', 'backbone.layers.2.blocks.3.norm2.bias', 'resize_backbone.layers.2.blocks.3.norm2.bias', 'backbone.layers.2.blocks.3.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.3.mlp.fc1.weight', 'backbone.layers.2.blocks.3.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.3.mlp.fc1.bias', 'backbone.layers.2.blocks.3.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.3.mlp.fc2.weight', 'backbone.layers.2.blocks.3.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.3.mlp.fc2.bias', 'backbone.layers.2.blocks.4.norm1.weight', 'resize_backbone.layers.2.blocks.4.norm1.weight', 'backbone.layers.2.blocks.4.norm1.bias', 'resize_backbone.layers.2.blocks.4.norm1.bias', 'backbone.layers.2.blocks.4.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.4.attn.relative_position_bias_table', 'backbone.layers.2.blocks.4.attn.relative_position_index', 'resize_backbone.layers.2.blocks.4.attn.relative_position_index', 'backbone.layers.2.blocks.4.attn.qkv.weight', 'resize_backbone.layers.2.blocks.4.attn.qkv.weight', 'backbone.layers.2.blocks.4.attn.qkv.bias', 'resize_backbone.layers.2.blocks.4.attn.qkv.bias', 'backbone.layers.2.blocks.4.attn.proj.weight', 'resize_backbone.layers.2.blocks.4.attn.proj.weight', 'backbone.layers.2.blocks.4.attn.proj.bias', 'resize_backbone.layers.2.blocks.4.attn.proj.bias', 'backbone.layers.2.blocks.4.norm2.weight', 'resize_backbone.layers.2.blocks.4.norm2.weight', 'backbone.layers.2.blocks.4.norm2.bias', 'resize_backbone.layers.2.blocks.4.norm2.bias', 'backbone.layers.2.blocks.4.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.4.mlp.fc1.weight', 'backbone.layers.2.blocks.4.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.4.mlp.fc1.bias', 'backbone.layers.2.blocks.4.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.4.mlp.fc2.weight', 'backbone.layers.2.blocks.4.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.4.mlp.fc2.bias', 'backbone.layers.2.blocks.5.norm1.weight', 'resize_backbone.layers.2.blocks.5.norm1.weight', 'backbone.layers.2.blocks.5.norm1.bias', 'resize_backbone.layers.2.blocks.5.norm1.bias', 'backbone.layers.2.blocks.5.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.5.attn.relative_position_bias_table', 'backbone.layers.2.blocks.5.attn.relative_position_index', 'resize_backbone.layers.2.blocks.5.attn.relative_position_index', 'backbone.layers.2.blocks.5.attn.qkv.weight', 'resize_backbone.layers.2.blocks.5.attn.qkv.weight', 'backbone.layers.2.blocks.5.attn.qkv.bias', 'resize_backbone.layers.2.blocks.5.attn.qkv.bias', 'backbone.layers.2.blocks.5.attn.proj.weight', 'resize_backbone.layers.2.blocks.5.attn.proj.weight', 'backbone.layers.2.blocks.5.attn.proj.bias', 'resize_backbone.layers.2.blocks.5.attn.proj.bias', 'backbone.layers.2.blocks.5.norm2.weight', 'resize_backbone.layers.2.blocks.5.norm2.weight', 'backbone.layers.2.blocks.5.norm2.bias', 'resize_backbone.layers.2.blocks.5.norm2.bias', 'backbone.layers.2.blocks.5.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.5.mlp.fc1.weight', 'backbone.layers.2.blocks.5.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.5.mlp.fc1.bias', 'backbone.layers.2.blocks.5.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.5.mlp.fc2.weight', 'backbone.layers.2.blocks.5.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.5.mlp.fc2.bias', 'backbone.layers.2.downsample.reduction.weight', 'resize_backbone.layers.2.downsample.reduction.weight', 'backbone.layers.2.downsample.norm.weight', 'resize_backbone.layers.2.downsample.norm.weight', 'backbone.layers.2.downsample.norm.bias', 'resize_backbone.layers.2.downsample.norm.bias', 'backbone.layers.3.blocks.0.norm1.weight', 'resize_backbone.layers.3.blocks.0.norm1.weight', 'backbone.layers.3.blocks.0.norm1.bias', 'resize_backbone.layers.3.blocks.0.norm1.bias', 'backbone.layers.3.blocks.0.attn.relative_position_bias_table', 'resize_backbone.layers.3.blocks.0.attn.relative_position_bias_table', 'backbone.layers.3.blocks.0.attn.relative_position_index', 'resize_backbone.layers.3.blocks.0.attn.relative_position_index', 'backbone.layers.3.blocks.0.attn.qkv.weight', 'resize_backbone.layers.3.blocks.0.attn.qkv.weight', 'backbone.layers.3.blocks.0.attn.qkv.bias', 'resize_backbone.layers.3.blocks.0.attn.qkv.bias', 'backbone.layers.3.blocks.0.attn.proj.weight', 'resize_backbone.layers.3.blocks.0.attn.proj.weight', 'backbone.layers.3.blocks.0.attn.proj.bias', 'resize_backbone.layers.3.blocks.0.attn.proj.bias', 'backbone.layers.3.blocks.0.norm2.weight', 'resize_backbone.layers.3.blocks.0.norm2.weight', 'backbone.layers.3.blocks.0.norm2.bias', 'resize_backbone.layers.3.blocks.0.norm2.bias', 'backbone.layers.3.blocks.0.mlp.fc1.weight', 'resize_backbone.layers.3.blocks.0.mlp.fc1.weight', 'backbone.layers.3.blocks.0.mlp.fc1.bias', 'resize_backbone.layers.3.blocks.0.mlp.fc1.bias', 'backbone.layers.3.blocks.0.mlp.fc2.weight', 'resize_backbone.layers.3.blocks.0.mlp.fc2.weight', 'backbone.layers.3.blocks.0.mlp.fc2.bias', 'resize_backbone.layers.3.blocks.0.mlp.fc2.bias', 'backbone.layers.3.blocks.1.norm1.weight', 'resize_backbone.layers.3.blocks.1.norm1.weight', 'backbone.layers.3.blocks.1.norm1.bias', 'resize_backbone.layers.3.blocks.1.norm1.bias', 'backbone.layers.3.blocks.1.attn.relative_position_bias_table', 'resize_backbone.layers.3.blocks.1.attn.relative_position_bias_table', 'backbone.layers.3.blocks.1.attn.relative_position_index', 'resize_backbone.layers.3.blocks.1.attn.relative_position_index', 'backbone.layers.3.blocks.1.attn.qkv.weight', 'resize_backbone.layers.3.blocks.1.attn.qkv.weight', 'backbone.layers.3.blocks.1.attn.qkv.bias', 'resize_backbone.layers.3.blocks.1.attn.qkv.bias', 'backbone.layers.3.blocks.1.attn.proj.weight', 'resize_backbone.layers.3.blocks.1.attn.proj.weight', 'backbone.layers.3.blocks.1.attn.proj.bias', 'resize_backbone.layers.3.blocks.1.attn.proj.bias', 'backbone.layers.3.blocks.1.norm2.weight', 'resize_backbone.layers.3.blocks.1.norm2.weight', 'backbone.layers.3.blocks.1.norm2.bias', 'resize_backbone.layers.3.blocks.1.norm2.bias', 'backbone.layers.3.blocks.1.mlp.fc1.weight', 'resize_backbone.layers.3.blocks.1.mlp.fc1.weight', 'backbone.layers.3.blocks.1.mlp.fc1.bias', 'resize_backbone.layers.3.blocks.1.mlp.fc1.bias', 'backbone.layers.3.blocks.1.mlp.fc2.weight', 'resize_backbone.layers.3.blocks.1.mlp.fc2.weight', 'backbone.layers.3.blocks.1.mlp.fc2.bias', 'resize_backbone.layers.3.blocks.1.mlp.fc2.bias', 'backbone.norm.weight', 'resize_backbone.norm.weight', 'backbone.norm.bias', 'resize_backbone.norm.bias'])
+Finetune Epoch 0:
+Epoch-00, training SRCC=0.6799, time elapsed 24m 42s.
+backbone_lr = 4.00e-05, head_lr = 4.00e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.7970 best: 0.7970 
+  PLCC:  0.7999 best: 0.7999  
+  KROCC: 0.6027 best: 0.6027 
+  RMSE:  6.6531 best: 6.6531.
+time elapsed 07m 38s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6866 best: 0.6866 
+  PLCC:  0.7154 best: 0.7154  
+  KROCC: 0.5007 best: 0.5007 
+  RMSE:  7.8404 best: 7.8404.
+time elapsed 11m 18s.
+Finetune Epoch 1:
+Epoch-01, training SRCC=0.6332, time elapsed 27m 12s.
+backbone_lr = 8.00e-05, head_lr = 8.00e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8102 best: 0.8102 
+  PLCC:  0.8112 best: 0.8112  
+  KROCC: 0.6164 best: 0.6164 
+  RMSE:  6.4619 best: 6.4619.
+time elapsed 07m 55s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7008 best: 0.7008 
+  PLCC:  0.7320 best: 0.7320  
+  KROCC: 0.5125 best: 0.5125 
+  RMSE:  7.6084 best: 7.6084.
+time elapsed 10m 24s.
+Finetune Epoch 2:
+Epoch-02, training SRCC=0.4537, time elapsed 28m 42s.
+backbone_lr = 9.94e-05, head_lr = 9.94e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8041 best: 0.8102 
+  PLCC:  0.8036 best: 0.8112  
+  KROCC: 0.6096 best: 0.6164 
+  RMSE:  6.5915 best: 6.4619.
+time elapsed 08m 34s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6849 best: 0.7008 
+  PLCC:  0.7116 best: 0.7320  
+  KROCC: 0.4987 best: 0.5125 
+  RMSE:  7.8915 best: 7.6084.
+time elapsed 11m 01s.
+Finetune Epoch 3:
+Epoch-03, training SRCC=0.2475, time elapsed 27m 03s.
+backbone_lr = 9.45e-05, head_lr = 9.45e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8002 best: 0.8102 
+  PLCC:  0.8005 best: 0.8112  
+  KROCC: 0.6062 best: 0.6164 
+  RMSE:  6.6432 best: 6.4619.
+time elapsed 08m 33s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6786 best: 0.7008 
+  PLCC:  0.7065 best: 0.7320  
+  KROCC: 0.4935 best: 0.5125 
+  RMSE:  7.9616 best: 7.6084.
+time elapsed 10m 40s.
+Finetune Epoch 4:
+Epoch-04, training SRCC=0.3224, time elapsed 28m 56s.
+backbone_lr = 8.54e-05, head_lr = 8.54e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.7988 best: 0.8102 
+  PLCC:  0.7989 best: 0.8112  
+  KROCC: 0.6049 best: 0.6164 
+  RMSE:  6.6700 best: 6.4619.
+time elapsed 08m 14s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6778 best: 0.7008 
+  PLCC:  0.7057 best: 0.7320  
+  KROCC: 0.4920 best: 0.5125 
+  RMSE:  7.9728 best: 7.6084.
+time elapsed 10m 21s.
+Finetune Epoch 5:
+Epoch-05, training SRCC=0.3476, time elapsed 27m 08s.
+backbone_lr = 7.27e-05, head_lr = 7.27e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8056 best: 0.8102 
+  PLCC:  0.8053 best: 0.8112  
+  KROCC: 0.6114 best: 0.6164 
+  RMSE:  6.5616 best: 6.4619.
+time elapsed 08m 16s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6823 best: 0.7008 
+  PLCC:  0.7123 best: 0.7320  
+  KROCC: 0.4964 best: 0.5125 
+  RMSE:  7.8824 best: 7.6084.
+time elapsed 10m 42s.
+Finetune Epoch 6:
+Epoch-06, training SRCC=0.4048, time elapsed 26m 22s.
+backbone_lr = 5.78e-05, head_lr = 5.78e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8117 best: 0.8117 
+  PLCC:  0.8119 best: 0.8119  
+  KROCC: 0.6184 best: 0.6184 
+  RMSE:  6.4498 best: 6.4498.
+time elapsed 07m 39s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6963 best: 0.7008 
+  PLCC:  0.7264 best: 0.7320  
+  KROCC: 0.5089 best: 0.5125 
+  RMSE:  7.6875 best: 7.6084.
+time elapsed 09m 28s.
+Finetune Epoch 7:
+Epoch-07, training SRCC=0.2692, time elapsed 26m 25s.
+backbone_lr = 4.22e-05, head_lr = 4.22e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8187 best: 0.8187 
+  PLCC:  0.8189 best: 0.8189  
+  KROCC: 0.6260 best: 0.6260 
+  RMSE:  6.3288 best: 6.3288.
+time elapsed 08m 15s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7003 best: 0.7008 
+  PLCC:  0.7287 best: 0.7320  
+  KROCC: 0.5117 best: 0.5125 
+  RMSE:  7.6549 best: 7.6084.
+time elapsed 09m 42s.
+Finetune Epoch 8:
+Epoch-08, training SRCC=0.3793, time elapsed 26m 27s.
+backbone_lr = 2.73e-05, head_lr = 2.73e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8214 best: 0.8214 
+  PLCC:  0.8225 best: 0.8225  
+  KROCC: 0.6292 best: 0.6292 
+  RMSE:  6.2655 best: 6.2655.
+time elapsed 07m 40s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7085 best: 0.7085 
+  PLCC:  0.7403 best: 0.7403  
+  KROCC: 0.5200 best: 0.5200 
+  RMSE:  7.4891 best: 7.4891.
+time elapsed 09m 33s.
+Finetune Epoch 9:
+Epoch-09, training SRCC=0.3306, time elapsed 27m 11s.
+backbone_lr = 1.46e-05, head_lr = 1.46e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8248 best: 0.8248 
+  PLCC:  0.8261 best: 0.8261  
+  KROCC: 0.6331 best: 0.6331 
+  RMSE:  6.2021 best: 6.2021.
+time elapsed 07m 58s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7086 best: 0.7086 
+  PLCC:  0.7405 best: 0.7405  
+  KROCC: 0.5202 best: 0.5202 
+  RMSE:  7.4865 best: 7.4865.
+time elapsed 09m 50s.
+For the finetuning process on val-ltest with 7182 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.8248
+                    PLCC:  0.8261
+                    KROCC: 0.6331
+                    RMSE:  6.2021.
+For the finetuning process on val-l1080p with 3573 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.7086
+                    PLCC:  0.7405
+                    KROCC: 0.5202
+                    RMSE:  7.4865.
+================= Split 2 / 10 =================
+<class 'fastvqa.datasets.fusion_datasets.FusionDataset'>
+Data fromm fragments
+Using Random Uniform Sampling for Fusion Dataset
+dataset=[val-ltest], with 7182 samples.
+<class 'fastvqa.datasets.fusion_datasets.FusionDataset'>
+Data fromm fragments
+Using Random Uniform Sampling for Fusion Dataset
+dataset=[val-l1080p], with 3573 samples.
+Preparing training dataset: train
+<class 'fastvqa.datasets.fusion_datasets.FusionDataset'>
+Data fromm fragments
+Using Random Uniform Sampling for Fusion Dataset
+dataset=[train], with 28056 samples.
+_IncompatibleKeys(missing_keys=['vqa_head.fc_hid.weight', 'vqa_head.fc_hid.bias', 'vqa_head.fc_last.weight', 'vqa_head.fc_last.bias'], unexpected_keys=['backbone.patch_embed.proj.weight', 'resize_backbone.patch_embed.proj.weight', 'backbone.patch_embed.proj.bias', 'resize_backbone.patch_embed.proj.bias', 'backbone.patch_embed.norm.weight', 'resize_backbone.patch_embed.norm.weight', 'backbone.patch_embed.norm.bias', 'resize_backbone.patch_embed.norm.bias', 'backbone.layers.0.blocks.0.norm1.weight', 'resize_backbone.layers.0.blocks.0.norm1.weight', 'backbone.layers.0.blocks.0.norm1.bias', 'resize_backbone.layers.0.blocks.0.norm1.bias', 'backbone.layers.0.blocks.0.attn.relative_position_bias_table', 'resize_backbone.layers.0.blocks.0.attn.relative_position_bias_table', 'backbone.layers.0.blocks.0.attn.relative_position_index', 'resize_backbone.layers.0.blocks.0.attn.relative_position_index', 'backbone.layers.0.blocks.0.attn.qkv.weight', 'resize_backbone.layers.0.blocks.0.attn.qkv.weight', 'backbone.layers.0.blocks.0.attn.qkv.bias', 'resize_backbone.layers.0.blocks.0.attn.qkv.bias', 'backbone.layers.0.blocks.0.attn.proj.weight', 'resize_backbone.layers.0.blocks.0.attn.proj.weight', 'backbone.layers.0.blocks.0.attn.proj.bias', 'resize_backbone.layers.0.blocks.0.attn.proj.bias', 'backbone.layers.0.blocks.0.norm2.weight', 'resize_backbone.layers.0.blocks.0.norm2.weight', 'backbone.layers.0.blocks.0.norm2.bias', 'resize_backbone.layers.0.blocks.0.norm2.bias', 'backbone.layers.0.blocks.0.mlp.fc1.weight', 'resize_backbone.layers.0.blocks.0.mlp.fc1.weight', 'backbone.layers.0.blocks.0.mlp.fc1.bias', 'resize_backbone.layers.0.blocks.0.mlp.fc1.bias', 'backbone.layers.0.blocks.0.mlp.fc2.weight', 'resize_backbone.layers.0.blocks.0.mlp.fc2.weight', 'backbone.layers.0.blocks.0.mlp.fc2.bias', 'resize_backbone.layers.0.blocks.0.mlp.fc2.bias', 'backbone.layers.0.blocks.1.norm1.weight', 'resize_backbone.layers.0.blocks.1.norm1.weight', 'backbone.layers.0.blocks.1.norm1.bias', 'resize_backbone.layers.0.blocks.1.norm1.bias', 'backbone.layers.0.blocks.1.attn.relative_position_bias_table', 'resize_backbone.layers.0.blocks.1.attn.relative_position_bias_table', 'backbone.layers.0.blocks.1.attn.relative_position_index', 'resize_backbone.layers.0.blocks.1.attn.relative_position_index', 'backbone.layers.0.blocks.1.attn.qkv.weight', 'resize_backbone.layers.0.blocks.1.attn.qkv.weight', 'backbone.layers.0.blocks.1.attn.qkv.bias', 'resize_backbone.layers.0.blocks.1.attn.qkv.bias', 'backbone.layers.0.blocks.1.attn.proj.weight', 'resize_backbone.layers.0.blocks.1.attn.proj.weight', 'backbone.layers.0.blocks.1.attn.proj.bias', 'resize_backbone.layers.0.blocks.1.attn.proj.bias', 'backbone.layers.0.blocks.1.norm2.weight', 'resize_backbone.layers.0.blocks.1.norm2.weight', 'backbone.layers.0.blocks.1.norm2.bias', 'resize_backbone.layers.0.blocks.1.norm2.bias', 'backbone.layers.0.blocks.1.mlp.fc1.weight', 'resize_backbone.layers.0.blocks.1.mlp.fc1.weight', 'backbone.layers.0.blocks.1.mlp.fc1.bias', 'resize_backbone.layers.0.blocks.1.mlp.fc1.bias', 'backbone.layers.0.blocks.1.mlp.fc2.weight', 'resize_backbone.layers.0.blocks.1.mlp.fc2.weight', 'backbone.layers.0.blocks.1.mlp.fc2.bias', 'resize_backbone.layers.0.blocks.1.mlp.fc2.bias', 'backbone.layers.0.downsample.reduction.weight', 'resize_backbone.layers.0.downsample.reduction.weight', 'backbone.layers.0.downsample.norm.weight', 'resize_backbone.layers.0.downsample.norm.weight', 'backbone.layers.0.downsample.norm.bias', 'resize_backbone.layers.0.downsample.norm.bias', 'backbone.layers.1.blocks.0.norm1.weight', 'resize_backbone.layers.1.blocks.0.norm1.weight', 'backbone.layers.1.blocks.0.norm1.bias', 'resize_backbone.layers.1.blocks.0.norm1.bias', 'backbone.layers.1.blocks.0.attn.relative_position_bias_table', 'resize_backbone.layers.1.blocks.0.attn.relative_position_bias_table', 'backbone.layers.1.blocks.0.attn.relative_position_index', 'resize_backbone.layers.1.blocks.0.attn.relative_position_index', 'backbone.layers.1.blocks.0.attn.qkv.weight', 'resize_backbone.layers.1.blocks.0.attn.qkv.weight', 'backbone.layers.1.blocks.0.attn.qkv.bias', 'resize_backbone.layers.1.blocks.0.attn.qkv.bias', 'backbone.layers.1.blocks.0.attn.proj.weight', 'resize_backbone.layers.1.blocks.0.attn.proj.weight', 'backbone.layers.1.blocks.0.attn.proj.bias', 'resize_backbone.layers.1.blocks.0.attn.proj.bias', 'backbone.layers.1.blocks.0.norm2.weight', 'resize_backbone.layers.1.blocks.0.norm2.weight', 'backbone.layers.1.blocks.0.norm2.bias', 'resize_backbone.layers.1.blocks.0.norm2.bias', 'backbone.layers.1.blocks.0.mlp.fc1.weight', 'resize_backbone.layers.1.blocks.0.mlp.fc1.weight', 'backbone.layers.1.blocks.0.mlp.fc1.bias', 'resize_backbone.layers.1.blocks.0.mlp.fc1.bias', 'backbone.layers.1.blocks.0.mlp.fc2.weight', 'resize_backbone.layers.1.blocks.0.mlp.fc2.weight', 'backbone.layers.1.blocks.0.mlp.fc2.bias', 'resize_backbone.layers.1.blocks.0.mlp.fc2.bias', 'backbone.layers.1.blocks.1.norm1.weight', 'resize_backbone.layers.1.blocks.1.norm1.weight', 'backbone.layers.1.blocks.1.norm1.bias', 'resize_backbone.layers.1.blocks.1.norm1.bias', 'backbone.layers.1.blocks.1.attn.relative_position_bias_table', 'resize_backbone.layers.1.blocks.1.attn.relative_position_bias_table', 'backbone.layers.1.blocks.1.attn.relative_position_index', 'resize_backbone.layers.1.blocks.1.attn.relative_position_index', 'backbone.layers.1.blocks.1.attn.qkv.weight', 'resize_backbone.layers.1.blocks.1.attn.qkv.weight', 'backbone.layers.1.blocks.1.attn.qkv.bias', 'resize_backbone.layers.1.blocks.1.attn.qkv.bias', 'backbone.layers.1.blocks.1.attn.proj.weight', 'resize_backbone.layers.1.blocks.1.attn.proj.weight', 'backbone.layers.1.blocks.1.attn.proj.bias', 'resize_backbone.layers.1.blocks.1.attn.proj.bias', 'backbone.layers.1.blocks.1.norm2.weight', 'resize_backbone.layers.1.blocks.1.norm2.weight', 'backbone.layers.1.blocks.1.norm2.bias', 'resize_backbone.layers.1.blocks.1.norm2.bias', 'backbone.layers.1.blocks.1.mlp.fc1.weight', 'resize_backbone.layers.1.blocks.1.mlp.fc1.weight', 'backbone.layers.1.blocks.1.mlp.fc1.bias', 'resize_backbone.layers.1.blocks.1.mlp.fc1.bias', 'backbone.layers.1.blocks.1.mlp.fc2.weight', 'resize_backbone.layers.1.blocks.1.mlp.fc2.weight', 'backbone.layers.1.blocks.1.mlp.fc2.bias', 'resize_backbone.layers.1.blocks.1.mlp.fc2.bias', 'backbone.layers.1.downsample.reduction.weight', 'resize_backbone.layers.1.downsample.reduction.weight', 'backbone.layers.1.downsample.norm.weight', 'resize_backbone.layers.1.downsample.norm.weight', 'backbone.layers.1.downsample.norm.bias', 'resize_backbone.layers.1.downsample.norm.bias', 'backbone.layers.2.blocks.0.norm1.weight', 'resize_backbone.layers.2.blocks.0.norm1.weight', 'backbone.layers.2.blocks.0.norm1.bias', 'resize_backbone.layers.2.blocks.0.norm1.bias', 'backbone.layers.2.blocks.0.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.0.attn.relative_position_bias_table', 'backbone.layers.2.blocks.0.attn.relative_position_index', 'resize_backbone.layers.2.blocks.0.attn.relative_position_index', 'backbone.layers.2.blocks.0.attn.qkv.weight', 'resize_backbone.layers.2.blocks.0.attn.qkv.weight', 'backbone.layers.2.blocks.0.attn.qkv.bias', 'resize_backbone.layers.2.blocks.0.attn.qkv.bias', 'backbone.layers.2.blocks.0.attn.proj.weight', 'resize_backbone.layers.2.blocks.0.attn.proj.weight', 'backbone.layers.2.blocks.0.attn.proj.bias', 'resize_backbone.layers.2.blocks.0.attn.proj.bias', 'backbone.layers.2.blocks.0.norm2.weight', 'resize_backbone.layers.2.blocks.0.norm2.weight', 'backbone.layers.2.blocks.0.norm2.bias', 'resize_backbone.layers.2.blocks.0.norm2.bias', 'backbone.layers.2.blocks.0.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.0.mlp.fc1.weight', 'backbone.layers.2.blocks.0.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.0.mlp.fc1.bias', 'backbone.layers.2.blocks.0.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.0.mlp.fc2.weight', 'backbone.layers.2.blocks.0.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.0.mlp.fc2.bias', 'backbone.layers.2.blocks.1.norm1.weight', 'resize_backbone.layers.2.blocks.1.norm1.weight', 'backbone.layers.2.blocks.1.norm1.bias', 'resize_backbone.layers.2.blocks.1.norm1.bias', 'backbone.layers.2.blocks.1.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.1.attn.relative_position_bias_table', 'backbone.layers.2.blocks.1.attn.relative_position_index', 'resize_backbone.layers.2.blocks.1.attn.relative_position_index', 'backbone.layers.2.blocks.1.attn.qkv.weight', 'resize_backbone.layers.2.blocks.1.attn.qkv.weight', 'backbone.layers.2.blocks.1.attn.qkv.bias', 'resize_backbone.layers.2.blocks.1.attn.qkv.bias', 'backbone.layers.2.blocks.1.attn.proj.weight', 'resize_backbone.layers.2.blocks.1.attn.proj.weight', 'backbone.layers.2.blocks.1.attn.proj.bias', 'resize_backbone.layers.2.blocks.1.attn.proj.bias', 'backbone.layers.2.blocks.1.norm2.weight', 'resize_backbone.layers.2.blocks.1.norm2.weight', 'backbone.layers.2.blocks.1.norm2.bias', 'resize_backbone.layers.2.blocks.1.norm2.bias', 'backbone.layers.2.blocks.1.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.1.mlp.fc1.weight', 'backbone.layers.2.blocks.1.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.1.mlp.fc1.bias', 'backbone.layers.2.blocks.1.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.1.mlp.fc2.weight', 'backbone.layers.2.blocks.1.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.1.mlp.fc2.bias', 'backbone.layers.2.blocks.2.norm1.weight', 'resize_backbone.layers.2.blocks.2.norm1.weight', 'backbone.layers.2.blocks.2.norm1.bias', 'resize_backbone.layers.2.blocks.2.norm1.bias', 'backbone.layers.2.blocks.2.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.2.attn.relative_position_bias_table', 'backbone.layers.2.blocks.2.attn.relative_position_index', 'resize_backbone.layers.2.blocks.2.attn.relative_position_index', 'backbone.layers.2.blocks.2.attn.qkv.weight', 'resize_backbone.layers.2.blocks.2.attn.qkv.weight', 'backbone.layers.2.blocks.2.attn.qkv.bias', 'resize_backbone.layers.2.blocks.2.attn.qkv.bias', 'backbone.layers.2.blocks.2.attn.proj.weight', 'resize_backbone.layers.2.blocks.2.attn.proj.weight', 'backbone.layers.2.blocks.2.attn.proj.bias', 'resize_backbone.layers.2.blocks.2.attn.proj.bias', 'backbone.layers.2.blocks.2.norm2.weight', 'resize_backbone.layers.2.blocks.2.norm2.weight', 'backbone.layers.2.blocks.2.norm2.bias', 'resize_backbone.layers.2.blocks.2.norm2.bias', 'backbone.layers.2.blocks.2.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.2.mlp.fc1.weight', 'backbone.layers.2.blocks.2.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.2.mlp.fc1.bias', 'backbone.layers.2.blocks.2.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.2.mlp.fc2.weight', 'backbone.layers.2.blocks.2.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.2.mlp.fc2.bias', 'backbone.layers.2.blocks.3.norm1.weight', 'resize_backbone.layers.2.blocks.3.norm1.weight', 'backbone.layers.2.blocks.3.norm1.bias', 'resize_backbone.layers.2.blocks.3.norm1.bias', 'backbone.layers.2.blocks.3.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.3.attn.relative_position_bias_table', 'backbone.layers.2.blocks.3.attn.relative_position_index', 'resize_backbone.layers.2.blocks.3.attn.relative_position_index', 'backbone.layers.2.blocks.3.attn.qkv.weight', 'resize_backbone.layers.2.blocks.3.attn.qkv.weight', 'backbone.layers.2.blocks.3.attn.qkv.bias', 'resize_backbone.layers.2.blocks.3.attn.qkv.bias', 'backbone.layers.2.blocks.3.attn.proj.weight', 'resize_backbone.layers.2.blocks.3.attn.proj.weight', 'backbone.layers.2.blocks.3.attn.proj.bias', 'resize_backbone.layers.2.blocks.3.attn.proj.bias', 'backbone.layers.2.blocks.3.norm2.weight', 'resize_backbone.layers.2.blocks.3.norm2.weight', 'backbone.layers.2.blocks.3.norm2.bias', 'resize_backbone.layers.2.blocks.3.norm2.bias', 'backbone.layers.2.blocks.3.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.3.mlp.fc1.weight', 'backbone.layers.2.blocks.3.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.3.mlp.fc1.bias', 'backbone.layers.2.blocks.3.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.3.mlp.fc2.weight', 'backbone.layers.2.blocks.3.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.3.mlp.fc2.bias', 'backbone.layers.2.blocks.4.norm1.weight', 'resize_backbone.layers.2.blocks.4.norm1.weight', 'backbone.layers.2.blocks.4.norm1.bias', 'resize_backbone.layers.2.blocks.4.norm1.bias', 'backbone.layers.2.blocks.4.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.4.attn.relative_position_bias_table', 'backbone.layers.2.blocks.4.attn.relative_position_index', 'resize_backbone.layers.2.blocks.4.attn.relative_position_index', 'backbone.layers.2.blocks.4.attn.qkv.weight', 'resize_backbone.layers.2.blocks.4.attn.qkv.weight', 'backbone.layers.2.blocks.4.attn.qkv.bias', 'resize_backbone.layers.2.blocks.4.attn.qkv.bias', 'backbone.layers.2.blocks.4.attn.proj.weight', 'resize_backbone.layers.2.blocks.4.attn.proj.weight', 'backbone.layers.2.blocks.4.attn.proj.bias', 'resize_backbone.layers.2.blocks.4.attn.proj.bias', 'backbone.layers.2.blocks.4.norm2.weight', 'resize_backbone.layers.2.blocks.4.norm2.weight', 'backbone.layers.2.blocks.4.norm2.bias', 'resize_backbone.layers.2.blocks.4.norm2.bias', 'backbone.layers.2.blocks.4.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.4.mlp.fc1.weight', 'backbone.layers.2.blocks.4.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.4.mlp.fc1.bias', 'backbone.layers.2.blocks.4.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.4.mlp.fc2.weight', 'backbone.layers.2.blocks.4.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.4.mlp.fc2.bias', 'backbone.layers.2.blocks.5.norm1.weight', 'resize_backbone.layers.2.blocks.5.norm1.weight', 'backbone.layers.2.blocks.5.norm1.bias', 'resize_backbone.layers.2.blocks.5.norm1.bias', 'backbone.layers.2.blocks.5.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.5.attn.relative_position_bias_table', 'backbone.layers.2.blocks.5.attn.relative_position_index', 'resize_backbone.layers.2.blocks.5.attn.relative_position_index', 'backbone.layers.2.blocks.5.attn.qkv.weight', 'resize_backbone.layers.2.blocks.5.attn.qkv.weight', 'backbone.layers.2.blocks.5.attn.qkv.bias', 'resize_backbone.layers.2.blocks.5.attn.qkv.bias', 'backbone.layers.2.blocks.5.attn.proj.weight', 'resize_backbone.layers.2.blocks.5.attn.proj.weight', 'backbone.layers.2.blocks.5.attn.proj.bias', 'resize_backbone.layers.2.blocks.5.attn.proj.bias', 'backbone.layers.2.blocks.5.norm2.weight', 'resize_backbone.layers.2.blocks.5.norm2.weight', 'backbone.layers.2.blocks.5.norm2.bias', 'resize_backbone.layers.2.blocks.5.norm2.bias', 'backbone.layers.2.blocks.5.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.5.mlp.fc1.weight', 'backbone.layers.2.blocks.5.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.5.mlp.fc1.bias', 'backbone.layers.2.blocks.5.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.5.mlp.fc2.weight', 'backbone.layers.2.blocks.5.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.5.mlp.fc2.bias', 'backbone.layers.2.downsample.reduction.weight', 'resize_backbone.layers.2.downsample.reduction.weight', 'backbone.layers.2.downsample.norm.weight', 'resize_backbone.layers.2.downsample.norm.weight', 'backbone.layers.2.downsample.norm.bias', 'resize_backbone.layers.2.downsample.norm.bias', 'backbone.layers.3.blocks.0.norm1.weight', 'resize_backbone.layers.3.blocks.0.norm1.weight', 'backbone.layers.3.blocks.0.norm1.bias', 'resize_backbone.layers.3.blocks.0.norm1.bias', 'backbone.layers.3.blocks.0.attn.relative_position_bias_table', 'resize_backbone.layers.3.blocks.0.attn.relative_position_bias_table', 'backbone.layers.3.blocks.0.attn.relative_position_index', 'resize_backbone.layers.3.blocks.0.attn.relative_position_index', 'backbone.layers.3.blocks.0.attn.qkv.weight', 'resize_backbone.layers.3.blocks.0.attn.qkv.weight', 'backbone.layers.3.blocks.0.attn.qkv.bias', 'resize_backbone.layers.3.blocks.0.attn.qkv.bias', 'backbone.layers.3.blocks.0.attn.proj.weight', 'resize_backbone.layers.3.blocks.0.attn.proj.weight', 'backbone.layers.3.blocks.0.attn.proj.bias', 'resize_backbone.layers.3.blocks.0.attn.proj.bias', 'backbone.layers.3.blocks.0.norm2.weight', 'resize_backbone.layers.3.blocks.0.norm2.weight', 'backbone.layers.3.blocks.0.norm2.bias', 'resize_backbone.layers.3.blocks.0.norm2.bias', 'backbone.layers.3.blocks.0.mlp.fc1.weight', 'resize_backbone.layers.3.blocks.0.mlp.fc1.weight', 'backbone.layers.3.blocks.0.mlp.fc1.bias', 'resize_backbone.layers.3.blocks.0.mlp.fc1.bias', 'backbone.layers.3.blocks.0.mlp.fc2.weight', 'resize_backbone.layers.3.blocks.0.mlp.fc2.weight', 'backbone.layers.3.blocks.0.mlp.fc2.bias', 'resize_backbone.layers.3.blocks.0.mlp.fc2.bias', 'backbone.layers.3.blocks.1.norm1.weight', 'resize_backbone.layers.3.blocks.1.norm1.weight', 'backbone.layers.3.blocks.1.norm1.bias', 'resize_backbone.layers.3.blocks.1.norm1.bias', 'backbone.layers.3.blocks.1.attn.relative_position_bias_table', 'resize_backbone.layers.3.blocks.1.attn.relative_position_bias_table', 'backbone.layers.3.blocks.1.attn.relative_position_index', 'resize_backbone.layers.3.blocks.1.attn.relative_position_index', 'backbone.layers.3.blocks.1.attn.qkv.weight', 'resize_backbone.layers.3.blocks.1.attn.qkv.weight', 'backbone.layers.3.blocks.1.attn.qkv.bias', 'resize_backbone.layers.3.blocks.1.attn.qkv.bias', 'backbone.layers.3.blocks.1.attn.proj.weight', 'resize_backbone.layers.3.blocks.1.attn.proj.weight', 'backbone.layers.3.blocks.1.attn.proj.bias', 'resize_backbone.layers.3.blocks.1.attn.proj.bias', 'backbone.layers.3.blocks.1.norm2.weight', 'resize_backbone.layers.3.blocks.1.norm2.weight', 'backbone.layers.3.blocks.1.norm2.bias', 'resize_backbone.layers.3.blocks.1.norm2.bias', 'backbone.layers.3.blocks.1.mlp.fc1.weight', 'resize_backbone.layers.3.blocks.1.mlp.fc1.weight', 'backbone.layers.3.blocks.1.mlp.fc1.bias', 'resize_backbone.layers.3.blocks.1.mlp.fc1.bias', 'backbone.layers.3.blocks.1.mlp.fc2.weight', 'resize_backbone.layers.3.blocks.1.mlp.fc2.weight', 'backbone.layers.3.blocks.1.mlp.fc2.bias', 'resize_backbone.layers.3.blocks.1.mlp.fc2.bias', 'backbone.norm.weight', 'resize_backbone.norm.weight', 'backbone.norm.bias', 'resize_backbone.norm.bias'])
+Finetune Epoch 0:
+Epoch-00, training SRCC=0.4882, time elapsed 25m 53s.
+backbone_lr = 4.00e-05, head_lr = 4.00e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.7937 best: 0.7937 
+  PLCC:  0.7966 best: 0.7966  
+  KROCC: 0.5992 best: 0.5992 
+  RMSE:  6.7069 best: 6.7069.
+time elapsed 07m 45s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6925 best: 0.6925 
+  PLCC:  0.7172 best: 0.7172  
+  KROCC: 0.5056 best: 0.5056 
+  RMSE:  7.8145 best: 7.8145.
+time elapsed 09m 52s.
+Finetune Epoch 1:
+Epoch-01, training SRCC=0.5715, time elapsed 26m 15s.
+backbone_lr = 8.00e-05, head_lr = 8.00e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8109 best: 0.8109 
+  PLCC:  0.8120 best: 0.8120  
+  KROCC: 0.6176 best: 0.6176 
+  RMSE:  6.4489 best: 6.4489.
+time elapsed 07m 54s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6950 best: 0.6950 
+  PLCC:  0.7253 best: 0.7253  
+  KROCC: 0.5093 best: 0.5093 
+  RMSE:  7.7028 best: 7.7028.
+time elapsed 10m 01s.
+Finetune Epoch 2:
+Epoch-02, training SRCC=0.2689, time elapsed 25m 37s.
+backbone_lr = 9.94e-05, head_lr = 9.94e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.7985 best: 0.8109 
+  PLCC:  0.7984 best: 0.8120  
+  KROCC: 0.6034 best: 0.6176 
+  RMSE:  6.6782 best: 6.4489.
+time elapsed 08m 10s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6793 best: 0.6950 
+  PLCC:  0.7109 best: 0.7253  
+  KROCC: 0.4943 best: 0.5093 
+  RMSE:  7.9010 best: 7.7028.
+time elapsed 10m 25s.
+Finetune Epoch 3:
+Epoch-03, training SRCC=0.2542, time elapsed 25m 18s.
+backbone_lr = 9.45e-05, head_lr = 9.45e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.7966 best: 0.8109 
+  PLCC:  0.7968 best: 0.8120  
+  KROCC: 0.6015 best: 0.6176 
+  RMSE:  6.7040 best: 6.4489.
+time elapsed 07m 40s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6809 best: 0.6950 
+  PLCC:  0.7136 best: 0.7253  
+  KROCC: 0.4950 best: 0.5093 
+  RMSE:  7.8652 best: 7.7028.
+time elapsed 10m 13s.
+Finetune Epoch 4:
+Epoch-04, training SRCC=0.3207, time elapsed 25m 43s.
+backbone_lr = 8.54e-05, head_lr = 8.54e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.7988 best: 0.8109 
+  PLCC:  0.7987 best: 0.8120  
+  KROCC: 0.6041 best: 0.6176 
+  RMSE:  6.6730 best: 6.4489.
+time elapsed 07m 08s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6765 best: 0.6950 
+  PLCC:  0.7073 best: 0.7253  
+  KROCC: 0.4912 best: 0.5093 
+  RMSE:  7.9508 best: 7.7028.
+time elapsed 09m 36s.
+Finetune Epoch 5:
+Epoch-05, training SRCC=0.4366, time elapsed 26m 22s.
+backbone_lr = 7.27e-05, head_lr = 7.27e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8007 best: 0.8109 
+  PLCC:  0.8018 best: 0.8120  
+  KROCC: 0.6069 best: 0.6176 
+  RMSE:  6.6211 best: 6.4489.
+time elapsed 08m 38s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6835 best: 0.6950 
+  PLCC:  0.7134 best: 0.7253  
+  KROCC: 0.4983 best: 0.5093 
+  RMSE:  7.8673 best: 7.7028.
+time elapsed 10m 22s.
+Finetune Epoch 6:
+Epoch-06, training SRCC=0.1550, time elapsed 25m 08s.
+backbone_lr = 5.78e-05, head_lr = 5.78e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8074 best: 0.8109 
+  PLCC:  0.8080 best: 0.8120  
+  KROCC: 0.6141 best: 0.6176 
+  RMSE:  6.5171 best: 6.4489.
+time elapsed 07m 16s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6897 best: 0.6950 
+  PLCC:  0.7220 best: 0.7253  
+  KROCC: 0.5035 best: 0.5093 
+  RMSE:  7.7480 best: 7.7028.
+time elapsed 09m 19s.
+Finetune Epoch 7:
+Epoch-07, training SRCC=0.3212, time elapsed 24m 35s.
+backbone_lr = 4.22e-05, head_lr = 4.22e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8131 best: 0.8131 
+  PLCC:  0.8138 best: 0.8138  
+  KROCC: 0.6197 best: 0.6197 
+  RMSE:  6.4177 best: 6.4177.
+time elapsed 07m 53s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6969 best: 0.6969 
+  PLCC:  0.7294 best: 0.7294  
+  KROCC: 0.5103 best: 0.5103 
+  RMSE:  7.6442 best: 7.6442.
+time elapsed 10m 18s.
+Finetune Epoch 8:
+Epoch-08, training SRCC=0.5779, time elapsed 24m 20s.
+backbone_lr = 2.73e-05, head_lr = 2.73e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8162 best: 0.8162 
+  PLCC:  0.8174 best: 0.8174  
+  KROCC: 0.6230 best: 0.6230 
+  RMSE:  6.3559 best: 6.3559.
+time elapsed 07m 36s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7090 best: 0.7090 
+  PLCC:  0.7397 best: 0.7397  
+  KROCC: 0.5212 best: 0.5212 
+  RMSE:  7.4982 best: 7.4982.
+time elapsed 09m 12s.
+Finetune Epoch 9:
+Epoch-09, training SRCC=0.5177, time elapsed 25m 03s.
+backbone_lr = 1.46e-05, head_lr = 1.46e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8210 best: 0.8210 
+  PLCC:  0.8220 best: 0.8220  
+  KROCC: 0.6287 best: 0.6287 
+  RMSE:  6.2752 best: 6.2752.
+time elapsed 07m 56s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7131 best: 0.7131 
+  PLCC:  0.7459 best: 0.7459  
+  KROCC: 0.5252 best: 0.5252 
+  RMSE:  7.4081 best: 7.4081.
+time elapsed 09m 28s.
+For the finetuning process on val-ltest with 7182 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.8210
+                    PLCC:  0.8220
+                    KROCC: 0.6287
+                    RMSE:  6.2752.
+For the finetuning process on val-l1080p with 3573 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.7131
+                    PLCC:  0.7459
+                    KROCC: 0.5252
+                    RMSE:  7.4081.
+================= Split 3 / 10 =================
+<class 'fastvqa.datasets.fusion_datasets.FusionDataset'>
+Data fromm fragments
+Using Random Uniform Sampling for Fusion Dataset
+dataset=[val-ltest], with 7182 samples.
+<class 'fastvqa.datasets.fusion_datasets.FusionDataset'>
+Data fromm fragments
+Using Random Uniform Sampling for Fusion Dataset
+dataset=[val-l1080p], with 3573 samples.
+Preparing training dataset: train
+<class 'fastvqa.datasets.fusion_datasets.FusionDataset'>
+Data fromm fragments
+Using Random Uniform Sampling for Fusion Dataset
+dataset=[train], with 28056 samples.
+_IncompatibleKeys(missing_keys=['vqa_head.fc_hid.weight', 'vqa_head.fc_hid.bias', 'vqa_head.fc_last.weight', 'vqa_head.fc_last.bias'], unexpected_keys=['backbone.patch_embed.proj.weight', 'resize_backbone.patch_embed.proj.weight', 'backbone.patch_embed.proj.bias', 'resize_backbone.patch_embed.proj.bias', 'backbone.patch_embed.norm.weight', 'resize_backbone.patch_embed.norm.weight', 'backbone.patch_embed.norm.bias', 'resize_backbone.patch_embed.norm.bias', 'backbone.layers.0.blocks.0.norm1.weight', 'resize_backbone.layers.0.blocks.0.norm1.weight', 'backbone.layers.0.blocks.0.norm1.bias', 'resize_backbone.layers.0.blocks.0.norm1.bias', 'backbone.layers.0.blocks.0.attn.relative_position_bias_table', 'resize_backbone.layers.0.blocks.0.attn.relative_position_bias_table', 'backbone.layers.0.blocks.0.attn.relative_position_index', 'resize_backbone.layers.0.blocks.0.attn.relative_position_index', 'backbone.layers.0.blocks.0.attn.qkv.weight', 'resize_backbone.layers.0.blocks.0.attn.qkv.weight', 'backbone.layers.0.blocks.0.attn.qkv.bias', 'resize_backbone.layers.0.blocks.0.attn.qkv.bias', 'backbone.layers.0.blocks.0.attn.proj.weight', 'resize_backbone.layers.0.blocks.0.attn.proj.weight', 'backbone.layers.0.blocks.0.attn.proj.bias', 'resize_backbone.layers.0.blocks.0.attn.proj.bias', 'backbone.layers.0.blocks.0.norm2.weight', 'resize_backbone.layers.0.blocks.0.norm2.weight', 'backbone.layers.0.blocks.0.norm2.bias', 'resize_backbone.layers.0.blocks.0.norm2.bias', 'backbone.layers.0.blocks.0.mlp.fc1.weight', 'resize_backbone.layers.0.blocks.0.mlp.fc1.weight', 'backbone.layers.0.blocks.0.mlp.fc1.bias', 'resize_backbone.layers.0.blocks.0.mlp.fc1.bias', 'backbone.layers.0.blocks.0.mlp.fc2.weight', 'resize_backbone.layers.0.blocks.0.mlp.fc2.weight', 'backbone.layers.0.blocks.0.mlp.fc2.bias', 'resize_backbone.layers.0.blocks.0.mlp.fc2.bias', 'backbone.layers.0.blocks.1.norm1.weight', 'resize_backbone.layers.0.blocks.1.norm1.weight', 'backbone.layers.0.blocks.1.norm1.bias', 'resize_backbone.layers.0.blocks.1.norm1.bias', 'backbone.layers.0.blocks.1.attn.relative_position_bias_table', 'resize_backbone.layers.0.blocks.1.attn.relative_position_bias_table', 'backbone.layers.0.blocks.1.attn.relative_position_index', 'resize_backbone.layers.0.blocks.1.attn.relative_position_index', 'backbone.layers.0.blocks.1.attn.qkv.weight', 'resize_backbone.layers.0.blocks.1.attn.qkv.weight', 'backbone.layers.0.blocks.1.attn.qkv.bias', 'resize_backbone.layers.0.blocks.1.attn.qkv.bias', 'backbone.layers.0.blocks.1.attn.proj.weight', 'resize_backbone.layers.0.blocks.1.attn.proj.weight', 'backbone.layers.0.blocks.1.attn.proj.bias', 'resize_backbone.layers.0.blocks.1.attn.proj.bias', 'backbone.layers.0.blocks.1.norm2.weight', 'resize_backbone.layers.0.blocks.1.norm2.weight', 'backbone.layers.0.blocks.1.norm2.bias', 'resize_backbone.layers.0.blocks.1.norm2.bias', 'backbone.layers.0.blocks.1.mlp.fc1.weight', 'resize_backbone.layers.0.blocks.1.mlp.fc1.weight', 'backbone.layers.0.blocks.1.mlp.fc1.bias', 'resize_backbone.layers.0.blocks.1.mlp.fc1.bias', 'backbone.layers.0.blocks.1.mlp.fc2.weight', 'resize_backbone.layers.0.blocks.1.mlp.fc2.weight', 'backbone.layers.0.blocks.1.mlp.fc2.bias', 'resize_backbone.layers.0.blocks.1.mlp.fc2.bias', 'backbone.layers.0.downsample.reduction.weight', 'resize_backbone.layers.0.downsample.reduction.weight', 'backbone.layers.0.downsample.norm.weight', 'resize_backbone.layers.0.downsample.norm.weight', 'backbone.layers.0.downsample.norm.bias', 'resize_backbone.layers.0.downsample.norm.bias', 'backbone.layers.1.blocks.0.norm1.weight', 'resize_backbone.layers.1.blocks.0.norm1.weight', 'backbone.layers.1.blocks.0.norm1.bias', 'resize_backbone.layers.1.blocks.0.norm1.bias', 'backbone.layers.1.blocks.0.attn.relative_position_bias_table', 'resize_backbone.layers.1.blocks.0.attn.relative_position_bias_table', 'backbone.layers.1.blocks.0.attn.relative_position_index', 'resize_backbone.layers.1.blocks.0.attn.relative_position_index', 'backbone.layers.1.blocks.0.attn.qkv.weight', 'resize_backbone.layers.1.blocks.0.attn.qkv.weight', 'backbone.layers.1.blocks.0.attn.qkv.bias', 'resize_backbone.layers.1.blocks.0.attn.qkv.bias', 'backbone.layers.1.blocks.0.attn.proj.weight', 'resize_backbone.layers.1.blocks.0.attn.proj.weight', 'backbone.layers.1.blocks.0.attn.proj.bias', 'resize_backbone.layers.1.blocks.0.attn.proj.bias', 'backbone.layers.1.blocks.0.norm2.weight', 'resize_backbone.layers.1.blocks.0.norm2.weight', 'backbone.layers.1.blocks.0.norm2.bias', 'resize_backbone.layers.1.blocks.0.norm2.bias', 'backbone.layers.1.blocks.0.mlp.fc1.weight', 'resize_backbone.layers.1.blocks.0.mlp.fc1.weight', 'backbone.layers.1.blocks.0.mlp.fc1.bias', 'resize_backbone.layers.1.blocks.0.mlp.fc1.bias', 'backbone.layers.1.blocks.0.mlp.fc2.weight', 'resize_backbone.layers.1.blocks.0.mlp.fc2.weight', 'backbone.layers.1.blocks.0.mlp.fc2.bias', 'resize_backbone.layers.1.blocks.0.mlp.fc2.bias', 'backbone.layers.1.blocks.1.norm1.weight', 'resize_backbone.layers.1.blocks.1.norm1.weight', 'backbone.layers.1.blocks.1.norm1.bias', 'resize_backbone.layers.1.blocks.1.norm1.bias', 'backbone.layers.1.blocks.1.attn.relative_position_bias_table', 'resize_backbone.layers.1.blocks.1.attn.relative_position_bias_table', 'backbone.layers.1.blocks.1.attn.relative_position_index', 'resize_backbone.layers.1.blocks.1.attn.relative_position_index', 'backbone.layers.1.blocks.1.attn.qkv.weight', 'resize_backbone.layers.1.blocks.1.attn.qkv.weight', 'backbone.layers.1.blocks.1.attn.qkv.bias', 'resize_backbone.layers.1.blocks.1.attn.qkv.bias', 'backbone.layers.1.blocks.1.attn.proj.weight', 'resize_backbone.layers.1.blocks.1.attn.proj.weight', 'backbone.layers.1.blocks.1.attn.proj.bias', 'resize_backbone.layers.1.blocks.1.attn.proj.bias', 'backbone.layers.1.blocks.1.norm2.weight', 'resize_backbone.layers.1.blocks.1.norm2.weight', 'backbone.layers.1.blocks.1.norm2.bias', 'resize_backbone.layers.1.blocks.1.norm2.bias', 'backbone.layers.1.blocks.1.mlp.fc1.weight', 'resize_backbone.layers.1.blocks.1.mlp.fc1.weight', 'backbone.layers.1.blocks.1.mlp.fc1.bias', 'resize_backbone.layers.1.blocks.1.mlp.fc1.bias', 'backbone.layers.1.blocks.1.mlp.fc2.weight', 'resize_backbone.layers.1.blocks.1.mlp.fc2.weight', 'backbone.layers.1.blocks.1.mlp.fc2.bias', 'resize_backbone.layers.1.blocks.1.mlp.fc2.bias', 'backbone.layers.1.downsample.reduction.weight', 'resize_backbone.layers.1.downsample.reduction.weight', 'backbone.layers.1.downsample.norm.weight', 'resize_backbone.layers.1.downsample.norm.weight', 'backbone.layers.1.downsample.norm.bias', 'resize_backbone.layers.1.downsample.norm.bias', 'backbone.layers.2.blocks.0.norm1.weight', 'resize_backbone.layers.2.blocks.0.norm1.weight', 'backbone.layers.2.blocks.0.norm1.bias', 'resize_backbone.layers.2.blocks.0.norm1.bias', 'backbone.layers.2.blocks.0.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.0.attn.relative_position_bias_table', 'backbone.layers.2.blocks.0.attn.relative_position_index', 'resize_backbone.layers.2.blocks.0.attn.relative_position_index', 'backbone.layers.2.blocks.0.attn.qkv.weight', 'resize_backbone.layers.2.blocks.0.attn.qkv.weight', 'backbone.layers.2.blocks.0.attn.qkv.bias', 'resize_backbone.layers.2.blocks.0.attn.qkv.bias', 'backbone.layers.2.blocks.0.attn.proj.weight', 'resize_backbone.layers.2.blocks.0.attn.proj.weight', 'backbone.layers.2.blocks.0.attn.proj.bias', 'resize_backbone.layers.2.blocks.0.attn.proj.bias', 'backbone.layers.2.blocks.0.norm2.weight', 'resize_backbone.layers.2.blocks.0.norm2.weight', 'backbone.layers.2.blocks.0.norm2.bias', 'resize_backbone.layers.2.blocks.0.norm2.bias', 'backbone.layers.2.blocks.0.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.0.mlp.fc1.weight', 'backbone.layers.2.blocks.0.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.0.mlp.fc1.bias', 'backbone.layers.2.blocks.0.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.0.mlp.fc2.weight', 'backbone.layers.2.blocks.0.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.0.mlp.fc2.bias', 'backbone.layers.2.blocks.1.norm1.weight', 'resize_backbone.layers.2.blocks.1.norm1.weight', 'backbone.layers.2.blocks.1.norm1.bias', 'resize_backbone.layers.2.blocks.1.norm1.bias', 'backbone.layers.2.blocks.1.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.1.attn.relative_position_bias_table', 'backbone.layers.2.blocks.1.attn.relative_position_index', 'resize_backbone.layers.2.blocks.1.attn.relative_position_index', 'backbone.layers.2.blocks.1.attn.qkv.weight', 'resize_backbone.layers.2.blocks.1.attn.qkv.weight', 'backbone.layers.2.blocks.1.attn.qkv.bias', 'resize_backbone.layers.2.blocks.1.attn.qkv.bias', 'backbone.layers.2.blocks.1.attn.proj.weight', 'resize_backbone.layers.2.blocks.1.attn.proj.weight', 'backbone.layers.2.blocks.1.attn.proj.bias', 'resize_backbone.layers.2.blocks.1.attn.proj.bias', 'backbone.layers.2.blocks.1.norm2.weight', 'resize_backbone.layers.2.blocks.1.norm2.weight', 'backbone.layers.2.blocks.1.norm2.bias', 'resize_backbone.layers.2.blocks.1.norm2.bias', 'backbone.layers.2.blocks.1.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.1.mlp.fc1.weight', 'backbone.layers.2.blocks.1.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.1.mlp.fc1.bias', 'backbone.layers.2.blocks.1.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.1.mlp.fc2.weight', 'backbone.layers.2.blocks.1.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.1.mlp.fc2.bias', 'backbone.layers.2.blocks.2.norm1.weight', 'resize_backbone.layers.2.blocks.2.norm1.weight', 'backbone.layers.2.blocks.2.norm1.bias', 'resize_backbone.layers.2.blocks.2.norm1.bias', 'backbone.layers.2.blocks.2.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.2.attn.relative_position_bias_table', 'backbone.layers.2.blocks.2.attn.relative_position_index', 'resize_backbone.layers.2.blocks.2.attn.relative_position_index', 'backbone.layers.2.blocks.2.attn.qkv.weight', 'resize_backbone.layers.2.blocks.2.attn.qkv.weight', 'backbone.layers.2.blocks.2.attn.qkv.bias', 'resize_backbone.layers.2.blocks.2.attn.qkv.bias', 'backbone.layers.2.blocks.2.attn.proj.weight', 'resize_backbone.layers.2.blocks.2.attn.proj.weight', 'backbone.layers.2.blocks.2.attn.proj.bias', 'resize_backbone.layers.2.blocks.2.attn.proj.bias', 'backbone.layers.2.blocks.2.norm2.weight', 'resize_backbone.layers.2.blocks.2.norm2.weight', 'backbone.layers.2.blocks.2.norm2.bias', 'resize_backbone.layers.2.blocks.2.norm2.bias', 'backbone.layers.2.blocks.2.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.2.mlp.fc1.weight', 'backbone.layers.2.blocks.2.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.2.mlp.fc1.bias', 'backbone.layers.2.blocks.2.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.2.mlp.fc2.weight', 'backbone.layers.2.blocks.2.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.2.mlp.fc2.bias', 'backbone.layers.2.blocks.3.norm1.weight', 'resize_backbone.layers.2.blocks.3.norm1.weight', 'backbone.layers.2.blocks.3.norm1.bias', 'resize_backbone.layers.2.blocks.3.norm1.bias', 'backbone.layers.2.blocks.3.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.3.attn.relative_position_bias_table', 'backbone.layers.2.blocks.3.attn.relative_position_index', 'resize_backbone.layers.2.blocks.3.attn.relative_position_index', 'backbone.layers.2.blocks.3.attn.qkv.weight', 'resize_backbone.layers.2.blocks.3.attn.qkv.weight', 'backbone.layers.2.blocks.3.attn.qkv.bias', 'resize_backbone.layers.2.blocks.3.attn.qkv.bias', 'backbone.layers.2.blocks.3.attn.proj.weight', 'resize_backbone.layers.2.blocks.3.attn.proj.weight', 'backbone.layers.2.blocks.3.attn.proj.bias', 'resize_backbone.layers.2.blocks.3.attn.proj.bias', 'backbone.layers.2.blocks.3.norm2.weight', 'resize_backbone.layers.2.blocks.3.norm2.weight', 'backbone.layers.2.blocks.3.norm2.bias', 'resize_backbone.layers.2.blocks.3.norm2.bias', 'backbone.layers.2.blocks.3.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.3.mlp.fc1.weight', 'backbone.layers.2.blocks.3.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.3.mlp.fc1.bias', 'backbone.layers.2.blocks.3.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.3.mlp.fc2.weight', 'backbone.layers.2.blocks.3.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.3.mlp.fc2.bias', 'backbone.layers.2.blocks.4.norm1.weight', 'resize_backbone.layers.2.blocks.4.norm1.weight', 'backbone.layers.2.blocks.4.norm1.bias', 'resize_backbone.layers.2.blocks.4.norm1.bias', 'backbone.layers.2.blocks.4.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.4.attn.relative_position_bias_table', 'backbone.layers.2.blocks.4.attn.relative_position_index', 'resize_backbone.layers.2.blocks.4.attn.relative_position_index', 'backbone.layers.2.blocks.4.attn.qkv.weight', 'resize_backbone.layers.2.blocks.4.attn.qkv.weight', 'backbone.layers.2.blocks.4.attn.qkv.bias', 'resize_backbone.layers.2.blocks.4.attn.qkv.bias', 'backbone.layers.2.blocks.4.attn.proj.weight', 'resize_backbone.layers.2.blocks.4.attn.proj.weight', 'backbone.layers.2.blocks.4.attn.proj.bias', 'resize_backbone.layers.2.blocks.4.attn.proj.bias', 'backbone.layers.2.blocks.4.norm2.weight', 'resize_backbone.layers.2.blocks.4.norm2.weight', 'backbone.layers.2.blocks.4.norm2.bias', 'resize_backbone.layers.2.blocks.4.norm2.bias', 'backbone.layers.2.blocks.4.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.4.mlp.fc1.weight', 'backbone.layers.2.blocks.4.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.4.mlp.fc1.bias', 'backbone.layers.2.blocks.4.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.4.mlp.fc2.weight', 'backbone.layers.2.blocks.4.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.4.mlp.fc2.bias', 'backbone.layers.2.blocks.5.norm1.weight', 'resize_backbone.layers.2.blocks.5.norm1.weight', 'backbone.layers.2.blocks.5.norm1.bias', 'resize_backbone.layers.2.blocks.5.norm1.bias', 'backbone.layers.2.blocks.5.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.5.attn.relative_position_bias_table', 'backbone.layers.2.blocks.5.attn.relative_position_index', 'resize_backbone.layers.2.blocks.5.attn.relative_position_index', 'backbone.layers.2.blocks.5.attn.qkv.weight', 'resize_backbone.layers.2.blocks.5.attn.qkv.weight', 'backbone.layers.2.blocks.5.attn.qkv.bias', 'resize_backbone.layers.2.blocks.5.attn.qkv.bias', 'backbone.layers.2.blocks.5.attn.proj.weight', 'resize_backbone.layers.2.blocks.5.attn.proj.weight', 'backbone.layers.2.blocks.5.attn.proj.bias', 'resize_backbone.layers.2.blocks.5.attn.proj.bias', 'backbone.layers.2.blocks.5.norm2.weight', 'resize_backbone.layers.2.blocks.5.norm2.weight', 'backbone.layers.2.blocks.5.norm2.bias', 'resize_backbone.layers.2.blocks.5.norm2.bias', 'backbone.layers.2.blocks.5.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.5.mlp.fc1.weight', 'backbone.layers.2.blocks.5.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.5.mlp.fc1.bias', 'backbone.layers.2.blocks.5.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.5.mlp.fc2.weight', 'backbone.layers.2.blocks.5.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.5.mlp.fc2.bias', 'backbone.layers.2.downsample.reduction.weight', 'resize_backbone.layers.2.downsample.reduction.weight', 'backbone.layers.2.downsample.norm.weight', 'resize_backbone.layers.2.downsample.norm.weight', 'backbone.layers.2.downsample.norm.bias', 'resize_backbone.layers.2.downsample.norm.bias', 'backbone.layers.3.blocks.0.norm1.weight', 'resize_backbone.layers.3.blocks.0.norm1.weight', 'backbone.layers.3.blocks.0.norm1.bias', 'resize_backbone.layers.3.blocks.0.norm1.bias', 'backbone.layers.3.blocks.0.attn.relative_position_bias_table', 'resize_backbone.layers.3.blocks.0.attn.relative_position_bias_table', 'backbone.layers.3.blocks.0.attn.relative_position_index', 'resize_backbone.layers.3.blocks.0.attn.relative_position_index', 'backbone.layers.3.blocks.0.attn.qkv.weight', 'resize_backbone.layers.3.blocks.0.attn.qkv.weight', 'backbone.layers.3.blocks.0.attn.qkv.bias', 'resize_backbone.layers.3.blocks.0.attn.qkv.bias', 'backbone.layers.3.blocks.0.attn.proj.weight', 'resize_backbone.layers.3.blocks.0.attn.proj.weight', 'backbone.layers.3.blocks.0.attn.proj.bias', 'resize_backbone.layers.3.blocks.0.attn.proj.bias', 'backbone.layers.3.blocks.0.norm2.weight', 'resize_backbone.layers.3.blocks.0.norm2.weight', 'backbone.layers.3.blocks.0.norm2.bias', 'resize_backbone.layers.3.blocks.0.norm2.bias', 'backbone.layers.3.blocks.0.mlp.fc1.weight', 'resize_backbone.layers.3.blocks.0.mlp.fc1.weight', 'backbone.layers.3.blocks.0.mlp.fc1.bias', 'resize_backbone.layers.3.blocks.0.mlp.fc1.bias', 'backbone.layers.3.blocks.0.mlp.fc2.weight', 'resize_backbone.layers.3.blocks.0.mlp.fc2.weight', 'backbone.layers.3.blocks.0.mlp.fc2.bias', 'resize_backbone.layers.3.blocks.0.mlp.fc2.bias', 'backbone.layers.3.blocks.1.norm1.weight', 'resize_backbone.layers.3.blocks.1.norm1.weight', 'backbone.layers.3.blocks.1.norm1.bias', 'resize_backbone.layers.3.blocks.1.norm1.bias', 'backbone.layers.3.blocks.1.attn.relative_position_bias_table', 'resize_backbone.layers.3.blocks.1.attn.relative_position_bias_table', 'backbone.layers.3.blocks.1.attn.relative_position_index', 'resize_backbone.layers.3.blocks.1.attn.relative_position_index', 'backbone.layers.3.blocks.1.attn.qkv.weight', 'resize_backbone.layers.3.blocks.1.attn.qkv.weight', 'backbone.layers.3.blocks.1.attn.qkv.bias', 'resize_backbone.layers.3.blocks.1.attn.qkv.bias', 'backbone.layers.3.blocks.1.attn.proj.weight', 'resize_backbone.layers.3.blocks.1.attn.proj.weight', 'backbone.layers.3.blocks.1.attn.proj.bias', 'resize_backbone.layers.3.blocks.1.attn.proj.bias', 'backbone.layers.3.blocks.1.norm2.weight', 'resize_backbone.layers.3.blocks.1.norm2.weight', 'backbone.layers.3.blocks.1.norm2.bias', 'resize_backbone.layers.3.blocks.1.norm2.bias', 'backbone.layers.3.blocks.1.mlp.fc1.weight', 'resize_backbone.layers.3.blocks.1.mlp.fc1.weight', 'backbone.layers.3.blocks.1.mlp.fc1.bias', 'resize_backbone.layers.3.blocks.1.mlp.fc1.bias', 'backbone.layers.3.blocks.1.mlp.fc2.weight', 'resize_backbone.layers.3.blocks.1.mlp.fc2.weight', 'backbone.layers.3.blocks.1.mlp.fc2.bias', 'resize_backbone.layers.3.blocks.1.mlp.fc2.bias', 'backbone.norm.weight', 'resize_backbone.norm.weight', 'backbone.norm.bias', 'resize_backbone.norm.bias'])
+Finetune Epoch 0:
+Epoch-00, training SRCC=0.6016, time elapsed 25m 07s.
+backbone_lr = 4.00e-05, head_lr = 4.00e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.7949 best: 0.7949 
+  PLCC:  0.7958 best: 0.7958  
+  KROCC: 0.5996 best: 0.5996 
+  RMSE:  6.7213 best: 6.7213.
+time elapsed 08m 09s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6843 best: 0.6843 
+  PLCC:  0.7106 best: 0.7106  
+  KROCC: 0.4987 best: 0.4987 
+  RMSE:  7.9055 best: 7.9055.
+time elapsed 09m 56s.
+Finetune Epoch 1:
+Epoch-01, training SRCC=0.3661, time elapsed 27m 42s.
+backbone_lr = 8.00e-05, head_lr = 8.00e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8109 best: 0.8109 
+  PLCC:  0.8115 best: 0.8115  
+  KROCC: 0.6171 best: 0.6171 
+  RMSE:  6.4564 best: 6.4564.
+time elapsed 07m 51s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6957 best: 0.6957 
+  PLCC:  0.7238 best: 0.7238  
+  KROCC: 0.5094 best: 0.5094 
+  RMSE:  7.7235 best: 7.7235.
+time elapsed 09m 43s.
+Finetune Epoch 2:
+Epoch-02, training SRCC=0.3479, time elapsed 25m 19s.
+backbone_lr = 9.94e-05, head_lr = 9.94e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8044 best: 0.8109 
+  PLCC:  0.8039 best: 0.8115  
+  KROCC: 0.6103 best: 0.6171 
+  RMSE:  6.5859 best: 6.4564.
+time elapsed 08m 00s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6775 best: 0.6957 
+  PLCC:  0.7097 best: 0.7238  
+  KROCC: 0.4935 best: 0.5094 
+  RMSE:  7.9174 best: 7.7235.
+time elapsed 10m 04s.
+Finetune Epoch 3:
+Epoch-03, training SRCC=0.3668, time elapsed 26m 22s.
+backbone_lr = 9.45e-05, head_lr = 9.45e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8017 best: 0.8109 
+  PLCC:  0.8011 best: 0.8115  
+  KROCC: 0.6067 best: 0.6171 
+  RMSE:  6.6325 best: 6.4564.
+time elapsed 08m 02s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6748 best: 0.6957 
+  PLCC:  0.7079 best: 0.7238  
+  KROCC: 0.4907 best: 0.5094 
+  RMSE:  7.9423 best: 7.7235.
+time elapsed 09m 50s.
+Finetune Epoch 4:
+Epoch-04, training SRCC=0.3653, time elapsed 26m 18s.
+backbone_lr = 8.54e-05, head_lr = 8.54e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8026 best: 0.8109 
+  PLCC:  0.8030 best: 0.8115  
+  KROCC: 0.6080 best: 0.6171 
+  RMSE:  6.6006 best: 6.4564.
+time elapsed 07m 46s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6786 best: 0.6957 
+  PLCC:  0.7117 best: 0.7238  
+  KROCC: 0.4936 best: 0.5094 
+  RMSE:  7.8901 best: 7.7235.
+time elapsed 11m 05s.
+Finetune Epoch 5:
+Epoch-05, training SRCC=0.4493, time elapsed 25m 31s.
+backbone_lr = 7.27e-05, head_lr = 7.27e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8048 best: 0.8109 
+  PLCC:  0.8056 best: 0.8115  
+  KROCC: 0.6114 best: 0.6171 
+  RMSE:  6.5570 best: 6.4564.
+time elapsed 07m 20s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6841 best: 0.6957 
+  PLCC:  0.7181 best: 0.7238  
+  KROCC: 0.4993 best: 0.5094 
+  RMSE:  7.8023 best: 7.7235.
+time elapsed 08m 54s.
+Finetune Epoch 6:
+Epoch-06, training SRCC=0.3780, time elapsed 25m 00s.
+backbone_lr = 5.78e-05, head_lr = 5.78e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8100 best: 0.8109 
+  PLCC:  0.8101 best: 0.8115  
+  KROCC: 0.6168 best: 0.6171 
+  RMSE:  6.4805 best: 6.4564.
+time elapsed 07m 58s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6860 best: 0.6957 
+  PLCC:  0.7159 best: 0.7238  
+  KROCC: 0.4999 best: 0.5094 
+  RMSE:  7.8329 best: 7.7235.
+time elapsed 09m 57s.
+Finetune Epoch 7:
+Epoch-07, training SRCC=0.5003, time elapsed 23m 59s.
+backbone_lr = 4.22e-05, head_lr = 4.22e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8163 best: 0.8163 
+  PLCC:  0.8171 best: 0.8171  
+  KROCC: 0.6238 best: 0.6238 
+  RMSE:  6.3611 best: 6.3611.
+time elapsed 07m 37s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6955 best: 0.6957 
+  PLCC:  0.7295 best: 0.7295  
+  KROCC: 0.5088 best: 0.5094 
+  RMSE:  7.6424 best: 7.6424.
+time elapsed 09m 33s.
+Finetune Epoch 8:
+Epoch-08, training SRCC=0.3608, time elapsed 25m 11s.
+backbone_lr = 2.73e-05, head_lr = 2.73e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8211 best: 0.8211 
+  PLCC:  0.8221 best: 0.8221  
+  KROCC: 0.6287 best: 0.6287 
+  RMSE:  6.2737 best: 6.2737.
+time elapsed 07m 48s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7029 best: 0.7029 
+  PLCC:  0.7325 best: 0.7325  
+  KROCC: 0.5156 best: 0.5156 
+  RMSE:  7.6003 best: 7.6003.
+time elapsed 09m 15s.
+Finetune Epoch 9:
+Epoch-09, training SRCC=0.4801, time elapsed 24m 10s.
+backbone_lr = 1.46e-05, head_lr = 1.46e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8240 best: 0.8240 
+  PLCC:  0.8257 best: 0.8257  
+  KROCC: 0.6325 best: 0.6325 
+  RMSE:  6.2088 best: 6.2088.
+time elapsed 07m 54s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7116 best: 0.7116 
+  PLCC:  0.7407 best: 0.7407  
+  KROCC: 0.5233 best: 0.5233 
+  RMSE:  7.4831 best: 7.4831.
+time elapsed 10m 02s.
+For the finetuning process on val-ltest with 7182 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.8240
+                    PLCC:  0.8257
+                    KROCC: 0.6325
+                    RMSE:  6.2088.
+For the finetuning process on val-l1080p with 3573 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.7116
+                    PLCC:  0.7407
+                    KROCC: 0.5233
+                    RMSE:  7.4831.
+================= Split 4 / 10 =================
+<class 'fastvqa.datasets.fusion_datasets.FusionDataset'>
+Data fromm fragments
+Using Random Uniform Sampling for Fusion Dataset
+dataset=[val-ltest], with 7182 samples.
+<class 'fastvqa.datasets.fusion_datasets.FusionDataset'>
+Data fromm fragments
+Using Random Uniform Sampling for Fusion Dataset
+dataset=[val-l1080p], with 3573 samples.
+Preparing training dataset: train
+<class 'fastvqa.datasets.fusion_datasets.FusionDataset'>
+Data fromm fragments
+Using Random Uniform Sampling for Fusion Dataset
+dataset=[train], with 28056 samples.
+_IncompatibleKeys(missing_keys=['vqa_head.fc_hid.weight', 'vqa_head.fc_hid.bias', 'vqa_head.fc_last.weight', 'vqa_head.fc_last.bias'], unexpected_keys=['backbone.patch_embed.proj.weight', 'resize_backbone.patch_embed.proj.weight', 'backbone.patch_embed.proj.bias', 'resize_backbone.patch_embed.proj.bias', 'backbone.patch_embed.norm.weight', 'resize_backbone.patch_embed.norm.weight', 'backbone.patch_embed.norm.bias', 'resize_backbone.patch_embed.norm.bias', 'backbone.layers.0.blocks.0.norm1.weight', 'resize_backbone.layers.0.blocks.0.norm1.weight', 'backbone.layers.0.blocks.0.norm1.bias', 'resize_backbone.layers.0.blocks.0.norm1.bias', 'backbone.layers.0.blocks.0.attn.relative_position_bias_table', 'resize_backbone.layers.0.blocks.0.attn.relative_position_bias_table', 'backbone.layers.0.blocks.0.attn.relative_position_index', 'resize_backbone.layers.0.blocks.0.attn.relative_position_index', 'backbone.layers.0.blocks.0.attn.qkv.weight', 'resize_backbone.layers.0.blocks.0.attn.qkv.weight', 'backbone.layers.0.blocks.0.attn.qkv.bias', 'resize_backbone.layers.0.blocks.0.attn.qkv.bias', 'backbone.layers.0.blocks.0.attn.proj.weight', 'resize_backbone.layers.0.blocks.0.attn.proj.weight', 'backbone.layers.0.blocks.0.attn.proj.bias', 'resize_backbone.layers.0.blocks.0.attn.proj.bias', 'backbone.layers.0.blocks.0.norm2.weight', 'resize_backbone.layers.0.blocks.0.norm2.weight', 'backbone.layers.0.blocks.0.norm2.bias', 'resize_backbone.layers.0.blocks.0.norm2.bias', 'backbone.layers.0.blocks.0.mlp.fc1.weight', 'resize_backbone.layers.0.blocks.0.mlp.fc1.weight', 'backbone.layers.0.blocks.0.mlp.fc1.bias', 'resize_backbone.layers.0.blocks.0.mlp.fc1.bias', 'backbone.layers.0.blocks.0.mlp.fc2.weight', 'resize_backbone.layers.0.blocks.0.mlp.fc2.weight', 'backbone.layers.0.blocks.0.mlp.fc2.bias', 'resize_backbone.layers.0.blocks.0.mlp.fc2.bias', 'backbone.layers.0.blocks.1.norm1.weight', 'resize_backbone.layers.0.blocks.1.norm1.weight', 'backbone.layers.0.blocks.1.norm1.bias', 'resize_backbone.layers.0.blocks.1.norm1.bias', 'backbone.layers.0.blocks.1.attn.relative_position_bias_table', 'resize_backbone.layers.0.blocks.1.attn.relative_position_bias_table', 'backbone.layers.0.blocks.1.attn.relative_position_index', 'resize_backbone.layers.0.blocks.1.attn.relative_position_index', 'backbone.layers.0.blocks.1.attn.qkv.weight', 'resize_backbone.layers.0.blocks.1.attn.qkv.weight', 'backbone.layers.0.blocks.1.attn.qkv.bias', 'resize_backbone.layers.0.blocks.1.attn.qkv.bias', 'backbone.layers.0.blocks.1.attn.proj.weight', 'resize_backbone.layers.0.blocks.1.attn.proj.weight', 'backbone.layers.0.blocks.1.attn.proj.bias', 'resize_backbone.layers.0.blocks.1.attn.proj.bias', 'backbone.layers.0.blocks.1.norm2.weight', 'resize_backbone.layers.0.blocks.1.norm2.weight', 'backbone.layers.0.blocks.1.norm2.bias', 'resize_backbone.layers.0.blocks.1.norm2.bias', 'backbone.layers.0.blocks.1.mlp.fc1.weight', 'resize_backbone.layers.0.blocks.1.mlp.fc1.weight', 'backbone.layers.0.blocks.1.mlp.fc1.bias', 'resize_backbone.layers.0.blocks.1.mlp.fc1.bias', 'backbone.layers.0.blocks.1.mlp.fc2.weight', 'resize_backbone.layers.0.blocks.1.mlp.fc2.weight', 'backbone.layers.0.blocks.1.mlp.fc2.bias', 'resize_backbone.layers.0.blocks.1.mlp.fc2.bias', 'backbone.layers.0.downsample.reduction.weight', 'resize_backbone.layers.0.downsample.reduction.weight', 'backbone.layers.0.downsample.norm.weight', 'resize_backbone.layers.0.downsample.norm.weight', 'backbone.layers.0.downsample.norm.bias', 'resize_backbone.layers.0.downsample.norm.bias', 'backbone.layers.1.blocks.0.norm1.weight', 'resize_backbone.layers.1.blocks.0.norm1.weight', 'backbone.layers.1.blocks.0.norm1.bias', 'resize_backbone.layers.1.blocks.0.norm1.bias', 'backbone.layers.1.blocks.0.attn.relative_position_bias_table', 'resize_backbone.layers.1.blocks.0.attn.relative_position_bias_table', 'backbone.layers.1.blocks.0.attn.relative_position_index', 'resize_backbone.layers.1.blocks.0.attn.relative_position_index', 'backbone.layers.1.blocks.0.attn.qkv.weight', 'resize_backbone.layers.1.blocks.0.attn.qkv.weight', 'backbone.layers.1.blocks.0.attn.qkv.bias', 'resize_backbone.layers.1.blocks.0.attn.qkv.bias', 'backbone.layers.1.blocks.0.attn.proj.weight', 'resize_backbone.layers.1.blocks.0.attn.proj.weight', 'backbone.layers.1.blocks.0.attn.proj.bias', 'resize_backbone.layers.1.blocks.0.attn.proj.bias', 'backbone.layers.1.blocks.0.norm2.weight', 'resize_backbone.layers.1.blocks.0.norm2.weight', 'backbone.layers.1.blocks.0.norm2.bias', 'resize_backbone.layers.1.blocks.0.norm2.bias', 'backbone.layers.1.blocks.0.mlp.fc1.weight', 'resize_backbone.layers.1.blocks.0.mlp.fc1.weight', 'backbone.layers.1.blocks.0.mlp.fc1.bias', 'resize_backbone.layers.1.blocks.0.mlp.fc1.bias', 'backbone.layers.1.blocks.0.mlp.fc2.weight', 'resize_backbone.layers.1.blocks.0.mlp.fc2.weight', 'backbone.layers.1.blocks.0.mlp.fc2.bias', 'resize_backbone.layers.1.blocks.0.mlp.fc2.bias', 'backbone.layers.1.blocks.1.norm1.weight', 'resize_backbone.layers.1.blocks.1.norm1.weight', 'backbone.layers.1.blocks.1.norm1.bias', 'resize_backbone.layers.1.blocks.1.norm1.bias', 'backbone.layers.1.blocks.1.attn.relative_position_bias_table', 'resize_backbone.layers.1.blocks.1.attn.relative_position_bias_table', 'backbone.layers.1.blocks.1.attn.relative_position_index', 'resize_backbone.layers.1.blocks.1.attn.relative_position_index', 'backbone.layers.1.blocks.1.attn.qkv.weight', 'resize_backbone.layers.1.blocks.1.attn.qkv.weight', 'backbone.layers.1.blocks.1.attn.qkv.bias', 'resize_backbone.layers.1.blocks.1.attn.qkv.bias', 'backbone.layers.1.blocks.1.attn.proj.weight', 'resize_backbone.layers.1.blocks.1.attn.proj.weight', 'backbone.layers.1.blocks.1.attn.proj.bias', 'resize_backbone.layers.1.blocks.1.attn.proj.bias', 'backbone.layers.1.blocks.1.norm2.weight', 'resize_backbone.layers.1.blocks.1.norm2.weight', 'backbone.layers.1.blocks.1.norm2.bias', 'resize_backbone.layers.1.blocks.1.norm2.bias', 'backbone.layers.1.blocks.1.mlp.fc1.weight', 'resize_backbone.layers.1.blocks.1.mlp.fc1.weight', 'backbone.layers.1.blocks.1.mlp.fc1.bias', 'resize_backbone.layers.1.blocks.1.mlp.fc1.bias', 'backbone.layers.1.blocks.1.mlp.fc2.weight', 'resize_backbone.layers.1.blocks.1.mlp.fc2.weight', 'backbone.layers.1.blocks.1.mlp.fc2.bias', 'resize_backbone.layers.1.blocks.1.mlp.fc2.bias', 'backbone.layers.1.downsample.reduction.weight', 'resize_backbone.layers.1.downsample.reduction.weight', 'backbone.layers.1.downsample.norm.weight', 'resize_backbone.layers.1.downsample.norm.weight', 'backbone.layers.1.downsample.norm.bias', 'resize_backbone.layers.1.downsample.norm.bias', 'backbone.layers.2.blocks.0.norm1.weight', 'resize_backbone.layers.2.blocks.0.norm1.weight', 'backbone.layers.2.blocks.0.norm1.bias', 'resize_backbone.layers.2.blocks.0.norm1.bias', 'backbone.layers.2.blocks.0.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.0.attn.relative_position_bias_table', 'backbone.layers.2.blocks.0.attn.relative_position_index', 'resize_backbone.layers.2.blocks.0.attn.relative_position_index', 'backbone.layers.2.blocks.0.attn.qkv.weight', 'resize_backbone.layers.2.blocks.0.attn.qkv.weight', 'backbone.layers.2.blocks.0.attn.qkv.bias', 'resize_backbone.layers.2.blocks.0.attn.qkv.bias', 'backbone.layers.2.blocks.0.attn.proj.weight', 'resize_backbone.layers.2.blocks.0.attn.proj.weight', 'backbone.layers.2.blocks.0.attn.proj.bias', 'resize_backbone.layers.2.blocks.0.attn.proj.bias', 'backbone.layers.2.blocks.0.norm2.weight', 'resize_backbone.layers.2.blocks.0.norm2.weight', 'backbone.layers.2.blocks.0.norm2.bias', 'resize_backbone.layers.2.blocks.0.norm2.bias', 'backbone.layers.2.blocks.0.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.0.mlp.fc1.weight', 'backbone.layers.2.blocks.0.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.0.mlp.fc1.bias', 'backbone.layers.2.blocks.0.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.0.mlp.fc2.weight', 'backbone.layers.2.blocks.0.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.0.mlp.fc2.bias', 'backbone.layers.2.blocks.1.norm1.weight', 'resize_backbone.layers.2.blocks.1.norm1.weight', 'backbone.layers.2.blocks.1.norm1.bias', 'resize_backbone.layers.2.blocks.1.norm1.bias', 'backbone.layers.2.blocks.1.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.1.attn.relative_position_bias_table', 'backbone.layers.2.blocks.1.attn.relative_position_index', 'resize_backbone.layers.2.blocks.1.attn.relative_position_index', 'backbone.layers.2.blocks.1.attn.qkv.weight', 'resize_backbone.layers.2.blocks.1.attn.qkv.weight', 'backbone.layers.2.blocks.1.attn.qkv.bias', 'resize_backbone.layers.2.blocks.1.attn.qkv.bias', 'backbone.layers.2.blocks.1.attn.proj.weight', 'resize_backbone.layers.2.blocks.1.attn.proj.weight', 'backbone.layers.2.blocks.1.attn.proj.bias', 'resize_backbone.layers.2.blocks.1.attn.proj.bias', 'backbone.layers.2.blocks.1.norm2.weight', 'resize_backbone.layers.2.blocks.1.norm2.weight', 'backbone.layers.2.blocks.1.norm2.bias', 'resize_backbone.layers.2.blocks.1.norm2.bias', 'backbone.layers.2.blocks.1.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.1.mlp.fc1.weight', 'backbone.layers.2.blocks.1.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.1.mlp.fc1.bias', 'backbone.layers.2.blocks.1.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.1.mlp.fc2.weight', 'backbone.layers.2.blocks.1.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.1.mlp.fc2.bias', 'backbone.layers.2.blocks.2.norm1.weight', 'resize_backbone.layers.2.blocks.2.norm1.weight', 'backbone.layers.2.blocks.2.norm1.bias', 'resize_backbone.layers.2.blocks.2.norm1.bias', 'backbone.layers.2.blocks.2.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.2.attn.relative_position_bias_table', 'backbone.layers.2.blocks.2.attn.relative_position_index', 'resize_backbone.layers.2.blocks.2.attn.relative_position_index', 'backbone.layers.2.blocks.2.attn.qkv.weight', 'resize_backbone.layers.2.blocks.2.attn.qkv.weight', 'backbone.layers.2.blocks.2.attn.qkv.bias', 'resize_backbone.layers.2.blocks.2.attn.qkv.bias', 'backbone.layers.2.blocks.2.attn.proj.weight', 'resize_backbone.layers.2.blocks.2.attn.proj.weight', 'backbone.layers.2.blocks.2.attn.proj.bias', 'resize_backbone.layers.2.blocks.2.attn.proj.bias', 'backbone.layers.2.blocks.2.norm2.weight', 'resize_backbone.layers.2.blocks.2.norm2.weight', 'backbone.layers.2.blocks.2.norm2.bias', 'resize_backbone.layers.2.blocks.2.norm2.bias', 'backbone.layers.2.blocks.2.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.2.mlp.fc1.weight', 'backbone.layers.2.blocks.2.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.2.mlp.fc1.bias', 'backbone.layers.2.blocks.2.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.2.mlp.fc2.weight', 'backbone.layers.2.blocks.2.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.2.mlp.fc2.bias', 'backbone.layers.2.blocks.3.norm1.weight', 'resize_backbone.layers.2.blocks.3.norm1.weight', 'backbone.layers.2.blocks.3.norm1.bias', 'resize_backbone.layers.2.blocks.3.norm1.bias', 'backbone.layers.2.blocks.3.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.3.attn.relative_position_bias_table', 'backbone.layers.2.blocks.3.attn.relative_position_index', 'resize_backbone.layers.2.blocks.3.attn.relative_position_index', 'backbone.layers.2.blocks.3.attn.qkv.weight', 'resize_backbone.layers.2.blocks.3.attn.qkv.weight', 'backbone.layers.2.blocks.3.attn.qkv.bias', 'resize_backbone.layers.2.blocks.3.attn.qkv.bias', 'backbone.layers.2.blocks.3.attn.proj.weight', 'resize_backbone.layers.2.blocks.3.attn.proj.weight', 'backbone.layers.2.blocks.3.attn.proj.bias', 'resize_backbone.layers.2.blocks.3.attn.proj.bias', 'backbone.layers.2.blocks.3.norm2.weight', 'resize_backbone.layers.2.blocks.3.norm2.weight', 'backbone.layers.2.blocks.3.norm2.bias', 'resize_backbone.layers.2.blocks.3.norm2.bias', 'backbone.layers.2.blocks.3.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.3.mlp.fc1.weight', 'backbone.layers.2.blocks.3.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.3.mlp.fc1.bias', 'backbone.layers.2.blocks.3.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.3.mlp.fc2.weight', 'backbone.layers.2.blocks.3.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.3.mlp.fc2.bias', 'backbone.layers.2.blocks.4.norm1.weight', 'resize_backbone.layers.2.blocks.4.norm1.weight', 'backbone.layers.2.blocks.4.norm1.bias', 'resize_backbone.layers.2.blocks.4.norm1.bias', 'backbone.layers.2.blocks.4.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.4.attn.relative_position_bias_table', 'backbone.layers.2.blocks.4.attn.relative_position_index', 'resize_backbone.layers.2.blocks.4.attn.relative_position_index', 'backbone.layers.2.blocks.4.attn.qkv.weight', 'resize_backbone.layers.2.blocks.4.attn.qkv.weight', 'backbone.layers.2.blocks.4.attn.qkv.bias', 'resize_backbone.layers.2.blocks.4.attn.qkv.bias', 'backbone.layers.2.blocks.4.attn.proj.weight', 'resize_backbone.layers.2.blocks.4.attn.proj.weight', 'backbone.layers.2.blocks.4.attn.proj.bias', 'resize_backbone.layers.2.blocks.4.attn.proj.bias', 'backbone.layers.2.blocks.4.norm2.weight', 'resize_backbone.layers.2.blocks.4.norm2.weight', 'backbone.layers.2.blocks.4.norm2.bias', 'resize_backbone.layers.2.blocks.4.norm2.bias', 'backbone.layers.2.blocks.4.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.4.mlp.fc1.weight', 'backbone.layers.2.blocks.4.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.4.mlp.fc1.bias', 'backbone.layers.2.blocks.4.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.4.mlp.fc2.weight', 'backbone.layers.2.blocks.4.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.4.mlp.fc2.bias', 'backbone.layers.2.blocks.5.norm1.weight', 'resize_backbone.layers.2.blocks.5.norm1.weight', 'backbone.layers.2.blocks.5.norm1.bias', 'resize_backbone.layers.2.blocks.5.norm1.bias', 'backbone.layers.2.blocks.5.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.5.attn.relative_position_bias_table', 'backbone.layers.2.blocks.5.attn.relative_position_index', 'resize_backbone.layers.2.blocks.5.attn.relative_position_index', 'backbone.layers.2.blocks.5.attn.qkv.weight', 'resize_backbone.layers.2.blocks.5.attn.qkv.weight', 'backbone.layers.2.blocks.5.attn.qkv.bias', 'resize_backbone.layers.2.blocks.5.attn.qkv.bias', 'backbone.layers.2.blocks.5.attn.proj.weight', 'resize_backbone.layers.2.blocks.5.attn.proj.weight', 'backbone.layers.2.blocks.5.attn.proj.bias', 'resize_backbone.layers.2.blocks.5.attn.proj.bias', 'backbone.layers.2.blocks.5.norm2.weight', 'resize_backbone.layers.2.blocks.5.norm2.weight', 'backbone.layers.2.blocks.5.norm2.bias', 'resize_backbone.layers.2.blocks.5.norm2.bias', 'backbone.layers.2.blocks.5.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.5.mlp.fc1.weight', 'backbone.layers.2.blocks.5.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.5.mlp.fc1.bias', 'backbone.layers.2.blocks.5.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.5.mlp.fc2.weight', 'backbone.layers.2.blocks.5.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.5.mlp.fc2.bias', 'backbone.layers.2.downsample.reduction.weight', 'resize_backbone.layers.2.downsample.reduction.weight', 'backbone.layers.2.downsample.norm.weight', 'resize_backbone.layers.2.downsample.norm.weight', 'backbone.layers.2.downsample.norm.bias', 'resize_backbone.layers.2.downsample.norm.bias', 'backbone.layers.3.blocks.0.norm1.weight', 'resize_backbone.layers.3.blocks.0.norm1.weight', 'backbone.layers.3.blocks.0.norm1.bias', 'resize_backbone.layers.3.blocks.0.norm1.bias', 'backbone.layers.3.blocks.0.attn.relative_position_bias_table', 'resize_backbone.layers.3.blocks.0.attn.relative_position_bias_table', 'backbone.layers.3.blocks.0.attn.relative_position_index', 'resize_backbone.layers.3.blocks.0.attn.relative_position_index', 'backbone.layers.3.blocks.0.attn.qkv.weight', 'resize_backbone.layers.3.blocks.0.attn.qkv.weight', 'backbone.layers.3.blocks.0.attn.qkv.bias', 'resize_backbone.layers.3.blocks.0.attn.qkv.bias', 'backbone.layers.3.blocks.0.attn.proj.weight', 'resize_backbone.layers.3.blocks.0.attn.proj.weight', 'backbone.layers.3.blocks.0.attn.proj.bias', 'resize_backbone.layers.3.blocks.0.attn.proj.bias', 'backbone.layers.3.blocks.0.norm2.weight', 'resize_backbone.layers.3.blocks.0.norm2.weight', 'backbone.layers.3.blocks.0.norm2.bias', 'resize_backbone.layers.3.blocks.0.norm2.bias', 'backbone.layers.3.blocks.0.mlp.fc1.weight', 'resize_backbone.layers.3.blocks.0.mlp.fc1.weight', 'backbone.layers.3.blocks.0.mlp.fc1.bias', 'resize_backbone.layers.3.blocks.0.mlp.fc1.bias', 'backbone.layers.3.blocks.0.mlp.fc2.weight', 'resize_backbone.layers.3.blocks.0.mlp.fc2.weight', 'backbone.layers.3.blocks.0.mlp.fc2.bias', 'resize_backbone.layers.3.blocks.0.mlp.fc2.bias', 'backbone.layers.3.blocks.1.norm1.weight', 'resize_backbone.layers.3.blocks.1.norm1.weight', 'backbone.layers.3.blocks.1.norm1.bias', 'resize_backbone.layers.3.blocks.1.norm1.bias', 'backbone.layers.3.blocks.1.attn.relative_position_bias_table', 'resize_backbone.layers.3.blocks.1.attn.relative_position_bias_table', 'backbone.layers.3.blocks.1.attn.relative_position_index', 'resize_backbone.layers.3.blocks.1.attn.relative_position_index', 'backbone.layers.3.blocks.1.attn.qkv.weight', 'resize_backbone.layers.3.blocks.1.attn.qkv.weight', 'backbone.layers.3.blocks.1.attn.qkv.bias', 'resize_backbone.layers.3.blocks.1.attn.qkv.bias', 'backbone.layers.3.blocks.1.attn.proj.weight', 'resize_backbone.layers.3.blocks.1.attn.proj.weight', 'backbone.layers.3.blocks.1.attn.proj.bias', 'resize_backbone.layers.3.blocks.1.attn.proj.bias', 'backbone.layers.3.blocks.1.norm2.weight', 'resize_backbone.layers.3.blocks.1.norm2.weight', 'backbone.layers.3.blocks.1.norm2.bias', 'resize_backbone.layers.3.blocks.1.norm2.bias', 'backbone.layers.3.blocks.1.mlp.fc1.weight', 'resize_backbone.layers.3.blocks.1.mlp.fc1.weight', 'backbone.layers.3.blocks.1.mlp.fc1.bias', 'resize_backbone.layers.3.blocks.1.mlp.fc1.bias', 'backbone.layers.3.blocks.1.mlp.fc2.weight', 'resize_backbone.layers.3.blocks.1.mlp.fc2.weight', 'backbone.layers.3.blocks.1.mlp.fc2.bias', 'resize_backbone.layers.3.blocks.1.mlp.fc2.bias', 'backbone.norm.weight', 'resize_backbone.norm.weight', 'backbone.norm.bias', 'resize_backbone.norm.bias'])
+Finetune Epoch 0:
+Epoch-00, training SRCC=0.5497, time elapsed 25m 55s.
+backbone_lr = 4.00e-05, head_lr = 4.00e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.7921 best: 0.7921 
+  PLCC:  0.7953 best: 0.7953  
+  KROCC: 0.5973 best: 0.5973 
+  RMSE:  6.7280 best: 6.7280.
+time elapsed 07m 20s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6808 best: 0.6808 
+  PLCC:  0.7059 best: 0.7059  
+  KROCC: 0.4954 best: 0.4954 
+  RMSE:  7.9694 best: 7.9694.
+time elapsed 08m 59s.
+Finetune Epoch 1:
+Epoch-01, training SRCC=0.5788, time elapsed 24m 48s.
+backbone_lr = 8.00e-05, head_lr = 8.00e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8074 best: 0.8074 
+  PLCC:  0.8082 best: 0.8082  
+  KROCC: 0.6140 best: 0.6140 
+  RMSE:  6.5139 best: 6.5139.
+time elapsed 07m 58s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7006 best: 0.7006 
+  PLCC:  0.7265 best: 0.7265  
+  KROCC: 0.5139 best: 0.5139 
+  RMSE:  7.6855 best: 7.6855.
+time elapsed 09m 56s.
+Finetune Epoch 2:
+Epoch-02, training SRCC=0.2172, time elapsed 25m 07s.
+backbone_lr = 9.94e-05, head_lr = 9.94e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8034 best: 0.8074 
+  PLCC:  0.8021 best: 0.8082  
+  KROCC: 0.6086 best: 0.6140 
+  RMSE:  6.6162 best: 6.5139.
+time elapsed 07m 31s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6794 best: 0.7006 
+  PLCC:  0.7091 best: 0.7265  
+  KROCC: 0.4940 best: 0.5139 
+  RMSE:  7.9266 best: 7.6855.
+time elapsed 09m 13s.
+Finetune Epoch 3:
+Epoch-03, training SRCC=0.4341, time elapsed 25m 58s.
+backbone_lr = 9.45e-05, head_lr = 9.45e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8035 best: 0.8074 
+  PLCC:  0.8029 best: 0.8082  
+  KROCC: 0.6095 best: 0.6140 
+  RMSE:  6.6029 best: 6.5139.
+time elapsed 07m 26s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6840 best: 0.7006 
+  PLCC:  0.7110 best: 0.7265  
+  KROCC: 0.4988 best: 0.5139 
+  RMSE:  7.8996 best: 7.6855.
+time elapsed 09m 13s.
+Finetune Epoch 4:
+Epoch-04, training SRCC=0.4415, time elapsed 24m 49s.
+backbone_lr = 8.54e-05, head_lr = 8.54e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8021 best: 0.8074 
+  PLCC:  0.8022 best: 0.8082  
+  KROCC: 0.6077 best: 0.6140 
+  RMSE:  6.6146 best: 6.5139.
+time elapsed 07m 30s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6842 best: 0.7006 
+  PLCC:  0.7107 best: 0.7265  
+  KROCC: 0.4983 best: 0.5139 
+  RMSE:  7.9049 best: 7.6855.
+time elapsed 09m 28s.
+Finetune Epoch 5:
+Epoch-05, training SRCC=0.1908, time elapsed 25m 19s.
+backbone_lr = 7.27e-05, head_lr = 7.27e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8066 best: 0.8074 
+  PLCC:  0.8068 best: 0.8082  
+  KROCC: 0.6128 best: 0.6140 
+  RMSE:  6.5364 best: 6.5139.
+time elapsed 07m 34s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6878 best: 0.7006 
+  PLCC:  0.7156 best: 0.7265  
+  KROCC: 0.5022 best: 0.5139 
+  RMSE:  7.8364 best: 7.6855.
+time elapsed 09m 48s.
+Finetune Epoch 6:
+Epoch-06, training SRCC=0.5168, time elapsed 25m 44s.
+backbone_lr = 5.78e-05, head_lr = 5.78e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8079 best: 0.8079 
+  PLCC:  0.8099 best: 0.8099  
+  KROCC: 0.6147 best: 0.6147 
+  RMSE:  6.4842 best: 6.4842.
+time elapsed 07m 25s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6856 best: 0.7006 
+  PLCC:  0.7180 best: 0.7265  
+  KROCC: 0.5004 best: 0.5139 
+  RMSE:  7.8039 best: 7.6855.
+time elapsed 10m 17s.
+Finetune Epoch 7:
+Epoch-07, training SRCC=0.5184, time elapsed 24m 43s.
+backbone_lr = 4.22e-05, head_lr = 4.22e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8158 best: 0.8158 
+  PLCC:  0.8167 best: 0.8167  
+  KROCC: 0.6230 best: 0.6230 
+  RMSE:  6.3673 best: 6.3673.
+time elapsed 07m 52s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6969 best: 0.7006 
+  PLCC:  0.7285 best: 0.7285  
+  KROCC: 0.5108 best: 0.5139 
+  RMSE:  7.6566 best: 7.6566.
+time elapsed 09m 50s.
+Finetune Epoch 8:
+Epoch-08, training SRCC=0.2238, time elapsed 25m 22s.
+backbone_lr = 2.73e-05, head_lr = 2.73e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8196 best: 0.8196 
+  PLCC:  0.8210 best: 0.8210  
+  KROCC: 0.6277 best: 0.6277 
+  RMSE:  6.2921 best: 6.2921.
+time elapsed 08m 18s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7055 best: 0.7055 
+  PLCC:  0.7370 best: 0.7370  
+  KROCC: 0.5178 best: 0.5178 
+  RMSE:  7.5361 best: 7.5361.
+time elapsed 09m 21s.
+Finetune Epoch 9:
+Epoch-09, training SRCC=0.5400, time elapsed 24m 52s.
+backbone_lr = 1.46e-05, head_lr = 1.46e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8227 best: 0.8227 
+  PLCC:  0.8245 best: 0.8245  
+  KROCC: 0.6312 best: 0.6312 
+  RMSE:  6.2301 best: 6.2301.
+time elapsed 07m 40s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7098 best: 0.7098 
+  PLCC:  0.7409 best: 0.7409  
+  KROCC: 0.5220 best: 0.5220 
+  RMSE:  7.4803 best: 7.4803.
+time elapsed 10m 05s.
+For the finetuning process on val-ltest with 7182 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.8227
+                    PLCC:  0.8245
+                    KROCC: 0.6312
+                    RMSE:  6.2301.
+For the finetuning process on val-l1080p with 3573 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.7098
+                    PLCC:  0.7409
+                    KROCC: 0.5220
+                    RMSE:  7.4803.
+================= Split 5 / 10 =================
+<class 'fastvqa.datasets.fusion_datasets.FusionDataset'>
+Data fromm fragments
+Using Random Uniform Sampling for Fusion Dataset
+dataset=[val-ltest], with 7182 samples.
+<class 'fastvqa.datasets.fusion_datasets.FusionDataset'>
+Data fromm fragments
+Using Random Uniform Sampling for Fusion Dataset
+dataset=[val-l1080p], with 3573 samples.
+Preparing training dataset: train
+<class 'fastvqa.datasets.fusion_datasets.FusionDataset'>
+Data fromm fragments
+Using Random Uniform Sampling for Fusion Dataset
+dataset=[train], with 28056 samples.
+_IncompatibleKeys(missing_keys=['vqa_head.fc_hid.weight', 'vqa_head.fc_hid.bias', 'vqa_head.fc_last.weight', 'vqa_head.fc_last.bias'], unexpected_keys=['backbone.patch_embed.proj.weight', 'resize_backbone.patch_embed.proj.weight', 'backbone.patch_embed.proj.bias', 'resize_backbone.patch_embed.proj.bias', 'backbone.patch_embed.norm.weight', 'resize_backbone.patch_embed.norm.weight', 'backbone.patch_embed.norm.bias', 'resize_backbone.patch_embed.norm.bias', 'backbone.layers.0.blocks.0.norm1.weight', 'resize_backbone.layers.0.blocks.0.norm1.weight', 'backbone.layers.0.blocks.0.norm1.bias', 'resize_backbone.layers.0.blocks.0.norm1.bias', 'backbone.layers.0.blocks.0.attn.relative_position_bias_table', 'resize_backbone.layers.0.blocks.0.attn.relative_position_bias_table', 'backbone.layers.0.blocks.0.attn.relative_position_index', 'resize_backbone.layers.0.blocks.0.attn.relative_position_index', 'backbone.layers.0.blocks.0.attn.qkv.weight', 'resize_backbone.layers.0.blocks.0.attn.qkv.weight', 'backbone.layers.0.blocks.0.attn.qkv.bias', 'resize_backbone.layers.0.blocks.0.attn.qkv.bias', 'backbone.layers.0.blocks.0.attn.proj.weight', 'resize_backbone.layers.0.blocks.0.attn.proj.weight', 'backbone.layers.0.blocks.0.attn.proj.bias', 'resize_backbone.layers.0.blocks.0.attn.proj.bias', 'backbone.layers.0.blocks.0.norm2.weight', 'resize_backbone.layers.0.blocks.0.norm2.weight', 'backbone.layers.0.blocks.0.norm2.bias', 'resize_backbone.layers.0.blocks.0.norm2.bias', 'backbone.layers.0.blocks.0.mlp.fc1.weight', 'resize_backbone.layers.0.blocks.0.mlp.fc1.weight', 'backbone.layers.0.blocks.0.mlp.fc1.bias', 'resize_backbone.layers.0.blocks.0.mlp.fc1.bias', 'backbone.layers.0.blocks.0.mlp.fc2.weight', 'resize_backbone.layers.0.blocks.0.mlp.fc2.weight', 'backbone.layers.0.blocks.0.mlp.fc2.bias', 'resize_backbone.layers.0.blocks.0.mlp.fc2.bias', 'backbone.layers.0.blocks.1.norm1.weight', 'resize_backbone.layers.0.blocks.1.norm1.weight', 'backbone.layers.0.blocks.1.norm1.bias', 'resize_backbone.layers.0.blocks.1.norm1.bias', 'backbone.layers.0.blocks.1.attn.relative_position_bias_table', 'resize_backbone.layers.0.blocks.1.attn.relative_position_bias_table', 'backbone.layers.0.blocks.1.attn.relative_position_index', 'resize_backbone.layers.0.blocks.1.attn.relative_position_index', 'backbone.layers.0.blocks.1.attn.qkv.weight', 'resize_backbone.layers.0.blocks.1.attn.qkv.weight', 'backbone.layers.0.blocks.1.attn.qkv.bias', 'resize_backbone.layers.0.blocks.1.attn.qkv.bias', 'backbone.layers.0.blocks.1.attn.proj.weight', 'resize_backbone.layers.0.blocks.1.attn.proj.weight', 'backbone.layers.0.blocks.1.attn.proj.bias', 'resize_backbone.layers.0.blocks.1.attn.proj.bias', 'backbone.layers.0.blocks.1.norm2.weight', 'resize_backbone.layers.0.blocks.1.norm2.weight', 'backbone.layers.0.blocks.1.norm2.bias', 'resize_backbone.layers.0.blocks.1.norm2.bias', 'backbone.layers.0.blocks.1.mlp.fc1.weight', 'resize_backbone.layers.0.blocks.1.mlp.fc1.weight', 'backbone.layers.0.blocks.1.mlp.fc1.bias', 'resize_backbone.layers.0.blocks.1.mlp.fc1.bias', 'backbone.layers.0.blocks.1.mlp.fc2.weight', 'resize_backbone.layers.0.blocks.1.mlp.fc2.weight', 'backbone.layers.0.blocks.1.mlp.fc2.bias', 'resize_backbone.layers.0.blocks.1.mlp.fc2.bias', 'backbone.layers.0.downsample.reduction.weight', 'resize_backbone.layers.0.downsample.reduction.weight', 'backbone.layers.0.downsample.norm.weight', 'resize_backbone.layers.0.downsample.norm.weight', 'backbone.layers.0.downsample.norm.bias', 'resize_backbone.layers.0.downsample.norm.bias', 'backbone.layers.1.blocks.0.norm1.weight', 'resize_backbone.layers.1.blocks.0.norm1.weight', 'backbone.layers.1.blocks.0.norm1.bias', 'resize_backbone.layers.1.blocks.0.norm1.bias', 'backbone.layers.1.blocks.0.attn.relative_position_bias_table', 'resize_backbone.layers.1.blocks.0.attn.relative_position_bias_table', 'backbone.layers.1.blocks.0.attn.relative_position_index', 'resize_backbone.layers.1.blocks.0.attn.relative_position_index', 'backbone.layers.1.blocks.0.attn.qkv.weight', 'resize_backbone.layers.1.blocks.0.attn.qkv.weight', 'backbone.layers.1.blocks.0.attn.qkv.bias', 'resize_backbone.layers.1.blocks.0.attn.qkv.bias', 'backbone.layers.1.blocks.0.attn.proj.weight', 'resize_backbone.layers.1.blocks.0.attn.proj.weight', 'backbone.layers.1.blocks.0.attn.proj.bias', 'resize_backbone.layers.1.blocks.0.attn.proj.bias', 'backbone.layers.1.blocks.0.norm2.weight', 'resize_backbone.layers.1.blocks.0.norm2.weight', 'backbone.layers.1.blocks.0.norm2.bias', 'resize_backbone.layers.1.blocks.0.norm2.bias', 'backbone.layers.1.blocks.0.mlp.fc1.weight', 'resize_backbone.layers.1.blocks.0.mlp.fc1.weight', 'backbone.layers.1.blocks.0.mlp.fc1.bias', 'resize_backbone.layers.1.blocks.0.mlp.fc1.bias', 'backbone.layers.1.blocks.0.mlp.fc2.weight', 'resize_backbone.layers.1.blocks.0.mlp.fc2.weight', 'backbone.layers.1.blocks.0.mlp.fc2.bias', 'resize_backbone.layers.1.blocks.0.mlp.fc2.bias', 'backbone.layers.1.blocks.1.norm1.weight', 'resize_backbone.layers.1.blocks.1.norm1.weight', 'backbone.layers.1.blocks.1.norm1.bias', 'resize_backbone.layers.1.blocks.1.norm1.bias', 'backbone.layers.1.blocks.1.attn.relative_position_bias_table', 'resize_backbone.layers.1.blocks.1.attn.relative_position_bias_table', 'backbone.layers.1.blocks.1.attn.relative_position_index', 'resize_backbone.layers.1.blocks.1.attn.relative_position_index', 'backbone.layers.1.blocks.1.attn.qkv.weight', 'resize_backbone.layers.1.blocks.1.attn.qkv.weight', 'backbone.layers.1.blocks.1.attn.qkv.bias', 'resize_backbone.layers.1.blocks.1.attn.qkv.bias', 'backbone.layers.1.blocks.1.attn.proj.weight', 'resize_backbone.layers.1.blocks.1.attn.proj.weight', 'backbone.layers.1.blocks.1.attn.proj.bias', 'resize_backbone.layers.1.blocks.1.attn.proj.bias', 'backbone.layers.1.blocks.1.norm2.weight', 'resize_backbone.layers.1.blocks.1.norm2.weight', 'backbone.layers.1.blocks.1.norm2.bias', 'resize_backbone.layers.1.blocks.1.norm2.bias', 'backbone.layers.1.blocks.1.mlp.fc1.weight', 'resize_backbone.layers.1.blocks.1.mlp.fc1.weight', 'backbone.layers.1.blocks.1.mlp.fc1.bias', 'resize_backbone.layers.1.blocks.1.mlp.fc1.bias', 'backbone.layers.1.blocks.1.mlp.fc2.weight', 'resize_backbone.layers.1.blocks.1.mlp.fc2.weight', 'backbone.layers.1.blocks.1.mlp.fc2.bias', 'resize_backbone.layers.1.blocks.1.mlp.fc2.bias', 'backbone.layers.1.downsample.reduction.weight', 'resize_backbone.layers.1.downsample.reduction.weight', 'backbone.layers.1.downsample.norm.weight', 'resize_backbone.layers.1.downsample.norm.weight', 'backbone.layers.1.downsample.norm.bias', 'resize_backbone.layers.1.downsample.norm.bias', 'backbone.layers.2.blocks.0.norm1.weight', 'resize_backbone.layers.2.blocks.0.norm1.weight', 'backbone.layers.2.blocks.0.norm1.bias', 'resize_backbone.layers.2.blocks.0.norm1.bias', 'backbone.layers.2.blocks.0.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.0.attn.relative_position_bias_table', 'backbone.layers.2.blocks.0.attn.relative_position_index', 'resize_backbone.layers.2.blocks.0.attn.relative_position_index', 'backbone.layers.2.blocks.0.attn.qkv.weight', 'resize_backbone.layers.2.blocks.0.attn.qkv.weight', 'backbone.layers.2.blocks.0.attn.qkv.bias', 'resize_backbone.layers.2.blocks.0.attn.qkv.bias', 'backbone.layers.2.blocks.0.attn.proj.weight', 'resize_backbone.layers.2.blocks.0.attn.proj.weight', 'backbone.layers.2.blocks.0.attn.proj.bias', 'resize_backbone.layers.2.blocks.0.attn.proj.bias', 'backbone.layers.2.blocks.0.norm2.weight', 'resize_backbone.layers.2.blocks.0.norm2.weight', 'backbone.layers.2.blocks.0.norm2.bias', 'resize_backbone.layers.2.blocks.0.norm2.bias', 'backbone.layers.2.blocks.0.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.0.mlp.fc1.weight', 'backbone.layers.2.blocks.0.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.0.mlp.fc1.bias', 'backbone.layers.2.blocks.0.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.0.mlp.fc2.weight', 'backbone.layers.2.blocks.0.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.0.mlp.fc2.bias', 'backbone.layers.2.blocks.1.norm1.weight', 'resize_backbone.layers.2.blocks.1.norm1.weight', 'backbone.layers.2.blocks.1.norm1.bias', 'resize_backbone.layers.2.blocks.1.norm1.bias', 'backbone.layers.2.blocks.1.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.1.attn.relative_position_bias_table', 'backbone.layers.2.blocks.1.attn.relative_position_index', 'resize_backbone.layers.2.blocks.1.attn.relative_position_index', 'backbone.layers.2.blocks.1.attn.qkv.weight', 'resize_backbone.layers.2.blocks.1.attn.qkv.weight', 'backbone.layers.2.blocks.1.attn.qkv.bias', 'resize_backbone.layers.2.blocks.1.attn.qkv.bias', 'backbone.layers.2.blocks.1.attn.proj.weight', 'resize_backbone.layers.2.blocks.1.attn.proj.weight', 'backbone.layers.2.blocks.1.attn.proj.bias', 'resize_backbone.layers.2.blocks.1.attn.proj.bias', 'backbone.layers.2.blocks.1.norm2.weight', 'resize_backbone.layers.2.blocks.1.norm2.weight', 'backbone.layers.2.blocks.1.norm2.bias', 'resize_backbone.layers.2.blocks.1.norm2.bias', 'backbone.layers.2.blocks.1.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.1.mlp.fc1.weight', 'backbone.layers.2.blocks.1.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.1.mlp.fc1.bias', 'backbone.layers.2.blocks.1.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.1.mlp.fc2.weight', 'backbone.layers.2.blocks.1.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.1.mlp.fc2.bias', 'backbone.layers.2.blocks.2.norm1.weight', 'resize_backbone.layers.2.blocks.2.norm1.weight', 'backbone.layers.2.blocks.2.norm1.bias', 'resize_backbone.layers.2.blocks.2.norm1.bias', 'backbone.layers.2.blocks.2.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.2.attn.relative_position_bias_table', 'backbone.layers.2.blocks.2.attn.relative_position_index', 'resize_backbone.layers.2.blocks.2.attn.relative_position_index', 'backbone.layers.2.blocks.2.attn.qkv.weight', 'resize_backbone.layers.2.blocks.2.attn.qkv.weight', 'backbone.layers.2.blocks.2.attn.qkv.bias', 'resize_backbone.layers.2.blocks.2.attn.qkv.bias', 'backbone.layers.2.blocks.2.attn.proj.weight', 'resize_backbone.layers.2.blocks.2.attn.proj.weight', 'backbone.layers.2.blocks.2.attn.proj.bias', 'resize_backbone.layers.2.blocks.2.attn.proj.bias', 'backbone.layers.2.blocks.2.norm2.weight', 'resize_backbone.layers.2.blocks.2.norm2.weight', 'backbone.layers.2.blocks.2.norm2.bias', 'resize_backbone.layers.2.blocks.2.norm2.bias', 'backbone.layers.2.blocks.2.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.2.mlp.fc1.weight', 'backbone.layers.2.blocks.2.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.2.mlp.fc1.bias', 'backbone.layers.2.blocks.2.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.2.mlp.fc2.weight', 'backbone.layers.2.blocks.2.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.2.mlp.fc2.bias', 'backbone.layers.2.blocks.3.norm1.weight', 'resize_backbone.layers.2.blocks.3.norm1.weight', 'backbone.layers.2.blocks.3.norm1.bias', 'resize_backbone.layers.2.blocks.3.norm1.bias', 'backbone.layers.2.blocks.3.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.3.attn.relative_position_bias_table', 'backbone.layers.2.blocks.3.attn.relative_position_index', 'resize_backbone.layers.2.blocks.3.attn.relative_position_index', 'backbone.layers.2.blocks.3.attn.qkv.weight', 'resize_backbone.layers.2.blocks.3.attn.qkv.weight', 'backbone.layers.2.blocks.3.attn.qkv.bias', 'resize_backbone.layers.2.blocks.3.attn.qkv.bias', 'backbone.layers.2.blocks.3.attn.proj.weight', 'resize_backbone.layers.2.blocks.3.attn.proj.weight', 'backbone.layers.2.blocks.3.attn.proj.bias', 'resize_backbone.layers.2.blocks.3.attn.proj.bias', 'backbone.layers.2.blocks.3.norm2.weight', 'resize_backbone.layers.2.blocks.3.norm2.weight', 'backbone.layers.2.blocks.3.norm2.bias', 'resize_backbone.layers.2.blocks.3.norm2.bias', 'backbone.layers.2.blocks.3.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.3.mlp.fc1.weight', 'backbone.layers.2.blocks.3.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.3.mlp.fc1.bias', 'backbone.layers.2.blocks.3.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.3.mlp.fc2.weight', 'backbone.layers.2.blocks.3.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.3.mlp.fc2.bias', 'backbone.layers.2.blocks.4.norm1.weight', 'resize_backbone.layers.2.blocks.4.norm1.weight', 'backbone.layers.2.blocks.4.norm1.bias', 'resize_backbone.layers.2.blocks.4.norm1.bias', 'backbone.layers.2.blocks.4.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.4.attn.relative_position_bias_table', 'backbone.layers.2.blocks.4.attn.relative_position_index', 'resize_backbone.layers.2.blocks.4.attn.relative_position_index', 'backbone.layers.2.blocks.4.attn.qkv.weight', 'resize_backbone.layers.2.blocks.4.attn.qkv.weight', 'backbone.layers.2.blocks.4.attn.qkv.bias', 'resize_backbone.layers.2.blocks.4.attn.qkv.bias', 'backbone.layers.2.blocks.4.attn.proj.weight', 'resize_backbone.layers.2.blocks.4.attn.proj.weight', 'backbone.layers.2.blocks.4.attn.proj.bias', 'resize_backbone.layers.2.blocks.4.attn.proj.bias', 'backbone.layers.2.blocks.4.norm2.weight', 'resize_backbone.layers.2.blocks.4.norm2.weight', 'backbone.layers.2.blocks.4.norm2.bias', 'resize_backbone.layers.2.blocks.4.norm2.bias', 'backbone.layers.2.blocks.4.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.4.mlp.fc1.weight', 'backbone.layers.2.blocks.4.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.4.mlp.fc1.bias', 'backbone.layers.2.blocks.4.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.4.mlp.fc2.weight', 'backbone.layers.2.blocks.4.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.4.mlp.fc2.bias', 'backbone.layers.2.blocks.5.norm1.weight', 'resize_backbone.layers.2.blocks.5.norm1.weight', 'backbone.layers.2.blocks.5.norm1.bias', 'resize_backbone.layers.2.blocks.5.norm1.bias', 'backbone.layers.2.blocks.5.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.5.attn.relative_position_bias_table', 'backbone.layers.2.blocks.5.attn.relative_position_index', 'resize_backbone.layers.2.blocks.5.attn.relative_position_index', 'backbone.layers.2.blocks.5.attn.qkv.weight', 'resize_backbone.layers.2.blocks.5.attn.qkv.weight', 'backbone.layers.2.blocks.5.attn.qkv.bias', 'resize_backbone.layers.2.blocks.5.attn.qkv.bias', 'backbone.layers.2.blocks.5.attn.proj.weight', 'resize_backbone.layers.2.blocks.5.attn.proj.weight', 'backbone.layers.2.blocks.5.attn.proj.bias', 'resize_backbone.layers.2.blocks.5.attn.proj.bias', 'backbone.layers.2.blocks.5.norm2.weight', 'resize_backbone.layers.2.blocks.5.norm2.weight', 'backbone.layers.2.blocks.5.norm2.bias', 'resize_backbone.layers.2.blocks.5.norm2.bias', 'backbone.layers.2.blocks.5.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.5.mlp.fc1.weight', 'backbone.layers.2.blocks.5.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.5.mlp.fc1.bias', 'backbone.layers.2.blocks.5.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.5.mlp.fc2.weight', 'backbone.layers.2.blocks.5.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.5.mlp.fc2.bias', 'backbone.layers.2.downsample.reduction.weight', 'resize_backbone.layers.2.downsample.reduction.weight', 'backbone.layers.2.downsample.norm.weight', 'resize_backbone.layers.2.downsample.norm.weight', 'backbone.layers.2.downsample.norm.bias', 'resize_backbone.layers.2.downsample.norm.bias', 'backbone.layers.3.blocks.0.norm1.weight', 'resize_backbone.layers.3.blocks.0.norm1.weight', 'backbone.layers.3.blocks.0.norm1.bias', 'resize_backbone.layers.3.blocks.0.norm1.bias', 'backbone.layers.3.blocks.0.attn.relative_position_bias_table', 'resize_backbone.layers.3.blocks.0.attn.relative_position_bias_table', 'backbone.layers.3.blocks.0.attn.relative_position_index', 'resize_backbone.layers.3.blocks.0.attn.relative_position_index', 'backbone.layers.3.blocks.0.attn.qkv.weight', 'resize_backbone.layers.3.blocks.0.attn.qkv.weight', 'backbone.layers.3.blocks.0.attn.qkv.bias', 'resize_backbone.layers.3.blocks.0.attn.qkv.bias', 'backbone.layers.3.blocks.0.attn.proj.weight', 'resize_backbone.layers.3.blocks.0.attn.proj.weight', 'backbone.layers.3.blocks.0.attn.proj.bias', 'resize_backbone.layers.3.blocks.0.attn.proj.bias', 'backbone.layers.3.blocks.0.norm2.weight', 'resize_backbone.layers.3.blocks.0.norm2.weight', 'backbone.layers.3.blocks.0.norm2.bias', 'resize_backbone.layers.3.blocks.0.norm2.bias', 'backbone.layers.3.blocks.0.mlp.fc1.weight', 'resize_backbone.layers.3.blocks.0.mlp.fc1.weight', 'backbone.layers.3.blocks.0.mlp.fc1.bias', 'resize_backbone.layers.3.blocks.0.mlp.fc1.bias', 'backbone.layers.3.blocks.0.mlp.fc2.weight', 'resize_backbone.layers.3.blocks.0.mlp.fc2.weight', 'backbone.layers.3.blocks.0.mlp.fc2.bias', 'resize_backbone.layers.3.blocks.0.mlp.fc2.bias', 'backbone.layers.3.blocks.1.norm1.weight', 'resize_backbone.layers.3.blocks.1.norm1.weight', 'backbone.layers.3.blocks.1.norm1.bias', 'resize_backbone.layers.3.blocks.1.norm1.bias', 'backbone.layers.3.blocks.1.attn.relative_position_bias_table', 'resize_backbone.layers.3.blocks.1.attn.relative_position_bias_table', 'backbone.layers.3.blocks.1.attn.relative_position_index', 'resize_backbone.layers.3.blocks.1.attn.relative_position_index', 'backbone.layers.3.blocks.1.attn.qkv.weight', 'resize_backbone.layers.3.blocks.1.attn.qkv.weight', 'backbone.layers.3.blocks.1.attn.qkv.bias', 'resize_backbone.layers.3.blocks.1.attn.qkv.bias', 'backbone.layers.3.blocks.1.attn.proj.weight', 'resize_backbone.layers.3.blocks.1.attn.proj.weight', 'backbone.layers.3.blocks.1.attn.proj.bias', 'resize_backbone.layers.3.blocks.1.attn.proj.bias', 'backbone.layers.3.blocks.1.norm2.weight', 'resize_backbone.layers.3.blocks.1.norm2.weight', 'backbone.layers.3.blocks.1.norm2.bias', 'resize_backbone.layers.3.blocks.1.norm2.bias', 'backbone.layers.3.blocks.1.mlp.fc1.weight', 'resize_backbone.layers.3.blocks.1.mlp.fc1.weight', 'backbone.layers.3.blocks.1.mlp.fc1.bias', 'resize_backbone.layers.3.blocks.1.mlp.fc1.bias', 'backbone.layers.3.blocks.1.mlp.fc2.weight', 'resize_backbone.layers.3.blocks.1.mlp.fc2.weight', 'backbone.layers.3.blocks.1.mlp.fc2.bias', 'resize_backbone.layers.3.blocks.1.mlp.fc2.bias', 'backbone.norm.weight', 'resize_backbone.norm.weight', 'backbone.norm.bias', 'resize_backbone.norm.bias'])
+Finetune Epoch 0:
+Epoch-00, training SRCC=0.5523, time elapsed 26m 03s.
+backbone_lr = 4.00e-05, head_lr = 4.00e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.7937 best: 0.7937 
+  PLCC:  0.7950 best: 0.7950  
+  KROCC: 0.5987 best: 0.5987 
+  RMSE:  6.7336 best: 6.7336.
+time elapsed 07m 24s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6833 best: 0.6833 
+  PLCC:  0.7075 best: 0.7075  
+  KROCC: 0.4974 best: 0.4974 
+  RMSE:  7.9479 best: 7.9479.
+time elapsed 09m 23s.
+Finetune Epoch 1:
+Epoch-01, training SRCC=0.3432, time elapsed 25m 59s.
+backbone_lr = 8.00e-05, head_lr = 8.00e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8110 best: 0.8110 
+  PLCC:  0.8125 best: 0.8125  
+  KROCC: 0.6178 best: 0.6178 
+  RMSE:  6.4396 best: 6.4396.
+time elapsed 07m 50s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6973 best: 0.6973 
+  PLCC:  0.7284 best: 0.7284  
+  KROCC: 0.5108 best: 0.5108 
+  RMSE:  7.6592 best: 7.6592.
+time elapsed 10m 00s.
+Finetune Epoch 2:
+Epoch-02, training SRCC=0.5201, time elapsed 26m 13s.
+backbone_lr = 9.94e-05, head_lr = 9.94e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.7986 best: 0.8110 
+  PLCC:  0.7973 best: 0.8125  
+  KROCC: 0.6030 best: 0.6178 
+  RMSE:  6.6952 best: 6.4396.
+time elapsed 07m 14s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6727 best: 0.6973 
+  PLCC:  0.7006 best: 0.7284  
+  KROCC: 0.4878 best: 0.5108 
+  RMSE:  8.0407 best: 7.6592.
+time elapsed 09m 07s.
+Finetune Epoch 3:
+Epoch-03, training SRCC=0.3217, time elapsed 26m 16s.
+backbone_lr = 9.45e-05, head_lr = 9.45e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.7974 best: 0.8110 
+  PLCC:  0.7957 best: 0.8125  
+  KROCC: 0.6023 best: 0.6178 
+  RMSE:  6.7215 best: 6.4396.
+time elapsed 08m 05s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6766 best: 0.6973 
+  PLCC:  0.7042 best: 0.7284  
+  KROCC: 0.4917 best: 0.5108 
+  RMSE:  7.9928 best: 7.6592.
+time elapsed 09m 57s.
+Finetune Epoch 4:
+Epoch-04, training SRCC=0.3269, time elapsed 25m 39s.
+backbone_lr = 8.54e-05, head_lr = 8.54e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8006 best: 0.8110 
+  PLCC:  0.8010 best: 0.8125  
+  KROCC: 0.6064 best: 0.6178 
+  RMSE:  6.6347 best: 6.4396.
+time elapsed 07m 56s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6768 best: 0.6973 
+  PLCC:  0.7074 best: 0.7284  
+  KROCC: 0.4922 best: 0.5108 
+  RMSE:  7.9488 best: 7.6592.
+time elapsed 09m 25s.
+Finetune Epoch 5:
+Epoch-05, training SRCC=0.4043, time elapsed 25m 46s.
+backbone_lr = 7.27e-05, head_lr = 7.27e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8047 best: 0.8110 
+  PLCC:  0.8038 best: 0.8125  
+  KROCC: 0.6098 best: 0.6178 
+  RMSE:  6.5878 best: 6.4396.
+time elapsed 06m 58s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6817 best: 0.6973 
+  PLCC:  0.7115 best: 0.7284  
+  KROCC: 0.4957 best: 0.5108 
+  RMSE:  7.8932 best: 7.6592.
+time elapsed 09m 19s.
+Finetune Epoch 6:
+Epoch-06, training SRCC=0.3109, time elapsed 24m 51s.
+backbone_lr = 5.78e-05, head_lr = 5.78e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8080 best: 0.8110 
+  PLCC:  0.8086 best: 0.8125  
+  KROCC: 0.6142 best: 0.6178 
+  RMSE:  6.5062 best: 6.4396.
+time elapsed 07m 54s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6880 best: 0.6973 
+  PLCC:  0.7171 best: 0.7284  
+  KROCC: 0.5016 best: 0.5108 
+  RMSE:  7.8158 best: 7.6592.
+time elapsed 09m 43s.
+Finetune Epoch 7:
+Epoch-07, training SRCC=0.3213, time elapsed 26m 18s.
+backbone_lr = 4.22e-05, head_lr = 4.22e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8144 best: 0.8144 
+  PLCC:  0.8151 best: 0.8151  
+  KROCC: 0.6210 best: 0.6210 
+  RMSE:  6.3943 best: 6.3943.
+time elapsed 07m 21s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6960 best: 0.6973 
+  PLCC:  0.7233 best: 0.7284  
+  KROCC: 0.5089 best: 0.5108 
+  RMSE:  7.7300 best: 7.6592.
+time elapsed 08m 59s.
+Finetune Epoch 8:
+Epoch-08, training SRCC=0.2024, time elapsed 25m 17s.
+backbone_lr = 2.73e-05, head_lr = 2.73e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8168 best: 0.8168 
+  PLCC:  0.8185 best: 0.8185  
+  KROCC: 0.6248 best: 0.6248 
+  RMSE:  6.3355 best: 6.3355.
+time elapsed 08m 45s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7034 best: 0.7034 
+  PLCC:  0.7357 best: 0.7357  
+  KROCC: 0.5163 best: 0.5163 
+  RMSE:  7.5552 best: 7.5552.
+time elapsed 10m 48s.
+Finetune Epoch 9:
+Epoch-09, training SRCC=0.4255, time elapsed 26m 18s.
+backbone_lr = 1.46e-05, head_lr = 1.46e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8205 best: 0.8205 
+  PLCC:  0.8222 best: 0.8222  
+  KROCC: 0.6287 best: 0.6287 
+  RMSE:  6.2711 best: 6.2711.
+time elapsed 08m 00s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.7088 best: 0.7088 
+  PLCC:  0.7400 best: 0.7400  
+  KROCC: 0.5205 best: 0.5205 
+  RMSE:  7.4939 best: 7.4939.
+time elapsed 09m 53s.
+For the finetuning process on val-ltest with 7182 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.8205
+                    PLCC:  0.8222
+                    KROCC: 0.6287
+                    RMSE:  6.2711.
+For the finetuning process on val-l1080p with 3573 videos,
+                    the best validation accuracy of the model-s is as follows:
+                    SROCC: 0.7088
+                    PLCC:  0.7400
+                    KROCC: 0.5205
+                    RMSE:  7.4939.
+================= Split 6 / 10 =================
+<class 'fastvqa.datasets.fusion_datasets.FusionDataset'>
+Data fromm fragments
+Using Random Uniform Sampling for Fusion Dataset
+dataset=[val-ltest], with 7182 samples.
+<class 'fastvqa.datasets.fusion_datasets.FusionDataset'>
+Data fromm fragments
+Using Random Uniform Sampling for Fusion Dataset
+dataset=[val-l1080p], with 3573 samples.
+Preparing training dataset: train
+<class 'fastvqa.datasets.fusion_datasets.FusionDataset'>
+Data fromm fragments
+Using Random Uniform Sampling for Fusion Dataset
+dataset=[train], with 28056 samples.
+_IncompatibleKeys(missing_keys=['vqa_head.fc_hid.weight', 'vqa_head.fc_hid.bias', 'vqa_head.fc_last.weight', 'vqa_head.fc_last.bias'], unexpected_keys=['backbone.patch_embed.proj.weight', 'resize_backbone.patch_embed.proj.weight', 'backbone.patch_embed.proj.bias', 'resize_backbone.patch_embed.proj.bias', 'backbone.patch_embed.norm.weight', 'resize_backbone.patch_embed.norm.weight', 'backbone.patch_embed.norm.bias', 'resize_backbone.patch_embed.norm.bias', 'backbone.layers.0.blocks.0.norm1.weight', 'resize_backbone.layers.0.blocks.0.norm1.weight', 'backbone.layers.0.blocks.0.norm1.bias', 'resize_backbone.layers.0.blocks.0.norm1.bias', 'backbone.layers.0.blocks.0.attn.relative_position_bias_table', 'resize_backbone.layers.0.blocks.0.attn.relative_position_bias_table', 'backbone.layers.0.blocks.0.attn.relative_position_index', 'resize_backbone.layers.0.blocks.0.attn.relative_position_index', 'backbone.layers.0.blocks.0.attn.qkv.weight', 'resize_backbone.layers.0.blocks.0.attn.qkv.weight', 'backbone.layers.0.blocks.0.attn.qkv.bias', 'resize_backbone.layers.0.blocks.0.attn.qkv.bias', 'backbone.layers.0.blocks.0.attn.proj.weight', 'resize_backbone.layers.0.blocks.0.attn.proj.weight', 'backbone.layers.0.blocks.0.attn.proj.bias', 'resize_backbone.layers.0.blocks.0.attn.proj.bias', 'backbone.layers.0.blocks.0.norm2.weight', 'resize_backbone.layers.0.blocks.0.norm2.weight', 'backbone.layers.0.blocks.0.norm2.bias', 'resize_backbone.layers.0.blocks.0.norm2.bias', 'backbone.layers.0.blocks.0.mlp.fc1.weight', 'resize_backbone.layers.0.blocks.0.mlp.fc1.weight', 'backbone.layers.0.blocks.0.mlp.fc1.bias', 'resize_backbone.layers.0.blocks.0.mlp.fc1.bias', 'backbone.layers.0.blocks.0.mlp.fc2.weight', 'resize_backbone.layers.0.blocks.0.mlp.fc2.weight', 'backbone.layers.0.blocks.0.mlp.fc2.bias', 'resize_backbone.layers.0.blocks.0.mlp.fc2.bias', 'backbone.layers.0.blocks.1.norm1.weight', 'resize_backbone.layers.0.blocks.1.norm1.weight', 'backbone.layers.0.blocks.1.norm1.bias', 'resize_backbone.layers.0.blocks.1.norm1.bias', 'backbone.layers.0.blocks.1.attn.relative_position_bias_table', 'resize_backbone.layers.0.blocks.1.attn.relative_position_bias_table', 'backbone.layers.0.blocks.1.attn.relative_position_index', 'resize_backbone.layers.0.blocks.1.attn.relative_position_index', 'backbone.layers.0.blocks.1.attn.qkv.weight', 'resize_backbone.layers.0.blocks.1.attn.qkv.weight', 'backbone.layers.0.blocks.1.attn.qkv.bias', 'resize_backbone.layers.0.blocks.1.attn.qkv.bias', 'backbone.layers.0.blocks.1.attn.proj.weight', 'resize_backbone.layers.0.blocks.1.attn.proj.weight', 'backbone.layers.0.blocks.1.attn.proj.bias', 'resize_backbone.layers.0.blocks.1.attn.proj.bias', 'backbone.layers.0.blocks.1.norm2.weight', 'resize_backbone.layers.0.blocks.1.norm2.weight', 'backbone.layers.0.blocks.1.norm2.bias', 'resize_backbone.layers.0.blocks.1.norm2.bias', 'backbone.layers.0.blocks.1.mlp.fc1.weight', 'resize_backbone.layers.0.blocks.1.mlp.fc1.weight', 'backbone.layers.0.blocks.1.mlp.fc1.bias', 'resize_backbone.layers.0.blocks.1.mlp.fc1.bias', 'backbone.layers.0.blocks.1.mlp.fc2.weight', 'resize_backbone.layers.0.blocks.1.mlp.fc2.weight', 'backbone.layers.0.blocks.1.mlp.fc2.bias', 'resize_backbone.layers.0.blocks.1.mlp.fc2.bias', 'backbone.layers.0.downsample.reduction.weight', 'resize_backbone.layers.0.downsample.reduction.weight', 'backbone.layers.0.downsample.norm.weight', 'resize_backbone.layers.0.downsample.norm.weight', 'backbone.layers.0.downsample.norm.bias', 'resize_backbone.layers.0.downsample.norm.bias', 'backbone.layers.1.blocks.0.norm1.weight', 'resize_backbone.layers.1.blocks.0.norm1.weight', 'backbone.layers.1.blocks.0.norm1.bias', 'resize_backbone.layers.1.blocks.0.norm1.bias', 'backbone.layers.1.blocks.0.attn.relative_position_bias_table', 'resize_backbone.layers.1.blocks.0.attn.relative_position_bias_table', 'backbone.layers.1.blocks.0.attn.relative_position_index', 'resize_backbone.layers.1.blocks.0.attn.relative_position_index', 'backbone.layers.1.blocks.0.attn.qkv.weight', 'resize_backbone.layers.1.blocks.0.attn.qkv.weight', 'backbone.layers.1.blocks.0.attn.qkv.bias', 'resize_backbone.layers.1.blocks.0.attn.qkv.bias', 'backbone.layers.1.blocks.0.attn.proj.weight', 'resize_backbone.layers.1.blocks.0.attn.proj.weight', 'backbone.layers.1.blocks.0.attn.proj.bias', 'resize_backbone.layers.1.blocks.0.attn.proj.bias', 'backbone.layers.1.blocks.0.norm2.weight', 'resize_backbone.layers.1.blocks.0.norm2.weight', 'backbone.layers.1.blocks.0.norm2.bias', 'resize_backbone.layers.1.blocks.0.norm2.bias', 'backbone.layers.1.blocks.0.mlp.fc1.weight', 'resize_backbone.layers.1.blocks.0.mlp.fc1.weight', 'backbone.layers.1.blocks.0.mlp.fc1.bias', 'resize_backbone.layers.1.blocks.0.mlp.fc1.bias', 'backbone.layers.1.blocks.0.mlp.fc2.weight', 'resize_backbone.layers.1.blocks.0.mlp.fc2.weight', 'backbone.layers.1.blocks.0.mlp.fc2.bias', 'resize_backbone.layers.1.blocks.0.mlp.fc2.bias', 'backbone.layers.1.blocks.1.norm1.weight', 'resize_backbone.layers.1.blocks.1.norm1.weight', 'backbone.layers.1.blocks.1.norm1.bias', 'resize_backbone.layers.1.blocks.1.norm1.bias', 'backbone.layers.1.blocks.1.attn.relative_position_bias_table', 'resize_backbone.layers.1.blocks.1.attn.relative_position_bias_table', 'backbone.layers.1.blocks.1.attn.relative_position_index', 'resize_backbone.layers.1.blocks.1.attn.relative_position_index', 'backbone.layers.1.blocks.1.attn.qkv.weight', 'resize_backbone.layers.1.blocks.1.attn.qkv.weight', 'backbone.layers.1.blocks.1.attn.qkv.bias', 'resize_backbone.layers.1.blocks.1.attn.qkv.bias', 'backbone.layers.1.blocks.1.attn.proj.weight', 'resize_backbone.layers.1.blocks.1.attn.proj.weight', 'backbone.layers.1.blocks.1.attn.proj.bias', 'resize_backbone.layers.1.blocks.1.attn.proj.bias', 'backbone.layers.1.blocks.1.norm2.weight', 'resize_backbone.layers.1.blocks.1.norm2.weight', 'backbone.layers.1.blocks.1.norm2.bias', 'resize_backbone.layers.1.blocks.1.norm2.bias', 'backbone.layers.1.blocks.1.mlp.fc1.weight', 'resize_backbone.layers.1.blocks.1.mlp.fc1.weight', 'backbone.layers.1.blocks.1.mlp.fc1.bias', 'resize_backbone.layers.1.blocks.1.mlp.fc1.bias', 'backbone.layers.1.blocks.1.mlp.fc2.weight', 'resize_backbone.layers.1.blocks.1.mlp.fc2.weight', 'backbone.layers.1.blocks.1.mlp.fc2.bias', 'resize_backbone.layers.1.blocks.1.mlp.fc2.bias', 'backbone.layers.1.downsample.reduction.weight', 'resize_backbone.layers.1.downsample.reduction.weight', 'backbone.layers.1.downsample.norm.weight', 'resize_backbone.layers.1.downsample.norm.weight', 'backbone.layers.1.downsample.norm.bias', 'resize_backbone.layers.1.downsample.norm.bias', 'backbone.layers.2.blocks.0.norm1.weight', 'resize_backbone.layers.2.blocks.0.norm1.weight', 'backbone.layers.2.blocks.0.norm1.bias', 'resize_backbone.layers.2.blocks.0.norm1.bias', 'backbone.layers.2.blocks.0.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.0.attn.relative_position_bias_table', 'backbone.layers.2.blocks.0.attn.relative_position_index', 'resize_backbone.layers.2.blocks.0.attn.relative_position_index', 'backbone.layers.2.blocks.0.attn.qkv.weight', 'resize_backbone.layers.2.blocks.0.attn.qkv.weight', 'backbone.layers.2.blocks.0.attn.qkv.bias', 'resize_backbone.layers.2.blocks.0.attn.qkv.bias', 'backbone.layers.2.blocks.0.attn.proj.weight', 'resize_backbone.layers.2.blocks.0.attn.proj.weight', 'backbone.layers.2.blocks.0.attn.proj.bias', 'resize_backbone.layers.2.blocks.0.attn.proj.bias', 'backbone.layers.2.blocks.0.norm2.weight', 'resize_backbone.layers.2.blocks.0.norm2.weight', 'backbone.layers.2.blocks.0.norm2.bias', 'resize_backbone.layers.2.blocks.0.norm2.bias', 'backbone.layers.2.blocks.0.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.0.mlp.fc1.weight', 'backbone.layers.2.blocks.0.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.0.mlp.fc1.bias', 'backbone.layers.2.blocks.0.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.0.mlp.fc2.weight', 'backbone.layers.2.blocks.0.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.0.mlp.fc2.bias', 'backbone.layers.2.blocks.1.norm1.weight', 'resize_backbone.layers.2.blocks.1.norm1.weight', 'backbone.layers.2.blocks.1.norm1.bias', 'resize_backbone.layers.2.blocks.1.norm1.bias', 'backbone.layers.2.blocks.1.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.1.attn.relative_position_bias_table', 'backbone.layers.2.blocks.1.attn.relative_position_index', 'resize_backbone.layers.2.blocks.1.attn.relative_position_index', 'backbone.layers.2.blocks.1.attn.qkv.weight', 'resize_backbone.layers.2.blocks.1.attn.qkv.weight', 'backbone.layers.2.blocks.1.attn.qkv.bias', 'resize_backbone.layers.2.blocks.1.attn.qkv.bias', 'backbone.layers.2.blocks.1.attn.proj.weight', 'resize_backbone.layers.2.blocks.1.attn.proj.weight', 'backbone.layers.2.blocks.1.attn.proj.bias', 'resize_backbone.layers.2.blocks.1.attn.proj.bias', 'backbone.layers.2.blocks.1.norm2.weight', 'resize_backbone.layers.2.blocks.1.norm2.weight', 'backbone.layers.2.blocks.1.norm2.bias', 'resize_backbone.layers.2.blocks.1.norm2.bias', 'backbone.layers.2.blocks.1.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.1.mlp.fc1.weight', 'backbone.layers.2.blocks.1.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.1.mlp.fc1.bias', 'backbone.layers.2.blocks.1.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.1.mlp.fc2.weight', 'backbone.layers.2.blocks.1.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.1.mlp.fc2.bias', 'backbone.layers.2.blocks.2.norm1.weight', 'resize_backbone.layers.2.blocks.2.norm1.weight', 'backbone.layers.2.blocks.2.norm1.bias', 'resize_backbone.layers.2.blocks.2.norm1.bias', 'backbone.layers.2.blocks.2.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.2.attn.relative_position_bias_table', 'backbone.layers.2.blocks.2.attn.relative_position_index', 'resize_backbone.layers.2.blocks.2.attn.relative_position_index', 'backbone.layers.2.blocks.2.attn.qkv.weight', 'resize_backbone.layers.2.blocks.2.attn.qkv.weight', 'backbone.layers.2.blocks.2.attn.qkv.bias', 'resize_backbone.layers.2.blocks.2.attn.qkv.bias', 'backbone.layers.2.blocks.2.attn.proj.weight', 'resize_backbone.layers.2.blocks.2.attn.proj.weight', 'backbone.layers.2.blocks.2.attn.proj.bias', 'resize_backbone.layers.2.blocks.2.attn.proj.bias', 'backbone.layers.2.blocks.2.norm2.weight', 'resize_backbone.layers.2.blocks.2.norm2.weight', 'backbone.layers.2.blocks.2.norm2.bias', 'resize_backbone.layers.2.blocks.2.norm2.bias', 'backbone.layers.2.blocks.2.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.2.mlp.fc1.weight', 'backbone.layers.2.blocks.2.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.2.mlp.fc1.bias', 'backbone.layers.2.blocks.2.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.2.mlp.fc2.weight', 'backbone.layers.2.blocks.2.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.2.mlp.fc2.bias', 'backbone.layers.2.blocks.3.norm1.weight', 'resize_backbone.layers.2.blocks.3.norm1.weight', 'backbone.layers.2.blocks.3.norm1.bias', 'resize_backbone.layers.2.blocks.3.norm1.bias', 'backbone.layers.2.blocks.3.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.3.attn.relative_position_bias_table', 'backbone.layers.2.blocks.3.attn.relative_position_index', 'resize_backbone.layers.2.blocks.3.attn.relative_position_index', 'backbone.layers.2.blocks.3.attn.qkv.weight', 'resize_backbone.layers.2.blocks.3.attn.qkv.weight', 'backbone.layers.2.blocks.3.attn.qkv.bias', 'resize_backbone.layers.2.blocks.3.attn.qkv.bias', 'backbone.layers.2.blocks.3.attn.proj.weight', 'resize_backbone.layers.2.blocks.3.attn.proj.weight', 'backbone.layers.2.blocks.3.attn.proj.bias', 'resize_backbone.layers.2.blocks.3.attn.proj.bias', 'backbone.layers.2.blocks.3.norm2.weight', 'resize_backbone.layers.2.blocks.3.norm2.weight', 'backbone.layers.2.blocks.3.norm2.bias', 'resize_backbone.layers.2.blocks.3.norm2.bias', 'backbone.layers.2.blocks.3.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.3.mlp.fc1.weight', 'backbone.layers.2.blocks.3.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.3.mlp.fc1.bias', 'backbone.layers.2.blocks.3.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.3.mlp.fc2.weight', 'backbone.layers.2.blocks.3.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.3.mlp.fc2.bias', 'backbone.layers.2.blocks.4.norm1.weight', 'resize_backbone.layers.2.blocks.4.norm1.weight', 'backbone.layers.2.blocks.4.norm1.bias', 'resize_backbone.layers.2.blocks.4.norm1.bias', 'backbone.layers.2.blocks.4.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.4.attn.relative_position_bias_table', 'backbone.layers.2.blocks.4.attn.relative_position_index', 'resize_backbone.layers.2.blocks.4.attn.relative_position_index', 'backbone.layers.2.blocks.4.attn.qkv.weight', 'resize_backbone.layers.2.blocks.4.attn.qkv.weight', 'backbone.layers.2.blocks.4.attn.qkv.bias', 'resize_backbone.layers.2.blocks.4.attn.qkv.bias', 'backbone.layers.2.blocks.4.attn.proj.weight', 'resize_backbone.layers.2.blocks.4.attn.proj.weight', 'backbone.layers.2.blocks.4.attn.proj.bias', 'resize_backbone.layers.2.blocks.4.attn.proj.bias', 'backbone.layers.2.blocks.4.norm2.weight', 'resize_backbone.layers.2.blocks.4.norm2.weight', 'backbone.layers.2.blocks.4.norm2.bias', 'resize_backbone.layers.2.blocks.4.norm2.bias', 'backbone.layers.2.blocks.4.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.4.mlp.fc1.weight', 'backbone.layers.2.blocks.4.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.4.mlp.fc1.bias', 'backbone.layers.2.blocks.4.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.4.mlp.fc2.weight', 'backbone.layers.2.blocks.4.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.4.mlp.fc2.bias', 'backbone.layers.2.blocks.5.norm1.weight', 'resize_backbone.layers.2.blocks.5.norm1.weight', 'backbone.layers.2.blocks.5.norm1.bias', 'resize_backbone.layers.2.blocks.5.norm1.bias', 'backbone.layers.2.blocks.5.attn.relative_position_bias_table', 'resize_backbone.layers.2.blocks.5.attn.relative_position_bias_table', 'backbone.layers.2.blocks.5.attn.relative_position_index', 'resize_backbone.layers.2.blocks.5.attn.relative_position_index', 'backbone.layers.2.blocks.5.attn.qkv.weight', 'resize_backbone.layers.2.blocks.5.attn.qkv.weight', 'backbone.layers.2.blocks.5.attn.qkv.bias', 'resize_backbone.layers.2.blocks.5.attn.qkv.bias', 'backbone.layers.2.blocks.5.attn.proj.weight', 'resize_backbone.layers.2.blocks.5.attn.proj.weight', 'backbone.layers.2.blocks.5.attn.proj.bias', 'resize_backbone.layers.2.blocks.5.attn.proj.bias', 'backbone.layers.2.blocks.5.norm2.weight', 'resize_backbone.layers.2.blocks.5.norm2.weight', 'backbone.layers.2.blocks.5.norm2.bias', 'resize_backbone.layers.2.blocks.5.norm2.bias', 'backbone.layers.2.blocks.5.mlp.fc1.weight', 'resize_backbone.layers.2.blocks.5.mlp.fc1.weight', 'backbone.layers.2.blocks.5.mlp.fc1.bias', 'resize_backbone.layers.2.blocks.5.mlp.fc1.bias', 'backbone.layers.2.blocks.5.mlp.fc2.weight', 'resize_backbone.layers.2.blocks.5.mlp.fc2.weight', 'backbone.layers.2.blocks.5.mlp.fc2.bias', 'resize_backbone.layers.2.blocks.5.mlp.fc2.bias', 'backbone.layers.2.downsample.reduction.weight', 'resize_backbone.layers.2.downsample.reduction.weight', 'backbone.layers.2.downsample.norm.weight', 'resize_backbone.layers.2.downsample.norm.weight', 'backbone.layers.2.downsample.norm.bias', 'resize_backbone.layers.2.downsample.norm.bias', 'backbone.layers.3.blocks.0.norm1.weight', 'resize_backbone.layers.3.blocks.0.norm1.weight', 'backbone.layers.3.blocks.0.norm1.bias', 'resize_backbone.layers.3.blocks.0.norm1.bias', 'backbone.layers.3.blocks.0.attn.relative_position_bias_table', 'resize_backbone.layers.3.blocks.0.attn.relative_position_bias_table', 'backbone.layers.3.blocks.0.attn.relative_position_index', 'resize_backbone.layers.3.blocks.0.attn.relative_position_index', 'backbone.layers.3.blocks.0.attn.qkv.weight', 'resize_backbone.layers.3.blocks.0.attn.qkv.weight', 'backbone.layers.3.blocks.0.attn.qkv.bias', 'resize_backbone.layers.3.blocks.0.attn.qkv.bias', 'backbone.layers.3.blocks.0.attn.proj.weight', 'resize_backbone.layers.3.blocks.0.attn.proj.weight', 'backbone.layers.3.blocks.0.attn.proj.bias', 'resize_backbone.layers.3.blocks.0.attn.proj.bias', 'backbone.layers.3.blocks.0.norm2.weight', 'resize_backbone.layers.3.blocks.0.norm2.weight', 'backbone.layers.3.blocks.0.norm2.bias', 'resize_backbone.layers.3.blocks.0.norm2.bias', 'backbone.layers.3.blocks.0.mlp.fc1.weight', 'resize_backbone.layers.3.blocks.0.mlp.fc1.weight', 'backbone.layers.3.blocks.0.mlp.fc1.bias', 'resize_backbone.layers.3.blocks.0.mlp.fc1.bias', 'backbone.layers.3.blocks.0.mlp.fc2.weight', 'resize_backbone.layers.3.blocks.0.mlp.fc2.weight', 'backbone.layers.3.blocks.0.mlp.fc2.bias', 'resize_backbone.layers.3.blocks.0.mlp.fc2.bias', 'backbone.layers.3.blocks.1.norm1.weight', 'resize_backbone.layers.3.blocks.1.norm1.weight', 'backbone.layers.3.blocks.1.norm1.bias', 'resize_backbone.layers.3.blocks.1.norm1.bias', 'backbone.layers.3.blocks.1.attn.relative_position_bias_table', 'resize_backbone.layers.3.blocks.1.attn.relative_position_bias_table', 'backbone.layers.3.blocks.1.attn.relative_position_index', 'resize_backbone.layers.3.blocks.1.attn.relative_position_index', 'backbone.layers.3.blocks.1.attn.qkv.weight', 'resize_backbone.layers.3.blocks.1.attn.qkv.weight', 'backbone.layers.3.blocks.1.attn.qkv.bias', 'resize_backbone.layers.3.blocks.1.attn.qkv.bias', 'backbone.layers.3.blocks.1.attn.proj.weight', 'resize_backbone.layers.3.blocks.1.attn.proj.weight', 'backbone.layers.3.blocks.1.attn.proj.bias', 'resize_backbone.layers.3.blocks.1.attn.proj.bias', 'backbone.layers.3.blocks.1.norm2.weight', 'resize_backbone.layers.3.blocks.1.norm2.weight', 'backbone.layers.3.blocks.1.norm2.bias', 'resize_backbone.layers.3.blocks.1.norm2.bias', 'backbone.layers.3.blocks.1.mlp.fc1.weight', 'resize_backbone.layers.3.blocks.1.mlp.fc1.weight', 'backbone.layers.3.blocks.1.mlp.fc1.bias', 'resize_backbone.layers.3.blocks.1.mlp.fc1.bias', 'backbone.layers.3.blocks.1.mlp.fc2.weight', 'resize_backbone.layers.3.blocks.1.mlp.fc2.weight', 'backbone.layers.3.blocks.1.mlp.fc2.bias', 'resize_backbone.layers.3.blocks.1.mlp.fc2.bias', 'backbone.norm.weight', 'resize_backbone.norm.weight', 'backbone.norm.bias', 'resize_backbone.norm.bias'])
+Finetune Epoch 0:
+Epoch-00, training SRCC=0.5584, time elapsed 27m 24s.
+backbone_lr = 4.00e-05, head_lr = 4.00e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.7913 best: 0.7913 
+  PLCC:  0.7940 best: 0.7940  
+  KROCC: 0.5972 best: 0.5972 
+  RMSE:  6.7505 best: 6.7505.
+time elapsed 08m 02s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6842 best: 0.6842 
+  PLCC:  0.7121 best: 0.7121  
+  KROCC: 0.4983 best: 0.4983 
+  RMSE:  7.8854 best: 7.8854.
+time elapsed 10m 08s.
+Finetune Epoch 1:
+Epoch-01, training SRCC=0.4812, time elapsed 25m 34s.
+backbone_lr = 8.00e-05, head_lr = 8.00e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8117 best: 0.8117 
+  PLCC:  0.8127 best: 0.8127  
+  KROCC: 0.6187 best: 0.6187 
+  RMSE:  6.4365 best: 6.4365.
+time elapsed 08m 10s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6951 best: 0.6951 
+  PLCC:  0.7248 best: 0.7248  
+  KROCC: 0.5098 best: 0.5098 
+  RMSE:  7.7089 best: 7.7089.
+time elapsed 09m 47s.
+Finetune Epoch 2:
+Epoch-02, training SRCC=0.3617, time elapsed 27m 37s.
+backbone_lr = 9.94e-05, head_lr = 9.94e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8039 best: 0.8117 
+  PLCC:  0.8041 best: 0.8127  
+  KROCC: 0.6096 best: 0.6187 
+  RMSE:  6.5826 best: 6.4365.
+time elapsed 07m 50s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6861 best: 0.6951 
+  PLCC:  0.7140 best: 0.7248  
+  KROCC: 0.5007 best: 0.5098 
+  RMSE:  7.8596 best: 7.7089.
+time elapsed 09m 44s.
+Finetune Epoch 3:
+Epoch-03, training SRCC=0.3558, time elapsed 26m 08s.
+backbone_lr = 9.45e-05, head_lr = 9.45e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.7998 best: 0.8117 
+  PLCC:  0.7997 best: 0.8127  
+  KROCC: 0.6053 best: 0.6187 
+  RMSE:  6.6562 best: 6.4365.
+time elapsed 07m 27s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6783 best: 0.6951 
+  PLCC:  0.7106 best: 0.7248  
+  KROCC: 0.4932 best: 0.5098 
+  RMSE:  7.9054 best: 7.7089.
+time elapsed 10m 21s.
+Finetune Epoch 4:
+Epoch-04, training SRCC=0.2515, time elapsed 25m 55s.
+backbone_lr = 8.54e-05, head_lr = 8.54e-04
+evaluation ..
+For 7182 videos, 
+the accuracy of the model: [val-ltest_s] is as follows:
+  SROCC: 0.8037 best: 0.8117 
+  PLCC:  0.8029 best: 0.8127  
+  KROCC: 0.6092 best: 0.6187 
+  RMSE:  6.6035 best: 6.4365.
+time elapsed 07m 45s.
+For 3573 videos, 
+the accuracy of the model: [val-l1080p_s] is as follows:
+  SROCC: 0.6856 best: 0.6951 
+  PLCC:  0.7103 best: 0.7248  
+  KROCC: 0.4992 best: 0.5098 
+  RMSE:  7.9095 best: 7.7089.
+time elapsed 09m 59s.
+Finetune Epoch 5:
+Epoch-05, training SRCC=0.4240, time elapsed 21m 53s.
+backbone_lr = 7.27e-05, head_lr = 7.27e-04
+evaluation ..
